@@ -2,7 +2,7 @@
 // MATLAB Compiler: 4.18.1 (R2013a)
 // Date: Mon Jun 22 17:50:08 2015
 // Arguments: "-B" "macro_default" "-W" "cpplib:libsc_pooling_ts" "-T"
-// "link:lib" "sc_pooling_ts" 
+// "link:lib" "sc_pooling_ts"
 //
 
 #include <stdio.h>
@@ -10,7 +10,6 @@
 #include "libsc_pooling_ts.h"
 
 static HMCRINSTANCE _mcr_inst = NULL;
-
 
 #if defined( _MSC_VER) || defined(__BORLANDC__) || defined(__WATCOMC__) || defined(__LCC__)
 #ifdef __LCC__
@@ -66,13 +65,13 @@ static int mclDefaultErrorHandler(const char *s)
 #endif
 
 /* This symbol is defined in shared libraries. Define it here
- * (to nothing) in case this isn't a shared library. 
+ * (to nothing) in case this isn't a shared library.
  */
 #ifndef LIB_libsc_pooling_ts_C_API
 #define LIB_libsc_pooling_ts_C_API /* No special import/export declaration */
 #endif
 
-LIB_libsc_pooling_ts_C_API 
+LIB_libsc_pooling_ts_C_API
 bool MW_CALL_CONV libsc_pooling_tsInitializeWithHandlers(
     mclOutputHandlerFcn error_handler,
     mclOutputHandlerFcn print_handler)
@@ -85,39 +84,39 @@ bool MW_CALL_CONV libsc_pooling_tsInitializeWithHandlers(
   if (!GetModuleFileName(GetModuleHandle("libsc_pooling_ts"), path_to_dll, _MAX_PATH))
     return false;
     {
-        mclCtfStream ctfStream = 
+        mclCtfStream ctfStream =
             mclGetEmbeddedCtfStream(path_to_dll);
         if (ctfStream) {
             bResult = mclInitializeComponentInstanceEmbedded(   &_mcr_inst,
-                                                                error_handler, 
+                                                                error_handler,
                                                                 print_handler,
                                                                 ctfStream);
             mclDestroyStream(ctfStream);
         } else {
             bResult = 0;
         }
-    }  
+    }
     if (!bResult)
     return false;
   return true;
 }
 
-LIB_libsc_pooling_ts_C_API 
+LIB_libsc_pooling_ts_C_API
 bool MW_CALL_CONV libsc_pooling_tsInitialize(void)
 {
-  return libsc_pooling_tsInitializeWithHandlers(mclDefaultErrorHandler, 
+  return libsc_pooling_tsInitializeWithHandlers(mclDefaultErrorHandler,
                                                 mclDefaultPrintHandler);
 }
 
-LIB_libsc_pooling_ts_C_API 
+LIB_libsc_pooling_ts_C_API
 void MW_CALL_CONV libsc_pooling_tsTerminate(void)
 {
   if (_mcr_inst != NULL)
     mclTerminateInstance(&_mcr_inst);
 }
 
-LIB_libsc_pooling_ts_C_API 
-void MW_CALL_CONV libsc_pooling_tsPrintStackTrace(void) 
+LIB_libsc_pooling_ts_C_API
+void MW_CALL_CONV libsc_pooling_tsPrintStackTrace(void)
 {
   char** stackTrace;
   int stackDepth = mclGetStackTrace(&stackTrace);
@@ -130,17 +129,15 @@ void MW_CALL_CONV libsc_pooling_tsPrintStackTrace(void)
   mclFreeStackTrace(&stackTrace, stackDepth);
 }
 
-
-LIB_libsc_pooling_ts_C_API 
+LIB_libsc_pooling_ts_C_API
 bool MW_CALL_CONV mlxSc_pooling_ts(int nlhs, mxArray *plhs[], int nrhs, mxArray *prhs[])
 {
   return mclFeval(_mcr_inst, "sc_pooling_ts", nlhs, plhs, nrhs, prhs);
 }
 
-LIB_libsc_pooling_ts_CPP_API 
-void MW_CALL_CONV sc_pooling_ts(int nargout, mwArray& beta, const mwArray& feaSet, const 
+LIB_libsc_pooling_ts_CPP_API
+void MW_CALL_CONV sc_pooling_ts(int nargout, mwArray& beta, const mwArray& feaSet, const
                                 mwArray& B, const mwArray& pyramid, const mwArray& gamma)
 {
   mclcppMlfFeval(_mcr_inst, "sc_pooling_ts", nargout, 1, 4, &beta, &feaSet, &B, &pyramid, &gamma);
 }
-

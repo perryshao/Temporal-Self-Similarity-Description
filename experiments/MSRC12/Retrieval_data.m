@@ -1,5 +1,5 @@
-function [Retrieved_Data, Retrieved_Indx] = Retrieval_data(Query_Indx,QueryID,Clustered_Indx,...
-                                            ClusterData,ClusterID,Recall)
+function [Retrieved_Data, Retrieved_Indx] = Retrieval_data(Query_Indx, QueryID, Clustered_Indx, ...
+                                            ClusterData, ClusterID, Recall)
 num = length(ClusterData);
 %% Clustering-based retrieval
 % K = length(Clustered_Indx);
@@ -17,13 +17,13 @@ num = length(ClusterData);
 % % Retrieved_Indx = zeros(1,IndexNum_Cluster*IndexNum_Incluster);
 % % for i = 1:IndexNum_Cluster
 % %     for j = 1:length(Clustered_Indx{Retrieved_Cluster(i)})
-% %          temp_indx = Clustered_Indx{Retrieved_Cluster(i)};
-% %          dtw_distance(i,j) = dtw_adj_matching(Clusterdata{Query_Indx(i)},Clusterdata{temp_indx(j)},50,0);      
+% %         temp_indx = Clustered_Indx{Retrieved_Cluster(i)};
+% %         dtw_distance(i,j) = dtw_adj_matching(Clusterdata{Query_Indx(i)},Clusterdata{temp_indx(j)},50,0);
 % %     end
 % %     [~,Indx] = sort(dtw_distance,2);
 % %     Retrieved_Indx((i-1)*IndexNum_Incluster+1:i*IndexNum_Incluster) = Indx(1:IndexNum_Incluster);
 % % end
-% 
+%
 % Relevant_Indx = find(ClusterID == QueryID);
 % % for recall_num = 1:IndexNum_Cluster*IndexNum_Incluster
 % Retrieved_Indx = [];
@@ -40,12 +40,11 @@ num = length(ClusterData);
 % % Retrieved_indx = Retrieved_Indx(1:recall_num);
 %% KNN-based retrieval
 Relevant_Indx = find(ClusterID == QueryID);
-for recall_num = 2:num 
+for recall_num = 2:num
     Retrieved_Indx = Query_Indx(1:recall_num)';
-    recall = length(intersect(Relevant_Indx,Retrieved_Indx))/length(Relevant_Indx);
+    recall = length(intersect(Relevant_Indx, Retrieved_Indx))/length(Relevant_Indx);
     if recall > Recall || recall == 1
         break;
     end
 end
 Retrieved_Data = ClusterData(Retrieved_Indx);
-

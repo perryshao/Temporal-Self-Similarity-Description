@@ -2,7 +2,7 @@
  * MATLAB Compiler: 4.18.1 (R2013a)
  * Date: Wed Mar 05 18:34:43 2014
  * Arguments: "-B" "macro_default" "-W" "lib:hist_cost" "-T" "link:lib"
- * "hist_cost_2.m" 
+ * "hist_cost_2.m"
  */
 
 #include <stdio.h>
@@ -10,7 +10,6 @@
 #include "hist_cost.h"
 
 static HMCRINSTANCE _mcr_inst = NULL;
-
 
 #if defined( _MSC_VER) || defined(__BORLANDC__) || defined(__WATCOMC__) || defined(__LCC__)
 #ifdef __LCC__
@@ -66,13 +65,13 @@ static int mclDefaultErrorHandler(const char *s)
 #endif
 
 /* This symbol is defined in shared libraries. Define it here
- * (to nothing) in case this isn't a shared library. 
+ * (to nothing) in case this isn't a shared library.
  */
 #ifndef LIB_hist_cost_C_API
 #define LIB_hist_cost_C_API /* No special import/export declaration */
 #endif
 
-LIB_hist_cost_C_API 
+LIB_hist_cost_C_API
 bool MW_CALL_CONV hist_costInitializeWithHandlers(
     mclOutputHandlerFcn error_handler,
     mclOutputHandlerFcn print_handler)
@@ -85,38 +84,38 @@ bool MW_CALL_CONV hist_costInitializeWithHandlers(
   if (!GetModuleFileName(GetModuleHandle("hist_cost"), path_to_dll, _MAX_PATH))
     return false;
     {
-        mclCtfStream ctfStream = 
+        mclCtfStream ctfStream =
             mclGetEmbeddedCtfStream(path_to_dll);
         if (ctfStream) {
             bResult = mclInitializeComponentInstanceEmbedded(   &_mcr_inst,
-                                                                error_handler, 
+                                                                error_handler,
                                                                 print_handler,
                                                                 ctfStream);
             mclDestroyStream(ctfStream);
         } else {
             bResult = 0;
         }
-    }  
+    }
     if (!bResult)
     return false;
   return true;
 }
 
-LIB_hist_cost_C_API 
+LIB_hist_cost_C_API
 bool MW_CALL_CONV hist_costInitialize(void)
 {
   return hist_costInitializeWithHandlers(mclDefaultErrorHandler, mclDefaultPrintHandler);
 }
 
-LIB_hist_cost_C_API 
+LIB_hist_cost_C_API
 void MW_CALL_CONV hist_costTerminate(void)
 {
   if (_mcr_inst != NULL)
     mclTerminateInstance(&_mcr_inst);
 }
 
-LIB_hist_cost_C_API 
-void MW_CALL_CONV hist_costPrintStackTrace(void) 
+LIB_hist_cost_C_API
+void MW_CALL_CONV hist_costPrintStackTrace(void)
 {
   char** stackTrace;
   int stackDepth = mclGetStackTrace(&stackTrace);
@@ -129,16 +128,14 @@ void MW_CALL_CONV hist_costPrintStackTrace(void)
   mclFreeStackTrace(&stackTrace, stackDepth);
 }
 
-
-LIB_hist_cost_C_API 
+LIB_hist_cost_C_API
 bool MW_CALL_CONV mlxHist_cost_2(int nlhs, mxArray *plhs[], int nrhs, mxArray *prhs[])
 {
   return mclFeval(_mcr_inst, "hist_cost_2", nlhs, plhs, nrhs, prhs);
 }
 
-LIB_hist_cost_C_API 
+LIB_hist_cost_C_API
 bool MW_CALL_CONV mlfHist_cost_2(int nargout, mxArray** HC, mxArray* BH1, mxArray* BH2)
 {
   return mclMlfFeval(_mcr_inst, "hist_cost_2", nargout, 1, 2, HC, BH1, BH2);
 }
-

@@ -1,43 +1,41 @@
-function [traindata, testdata, trainGID,testGID]=construct_gmmdata(TRAJDB,TRAJSAMPLES,...
-                              TRAJDB_DES,TRAJSAMPLES_DES,INTEGRATE_DES,INTEGRATESAMPLES_DES)
-samples_r = size(TRAJDB,2);
-samples_t = size(TRAJSAMPLES,2); 
-r_rows = zeros(1,samples_r);
-for i=1:samples_r   
-       directory_loca=find(TRAJDB{1,i}=='/');
-       TRAJDB{1,i}=TRAJDB{1,i}(1:directory_loca(2));
-       r_rows(i) = size(TRAJDB{2,i},1);
+function [traindata, testdata, trainGID, testGID]=construct_gmmdata(TRAJDB, TRAJSAMPLES, ...
+                              TRAJDB_DES, TRAJSAMPLES_DES, INTEGRATE_DES, INTEGRATESAMPLES_DES)
+samples_r = size(TRAJDB, 2);
+samples_t = size(TRAJSAMPLES, 2);
+r_rows = zeros(1, samples_r);
+for i = 1:samples_r
+    directory_loca = find(TRAJDB{1, i}=='/');
+    TRAJDB{1, i} = TRAJDB{1, i}(1:directory_loca(2));
+    r_rows(i) = size(TRAJDB{2, i}, 1);
 end
-trainGID = grp2idx(TRAJDB(1,:)');
-t_rows = zeros(1,samples_t);
-for i=1:samples_t   
-       directory_loca=find(TRAJSAMPLES{1,i}=='/');
-       TRAJSAMPLES{1,i}=TRAJSAMPLES{1,i}(1:directory_loca(2));
-       t_rows(i) = size(TRAJSAMPLES{2,i},1);
+trainGID = grp2idx(TRAJDB(1, :)');
+t_rows = zeros(1, samples_t);
+for i = 1:samples_t
+    directory_loca = find(TRAJSAMPLES{1, i}=='/');
+    TRAJSAMPLES{1, i} = TRAJSAMPLES{1, i}(1:directory_loca(2));
+    t_rows(i) = size(TRAJSAMPLES{2, i}, 1);
 end
-testGID = grp2idx(TRAJSAMPLES(1,:)');
-dim_root = size(TRAJDB_DES{1,1},2); % eliminate the zeros
-dim_orien = size(INTEGRATE_DES{1,1},2);
-class=length(unique(trainGID));
-%traindata = zeros(1,dim_root+dim_orien+1,class);
-traindata = cell(1,class);
+testGID = grp2idx(TRAJSAMPLES(1, :)');
+dim_root = size(TRAJDB_DES{1, 1}, 2); % eliminate the zeros
+dim_orien = size(INTEGRATE_DES{1, 1}, 2);
+class = length(unique(trainGID));
+% traindata = zeros(1,dim_root+dim_orien+1,class);
+traindata = cell(1, class);
 for lable = 1:class
-    for i= find(trainGID == lable)'
-        m = size(TRAJDB_DES{1,i},1)-3; % eliminate the zeros
-        traindata{1,lable}(end+1:end+m,1) = 1:m;
-%         traindata{1,lable}(end-m+1:end,2:dim_root+dim_orien+1) = [TRAJDB_DES{1,i}(2:end-2,:) INTEGRATE_DES{1,i}(2:end-2,:)];
-        traindata{1,lable}(end-m+1:end,2:2+dim_orien) = [TRAJDB_DES{1,i}(2:end-2,3:5:8) INTEGRATE_DES{1,i}(2:end-2,1:2)];
+    for i = find(trainGID == lable)'
+        m = size(TRAJDB_DES{1, i}, 1)-3; % eliminate the zeros
+        traindata{1, lable}(end+1:end+m, 1) = 1:m;
+        % traindata{1,lable}(end-m+1:end,2:dim_root+dim_orien+1) = [TRAJDB_DES{1,i}(2:end-2,:) INTEGRATE_DES{1,i}(2:end-2,:)];
+        traindata{1, lable}(end-m+1:end, 2:2+dim_orien) = [TRAJDB_DES{1, i}(2:end-2, 3:5:8) INTEGRATE_DES{1, i}(2:end-2, 1:2)];
     end
 end
-test_num=length(testGID);
+test_num = length(testGID);
 % testdata = zeros(1,dim_root+dim_orien+1,class);
-testdata = cell(1,test_num);
+testdata = cell(1, test_num);
 
-for i= 1:test_num
-    m = size(TRAJSAMPLES_DES{1,i},1)-3;
-    testdata{1,i}(end+1:end+m,1) = 1:m;
-%     testdata{1,i}(end-m+1:end,2:dim_root+dim_orien+1) = [TRAJSAMPLES_DES{1,i}(2:end-2,3:5:8) INTEGRATESAMPLES_DES{1,i}(2:end-2,:)];
-    testdata{1,i}(end-m+1:end,2:2+dim_orien) = [TRAJSAMPLES_DES{1,i}(2:end-2,3:5:8) INTEGRATESAMPLES_DES{1,i}(2:end-2,1:2)];
+for i = 1:test_num
+    m = size(TRAJSAMPLES_DES{1, i}, 1)-3;
+    testdata{1, i}(end+1:end+m, 1) = 1:m;
+    % testdata{1,i}(end-m+1:end,2:dim_root+dim_orien+1) = [TRAJSAMPLES_DES{1,i}(2:end-2,3:5:8) INTEGRATESAMPLES_DES{1,i}(2:end-2,:)];
+    testdata{1, i}(end-m+1:end, 2:2+dim_orien) = [TRAJSAMPLES_DES{1, i}(2:end-2, 3:5:8) INTEGRATESAMPLES_DES{1, i}(2:end-2, 1:2)];
 end
-
-       

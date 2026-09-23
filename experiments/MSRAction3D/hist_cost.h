@@ -2,7 +2,7 @@
  * MATLAB Compiler: 4.18.1 (R2013a)
  * Date: Wed Mar 05 18:34:43 2014
  * Arguments: "-B" "macro_default" "-W" "lib:hist_cost" "-T" "link:lib"
- * "hist_cost_2.m" 
+ * "hist_cost_2.m"
  */
 
 #ifndef __hist_cost_h
@@ -42,7 +42,6 @@ extern "C" {
 
 #define LIB_hist_cost_C_API PUBLIC_hist_cost_C_API
 
-
 #else
 
 #define LIB_hist_cost_C_API
@@ -50,32 +49,28 @@ extern "C" {
 #endif
 
 /* This symbol is defined in shared libraries. Define it here
- * (to nothing) in case this isn't a shared library. 
+ * (to nothing) in case this isn't a shared library.
  */
-#ifndef LIB_hist_cost_C_API 
+#ifndef LIB_hist_cost_C_API
 #define LIB_hist_cost_C_API /* No special import/export declaration */
 #endif
 
-extern LIB_hist_cost_C_API 
+extern LIB_hist_cost_C_API
 bool MW_CALL_CONV hist_costInitializeWithHandlers(
-       mclOutputHandlerFcn error_handler, 
+       mclOutputHandlerFcn error_handler,
        mclOutputHandlerFcn print_handler);
 
-extern LIB_hist_cost_C_API 
+extern LIB_hist_cost_C_API
 bool MW_CALL_CONV hist_costInitialize(void);
 
-extern LIB_hist_cost_C_API 
+extern LIB_hist_cost_C_API
 void MW_CALL_CONV hist_costTerminate(void);
 
-
-
-extern LIB_hist_cost_C_API 
+extern LIB_hist_cost_C_API
 void MW_CALL_CONV hist_costPrintStackTrace(void);
 
-extern LIB_hist_cost_C_API 
+extern LIB_hist_cost_C_API
 bool MW_CALL_CONV mlxHist_cost_2(int nlhs, mxArray *plhs[], int nrhs, mxArray *prhs[]);
-
-
 
 extern LIB_hist_cost_C_API bool MW_CALL_CONV mlfHist_cost_2(int nargout, mxArray** HC, mxArray* BH1, mxArray* BH2);
 
