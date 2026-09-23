@@ -1,0 +1,156 @@
+/*
+ * MATLAB Compiler: 4.18.1 (R2013a)
+ * Date: Wed Mar 05 16:36:39 2014
+ * Arguments: "-B" "macro_default" "-W" "lib:hist_cost" "-T" "link:lib"
+ * "hist_cost_2" "hist.m" 
+ */
+
+#include <stdio.h>
+#define EXPORTING_hist_cost 1
+#include "hist_cost.h"
+
+static HMCRINSTANCE _mcr_inst = NULL;
+
+
+#if defined( _MSC_VER) || defined(__BORLANDC__) || defined(__WATCOMC__) || defined(__LCC__)
+#ifdef __LCC__
+#undef EXTERN_C
+#endif
+#include <windows.h>
+
+static char path_to_dll[_MAX_PATH];
+
+BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, void *pv)
+{
+    if (dwReason == DLL_PROCESS_ATTACH)
+    {
+        if (GetModuleFileName(hInstance, path_to_dll, _MAX_PATH) == 0)
+            return FALSE;
+    }
+    else if (dwReason == DLL_PROCESS_DETACH)
+    {
+    }
+    return TRUE;
+}
+#endif
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+static int mclDefaultPrintHandler(const char *s)
+{
+  return mclWrite(1 /* stdout */, s, sizeof(char)*strlen(s));
+}
+
+#ifdef __cplusplus
+} /* End extern "C" block */
+#endif
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+static int mclDefaultErrorHandler(const char *s)
+{
+  int written = 0;
+  size_t len = 0;
+  len = strlen(s);
+  written = mclWrite(2 /* stderr */, s, sizeof(char)*len);
+  if (len > 0 && s[ len-1 ] != '\n')
+    written += mclWrite(2 /* stderr */, "\n", sizeof(char));
+  return written;
+}
+
+#ifdef __cplusplus
+} /* End extern "C" block */
+#endif
+
+/* This symbol is defined in shared libraries. Define it here
+ * (to nothing) in case this isn't a shared library. 
+ */
+#ifndef LIB_hist_cost_C_API
+#define LIB_hist_cost_C_API /* No special import/export declaration */
+#endif
+
+LIB_hist_cost_C_API 
+bool MW_CALL_CONV hist_costInitializeWithHandlers(
+    mclOutputHandlerFcn error_handler,
+    mclOutputHandlerFcn print_handler)
+{
+    int bResult = 0;
+  if (_mcr_inst != NULL)
+    return true;
+  if (!mclmcrInitialize())
+    return false;
+  if (!GetModuleFileName(GetModuleHandle("hist_cost"), path_to_dll, _MAX_PATH))
+    return false;
+    {
+        mclCtfStream ctfStream = 
+            mclGetEmbeddedCtfStream(path_to_dll);
+        if (ctfStream) {
+            bResult = mclInitializeComponentInstanceEmbedded(   &_mcr_inst,
+                                                                error_handler, 
+                                                                print_handler,
+                                                                ctfStream);
+            mclDestroyStream(ctfStream);
+        } else {
+            bResult = 0;
+        }
+    }  
+    if (!bResult)
+    return false;
+  return true;
+}
+
+LIB_hist_cost_C_API 
+bool MW_CALL_CONV hist_costInitialize(void)
+{
+  return hist_costInitializeWithHandlers(mclDefaultErrorHandler, mclDefaultPrintHandler);
+}
+
+LIB_hist_cost_C_API 
+void MW_CALL_CONV hist_costTerminate(void)
+{
+  if (_mcr_inst != NULL)
+    mclTerminateInstance(&_mcr_inst);
+}
+
+LIB_hist_cost_C_API 
+void MW_CALL_CONV hist_costPrintStackTrace(void) 
+{
+  char** stackTrace;
+  int stackDepth = mclGetStackTrace(&stackTrace);
+  int i;
+  for(i=0; i<stackDepth; i++)
+  {
+    mclWrite(2 /* stderr */, stackTrace[i], sizeof(char)*strlen(stackTrace[i]));
+    mclWrite(2 /* stderr */, "\n", sizeof(char)*strlen("\n"));
+  }
+  mclFreeStackTrace(&stackTrace, stackDepth);
+}
+
+
+LIB_hist_cost_C_API 
+bool MW_CALL_CONV mlxHist_cost_2(int nlhs, mxArray *plhs[], int nrhs, mxArray *prhs[])
+{
+  return mclFeval(_mcr_inst, "hist_cost_2", nlhs, plhs, nrhs, prhs);
+}
+
+LIB_hist_cost_C_API 
+bool MW_CALL_CONV mlxHist(int nlhs, mxArray *plhs[], int nrhs, mxArray *prhs[])
+{
+  return mclFeval(_mcr_inst, "hist", nlhs, plhs, nrhs, prhs);
+}
+
+LIB_hist_cost_C_API 
+bool MW_CALL_CONV mlfHist_cost_2(int nargout, mxArray** HC, mxArray* BH1, mxArray* BH2)
+{
+  return mclMlfFeval(_mcr_inst, "hist_cost_2", nargout, 1, 2, HC, BH1, BH2);
+}
+
+LIB_hist_cost_C_API 
+bool MW_CALL_CONV mlfHist(int nargout, mxArray** no, mxArray** xo, mxArray* varargin)
+{
+  return mclMlfFeval(_mcr_inst, "hist", nargout, 2, -1, no, xo, varargin);
+}
+
