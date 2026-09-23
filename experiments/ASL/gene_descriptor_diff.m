@@ -8,13 +8,13 @@ else
 end
 fileextend = '_DES.mat';
 matfilename = [marker fileextend];
-%% read joint 3D data with matrix format and get the descritor
+%% read joint 3D data with matrix format and get the descriptor
 samples = size(TRAJDB, 2);
 TRAJDB_DES = cell (1, samples);
 for i = 1:samples
     marker_xyz = double(TRAJDB{2, i});
     fprintf ('%d of %d differential descriptor...\n', i, samples);
-    %% differential invaraints
+    %% differential invariants
     % marker_des = integral_invariant_dist_ms(marker_xyz,0.4);
     % marker_des = descriptor_comp(marker_xyz);
     %% raw data
@@ -24,7 +24,7 @@ for i = 1:samples
     % Image_TSSM = TSSM(2+1:end-2,2+1:end-2);
     Image_TSSM = TSSM;
     Image_TSSM = floor((Image_TSSM/max(max(Image_TSSM)))*(2^16-1));
-    % kernel weightting
+    % kernel weighting
     %     Image_TSSM = exp(-Image_TSSM/(1*65536));% rbf
     %%%%%%%%%%%%%%%%% HOG of SSM %%%%%%%%%%%%%%%%%
     %     marker_des  =   LogHog(Image_TSSM);

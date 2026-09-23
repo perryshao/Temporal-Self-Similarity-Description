@@ -11,8 +11,8 @@ class_num = size(folder_content, 1);
 class_selected_num = size(CLASS_SELECTED, 2);
 for n = 3:class_num % 2 class recognition, you can define it arbitrarily
     flag_class_num = CLASS_SELECTED-ones(1, class_selected_num)*(n-2);
-    if all(flag_class_num)==0
-        if folder_content(n, 1).isdir==1
+    if all(flag_class_num) == 0
+        if folder_content(n, 1).isdir == 1
             class_folder = folder_content(n, 1).name %#ok<NOPRT>
             data_folder = [BAT_FOLDER class_folder '/'];
             class_folder_content = dir ([data_folder, '*', file_ext]);
@@ -35,7 +35,7 @@ for n = 3:class_num % 2 class recognition, you can define it arbitrarily
                 %%  Begin reading loop for tsd files
                 fid = fopen(string);
                 i = 1;
-                mk = []; % casue high accuracy in recognition
+                mk = []; % cause high accuracy in recognition
                 while ~feof(fid)
                     tline = fgetl(fid);
                     tline = str2num(tline);
@@ -46,7 +46,7 @@ for n = 3:class_num % 2 class recognition, you can define it arbitrarily
                 %% detect and distinguish the db and samples data.
                 flag_samples_num = unique(random_db)-ones(1, random_db_length)*k;
 
-                if all(flag_samples_num)==0
+                if all(flag_samples_num) == 0
                     db_i = db_i+1;
                 else
                     samples_i = samples_i+1;
@@ -57,7 +57,7 @@ for n = 3:class_num % 2 class recognition, you can define it arbitrarily
                 %% get required hand 3D data
                 for i = 1:marker_num
                     %% detect and distinguish the db and samples data.
-                    if all(flag_samples_num)==0
+                    if all(flag_samples_num) == 0
                         TRAJDB_temp{1, TRAJDB_temp_i+i} = string;
                         if i == 1
                             TRAJDB_temp{2, TRAJDB_temp_i+i} = mk(:, 1:3)*10e3; % right hand position

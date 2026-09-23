@@ -9,7 +9,7 @@ else
 end
 fileextend = 'samples_DES.mat';
 matfilename = [marker fileextend];
-%% read joint 3D data with matrix format and get the descritor
+%% read joint 3D data with matrix format and get the descriptor
 samples = size(TRAJSAMPLES, 2);
 for i = 1:samples
     marker_xyz = double(TRAJSAMPLES{2, i});

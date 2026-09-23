@@ -17,9 +17,9 @@ class_selected_num = size(CLASS_SELECTED, 2);
 
 for n = 3:class_num % 2 class recognition, you can define it arbitrarily
     flag_class_num = CLASS_SELECTED-ones(1, class_selected_num)*(n-2);
-    if all(flag_class_num)==0
+    if all(flag_class_num) == 0
         class_i = class_i+1;
-        if folder_content(n, 1).isdir==1
+        if folder_content(n, 1).isdir == 1
             class_folder = folder_content(n, 1).name;
             data_folder = [BAT_FOLDER class_folder '/'];
             class_folder_content = dir ([data_folder, '*', file_ext]);
@@ -43,7 +43,7 @@ for n = 3:class_num % 2 class recognition, you can define it arbitrarily
                 %% detect and distinguish the db and samples data.
                 flag_samples_num = random_db-ones(1, random_db_length)*k;
 
-                if all(flag_samples_num)==0
+                if all(flag_samples_num) == 0
                     db_i = db_i+1;
                 else
                     samples_i = samples_i+1;

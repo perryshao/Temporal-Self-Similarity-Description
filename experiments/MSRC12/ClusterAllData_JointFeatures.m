@@ -14,18 +14,18 @@ for i = 1:samples
         switch descrip_flag
             case 1
                 fd = fft(marker_xyz);
-            fd = fd./repmat(abs(fd(2, :)), size(fd, 1), 1);
-            % FEATURES{1,i}(:,end+1:end+29) = abs(fd(2:30,:));
-            FEATURES{1, i}(:, end+1:end+3) = fd(2:30, :);
+                fd = fd./repmat(abs(fd(2, :)), size(fd, 1), 1);
+                % FEATURES{1,i}(:,end+1:end+29) = abs(fd(2:30,:));
+                FEATURES{1, i}(:, end+1:end+3) = fd(2:30, :);
             case 2
-                FEATURES{1, i}(:, end+1:end+4)=descriptor_comp(marker_xyz);
+                FEATURES{1, i}(:, end+1:end+4) = descriptor_comp(marker_xyz);
             case 3
                 % marker_des = integral_invariant(marker_xyz,8,0.05);
                 marker_des = integral_invariant_kn(marker_xyz, 8, 20);
-            FEATURES{1, i}(:, end+1:end+2) = 0.5-marker_des;
+                FEATURES{1, i}(:, end+1:end+2) = 0.5-marker_des;
             case 4
                 marker_des = integral_invariant_ms(marker_xyz, 8, 0.3);
-            FEATURES{1, i}(:, end+1:end+10) = 0.5-marker_des;
+                FEATURES{1, i}(:, end+1:end+10) = 0.5-marker_des;
             case 5
                 FEATURES{1, i}(:, end+1) = integral_invariant_dist(marker_xyz, 20);
             case 6
@@ -51,18 +51,18 @@ for i = 1:samples
         switch descrip_flag
             case 1
                 fd = fft(marker_xyz);
-            fd = fd./repmat(abs(fd(2, :)), size(fd, 1), 1);
-            % FEATURES{1,i}(:,end+1:end+29) = abs(fd(2:30,:));
-            FEATURESAMPLES{1, i}(:, end+1:end+3) = fd(2:30, :);
+                fd = fd./repmat(abs(fd(2, :)), size(fd, 1), 1);
+                % FEATURES{1,i}(:,end+1:end+29) = abs(fd(2:30,:));
+                FEATURESAMPLES{1, i}(:, end+1:end+3) = fd(2:30, :);
             case 2
-                FEATURESAMPLES{1, i}(:, end+1:end+4)=descriptor_comp(marker_xyz);
+                FEATURESAMPLES{1, i}(:, end+1:end+4) = descriptor_comp(marker_xyz);
             case 3
                 % marker_des = integral_invariant(marker_xyz,8,0.05);
                 marker_des = integral_invariant_kn(marker_xyz, 8, 20);
-            FEATURESAMPLES{1, i}(:, end+1:end+2) = 0.5-marker_des;
+                FEATURESAMPLES{1, i}(:, end+1:end+2) = 0.5-marker_des;
             case 4
                 marker_des = integral_invariant_ms(marker_xyz, 8, 0.3);
-            FEATURESAMPLES{1, i}(:, end+1:end+10) = 0.5-marker_des;
+                FEATURESAMPLES{1, i}(:, end+1:end+10) = 0.5-marker_des;
             case 5
                 FEATURESAMPLES{1, i}(:, end+1) = integral_invariant_dist(marker_xyz, 20);
             case 6
@@ -76,12 +76,12 @@ end
 samples_r = size(TRAJDB, 2);
 samples_t = size(TRAJSAMPLES, 2);
 for i = 1:samples_r
-    directory_loca = find(TRAJDB{1, i}=='/');
+    directory_loca = find(TRAJDB{1, i} == '/');
     TRAJDB{1, i} = TRAJDB{1, i}(1:directory_loca(2));
 end
 trainGID = grp2idx(TRAJDB(1, :)');
 for i = 1:samples_t
-    directory_loca = find(TRAJSAMPLES{1, i}=='/');
+    directory_loca = find(TRAJSAMPLES{1, i} == '/');
     TRAJSAMPLES{1, i} = TRAJSAMPLES{1, i}(1:directory_loca(2));
 end
 testGID = grp2idx(TRAJSAMPLES(1, :)');

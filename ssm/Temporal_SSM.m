@@ -1,8 +1,27 @@
 function TSSM = Temporal_SSM(des, descrip_flag, slide_win, kernel, belta, c)
-% Defaults restore the behaviour of the older, shorter call forms still used by
-% the ASL and MSRC-12 generators, e.g. Temporal_SSM(des,flag) and
-% Temporal_SSM(des,5,1,1).  belta = 0.5e-3, c = 0 are the ASL values of the
-% sigmoid distance in the conference paper (they used to be hard-coded here).
+%TEMPORAL_SSM  Temporal self-similarity matrix (SSM) of a descriptor sequence.
+%   TSSM = TEMPORAL_SSM(DES, DESCRIP_FLAG, SLIDE_WIN, KERNEL, BELTA, C) returns
+%   the matrix of distances between all pairs of frame windows of the
+%   per-frame descriptor sequence DES (M frames x N dimensions).  Each window
+%   stacks SLIDE_WIN consecutive frames (thesis Eq. 3.1-3.2, omega = SLIDE_WIN),
+%   so TSSM is (M-SLIDE_WIN+1)-by-(M-SLIDE_WIN+1).
+%
+%   DESCRIP_FLAG selects the distance between two windows:
+%     1      Fourier descriptors            distance_matrix_fd      (*)
+%     2-4    DI / AII / MAII local distance feature_dist_matching   (*)
+%     5, 6   L2 (raw xyz, DII, ...);  with KERNEL = 1 the sigmoid distance
+%            tanh(BELTA*||a-b|| - C) of the conference paper
+%     7, 8   L1                             distance_matrix_norm1
+%     9      chi-square histogram cost      hist_cost_2 (tanh'ed if KERNEL = 1)
+%   (*) resolved from the calling experiment folder.  For every flag except
+%   5 and 6, DES is split into two column halves (e.g. osculating / rectifying
+%   invariants) that are windowed separately.
+%
+%   Defaults: SLIDE_WIN = 1, KERNEL = 0, BELTA = 0.5e-3, C = 0 -- the ASL values
+%   of the sigmoid distance.  They keep the older short call forms working,
+%   e.g. TEMPORAL_SSM(DES, FLAG) and TEMPORAL_SSM(DES, 5, 1, 1).
+%
+%   See also LOG_HOGCALCULATOR.
 if nargin < 3, slide_win = 1; end
 if nargin < 4, kernel = 0; end
 if nargin < 5, belta = 0.5e-3; end
@@ -13,13 +32,13 @@ d = zeros(m, m); % Similarity matrix
 %% direct computing a SSM
 patch = floor(slide_win/2); % patch size
 des_matrix = zeros(m-slide_win+1, n*slide_win);
-if descrip_flag == 5 ||descrip_flag == 6
+if descrip_flag == 5 || descrip_flag == 6
     for i = patch+1:m-patch
-        des_matrix(i-patch, 1:n*slide_win) = reshape(des(i-patch:i+patch, :), 1, slide_win*n); % consturct the patch with size = 5
+        des_matrix(i-patch, 1:n*slide_win) = reshape(des(i-patch:i+patch, :), 1, slide_win*n); % construct the patch with size = 5
     end
 else
     for i = patch+1:m-patch
-        des_matrix(i-patch, 1:(n*slide_win)/2) = reshape(des(i-patch:i+patch, 1:n/2), 1, slide_win*(n/2)); % consturct the patch with size = 5
+        des_matrix(i-patch, 1:(n*slide_win)/2) = reshape(des(i-patch:i+patch, 1:n/2), 1, slide_win*(n/2)); % construct the patch with size = 5
         des_matrix(i-patch, (n*slide_win)/2+1:end) = reshape(des(i-patch:i+patch, n/2+1:end), 1, slide_win*(n/2));
     end
 end

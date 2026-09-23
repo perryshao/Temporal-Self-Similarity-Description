@@ -9,7 +9,7 @@ else
 end
 fileextend = '_DES.mat';
 matfilename = [marker fileextend];
-%% read joint 3D data with matrix format and get the descritor
+%% read joint 3D data with matrix format and get the descriptor
 samples = size(TRAJDB, 2);
 TRAJDB_DES = cell (1, samples);
 for i = 1:samples

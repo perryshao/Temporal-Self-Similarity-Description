@@ -10,9 +10,9 @@ end
 %% read required length of joint 3D data with matrix format and filter it
 samples = size(TRAJDB, 2);
 for i = 1:samples
-    % segmentation of NaN occlusion and filter them seperately.
+    % segmentation of NaN occlusion and filter them separately.
     marker_xyz = TRAJDB{2, i};
-    % cut the final dense points from the trjectory
+    % cut the final dense points from the trajectory
     %     marker_xyz_norm = sqrt(sum((marker_xyz(2:end,:) - marker_xyz(1:end-1,:)).^2,2));
     %     marker_xyz(marker_xyz_norm < 20,:)=[];
     %% initial the Kalman Filter Parameters
@@ -47,7 +47,7 @@ for i = 1:samples
         TRAJDB{2, i} = ppval(F, t)';
         % TRAJDB{2,i} = interpolation(TRAJDB{2,i},size(TRAJDB{2,i},1)*2,0);
     end
-    % cut the final dense points from the trjectory
+    % cut the final dense points from the trajectory
     marker_xyz = TRAJDB{2, i};
     marker_xyz_norm = sqrt(sum((marker_xyz(2:end, :) - marker_xyz(1:end-1, :)).^2, 2));
     marker_xyz(marker_xyz_norm < 20, :) = [];
@@ -66,7 +66,7 @@ end
 samples = size(TRAJSAMPLES, 2);
 for i = 1:samples
     marker_xyz = TRAJSAMPLES{2, i};
-    % cut the final dense points from the trjectory
+    % cut the final dense points from the trajectory
     %     marker_xyz_norm = sqrt(sum((marker_xyz(2:end,:) - marker_xyz(1:end-1,:)).^2,2));
     %     marker_xyz(marker_xyz_norm < 20,:)=[];
     %% initial the Kalman Filter Parameters
@@ -100,7 +100,7 @@ for i = 1:samples
         TRAJSAMPLES{2, i} = ppval(F, t)';
         % TRAJSAMPLES{2,i} = interpolation(TRAJSAMPLES{2,i},size(TRAJSAMPLES{2,i},1)*2,0);
     end
-    % cut the final dense points from the trjectory
+    % cut the final dense points from the trajectory
     marker_xyz = TRAJSAMPLES{2, i};
     marker_xyz_norm = sqrt(sum((marker_xyz(2:end, :) - marker_xyz(1:end-1, :)).^2, 2));
     marker_xyz(marker_xyz_norm < 20, :) = [];

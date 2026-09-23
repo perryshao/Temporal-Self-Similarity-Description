@@ -9,13 +9,13 @@ else
 end
 fileextend = '_DES.mat';
 matfilename = [marker fileextend];
-%% read joint 3D data with matrix format and get the descritor
+%% read joint 3D data with matrix format and get the descriptor
 samples = size(TRAJDB, 2);
 TRAJDB_DES = cell (1, samples);
 for i = 1:samples
     marker_xyz = double(TRAJDB{2, i});
     fprintf ('%d of %d integral descriptor...\n', i, samples);
-    %% integral invaraints
+    %% integral invariants
     % %     marker_des = integral_invariant(marker_xyz,20,0.01);% in presence of noise
     %     marker_des = integral_invariant(marker_xyz,6,0.005);
     % %     marker_des = integral_invariant_kn(marker_xyz,6,5);
@@ -24,7 +24,7 @@ for i = 1:samples
     %                 marker_des(:,2) [0; diff(marker_des(:,2),1,1)]];
     % % use curvature only
     % %     marker_des= [marker_des(:,1) [0; diff(marker_des(:,1),1,1)]];
-    %% multiscale integral invaraints
+    %% multiscale integral invariants
     %     marker_des = integral_invariant_ms(marker_xyz,6,0.1);
     %     marker_des = 0.5-marker_des;
     %     marker_des= [marker_des(:,1) [0; diff(marker_des(:,1),1,1)]...

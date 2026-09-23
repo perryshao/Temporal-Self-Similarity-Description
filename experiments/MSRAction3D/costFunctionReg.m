@@ -12,7 +12,7 @@ modalityNum = modulaNum;
 
 %% Compute the costJ of a particular choice of theta
 % compute cost costJ
-% X = DxN matrix, J and M is the partition paramters over joints and feature modalities
+% X = DxN matrix, J and M is the partition parameters over joints and feature modalities
 D = size(X, 1); N = size(X, 2);
 J = D/jointNum; M = J/modalityNum;
 % theta = DxC column vector
@@ -37,7 +37,7 @@ clear tempRegularTerm;
 costRegularizationTerm3 = norm(theta - initTheta)^2;
 costJWithRegularization = costJ + lambda(1)*costRegularizationTerm1 + lambda(2)*costRegularizationTerm2...
                           + lambda(3)*costRegularizationTerm3;
-% Compute the partial derivatives and set gradiant to the partial
+% Compute the partial derivatives and set gradient to the partial
 % derivatives of the cost w.r.t. each parameter in theta
 
 %% compute the gradient
@@ -62,7 +62,7 @@ gradient = 2*X*(X'*theta-Y);
 % clear XX;
 clear X;
 
-epsilon = 10e-8; % to avoid inf when devided by zero
+epsilon = 10e-8; % to avoid inf when divided by zero
 gradientRegularizationTerm1 = repmat((sum(theta.^2, 2)+epsilon).^(-1/2), 1, C).*theta;
 
 % tic;

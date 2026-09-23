@@ -1,54 +1,18 @@
 function [F_t, F] = Log_hogcalculatorSameBlock(img, radius, nbins_theta, nbins_r, ...
     nthet, ntotalbh, issigned, normmethod)
-% HOGCALCULATOR calculate C-HOG feature vector of an input SSM using the
-% procedure presented in Dalal and Triggs's paper in CVPR 2005.
+%LOG_HOGCALCULATORSAMEBLOCK  Log-polar HOG at a fixed number of diagonal positions.
+%   F_T = LOG_HOGCALCULATORSAMEBLOCK(IMG) is LOG_HOGCALCULATOR evaluated at
+%   NTOTALBH evenly spaced diagonal elements instead of at every element, so
+%   every SSM yields the same number of descriptors regardless of its length.
 %
-% Author:   Perry
-% Time:     Dec 22, 2014
-%         Dec 12 2014 update.
+%   F_T = LOG_HOGCALCULATORSAMEBLOCK(IMG, RADIUS, NBINS_THETA, NBINS_R, NTHET,
+%   NTOTALBH, ISSIGNED, NORMMETHOD) overrides the defaults
+%     RADIUS = 30, NBINS_THETA = 5, NBINS_R = 3, NTHET = 8, NTOTALBH = 12,
+%     ISSIGNED = 'unsigned', NORMMETHOD = 'l2hys'.
 %
-%     this copy of code is written for calculate the HOG descriptor of SSM image, which is an
-%     original and inornate realization of [Dalal CVPR2005]'s algorithm
-%     without any optimization.
-
+%   Author: Perry, Dec 2014.
 %
-% F = Log_hogcalculator(img,radius, nbins_theta, nbins_r,
-%     nthet, overlap, isglobalinterpolate, issigned, normmethod)
-%
-% IMG:
-%     IMG is the input image.
-
-% RADIUS
-%         RADIUS is the radius of central bin in pixel
-% NBINS_THETA, NBINS_R:
-%     NBINS_THETA and NBINS_R are the mumber of angular and radial bins
-%
-% NTHET, ISSIGNED:
-%     NTHET is the number of the bins of the histogram of oriented
-%     gradient. The histogram of oriented gradient ranges from 0 to pi in
-%     'unsigned' condition while to 2*pi in 'signed' condition, which can
-%     be specified through setting the value of the variable ISSIGNED by
-%     the string 'unsigned' or 'signed'.
-%
-% OVERLAP:
-%     OVERLAP is the overlap proportion of two neighboring block.
-%
-% NORMMETHOD?
-%     NORMMETHOD is the block histogram normalized method which can be
-%     set as one of the following strings:
-%             'none', which means non-normalization;
-%             'l1', which means L1-norm normalization;
-%             'l2', which means L2-norm normalization;
-%             'l1sqrt', which means L1-sqrt-norm normalization;
-%             'l2hys', which means L2-hys-norm normalization.
-% F?
-%     F is a row vector storing the final histogram of all of the blocks
-%     one by one in a top-left to bottom-right image scan manner, the
-%     cells histogram are stored in the same manner in each block's
-%     section of F.
-%
-% ntotalbh
-% Block numbers along the diagnol of the square matrix
+%   See also LOG_HOGCALCULATOR.
 if nargin < 2
     % set default parameters value.
     radius = 30; % default
@@ -96,7 +60,7 @@ if K > 1
     for kn = 1:K
         ttempx = gradscalx(:, :, kn);
         ttempy = gradscaly(:, :, kn);
-        tmpindex = find(gidx==kn);
+        tmpindex = find(gidx == kn);
         gxtemp(tmpindex) = ttempx(tmpindex);
         gytemp(tmpindex) = ttempy(tmpindex);
     end
@@ -170,7 +134,7 @@ for btlx = stepunit
     % the pixel indexes of log-polar block
     btpixels = indx_matrix(:, 0 < sqrt(sum(t_matrix.*t_matrix))&...
                                      sqrt(sum(t_matrix.*t_matrix)) <= radius);
-    % the pixel indexes of the trasformed log-polar block
+    % the pixel indexes of the transformed log-polar block
     npixels = size(btpixels, 2);
     rt_matrix = [cos(rot_theta) -sin(rot_theta);...
         sin(rot_theta) cos(rot_theta)]*(btpixels-repmat(double([btlx;btly]), 1, npixels));

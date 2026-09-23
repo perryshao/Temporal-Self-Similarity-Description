@@ -114,15 +114,15 @@ for experiment_num = 1:EXPERIMENT_TIMES
     %     copymat_file = joints_no{1,i};
     %     copyfile(['mat/' copymat_file '*.mat'],'../MSRActionEvaluatingCode/','f');
     % end
-    %% add Guassian White Noise to Samples data
+    %% add Gaussian White Noise to Samples data
     % add_noise_bat(joints_no,noise_level(experiment_num));
-    %% generate the self-similarity descriptors for represenation
+    %% generate the self-similarity descriptors for representation
     [TSSMDB_HOG, TSSMSAMPLES_HOG] = GeneTSSM(pairJoints);
     [trainGID, testGID] = getLabels(joints_no);
     %% SSM based sparse coding
     load TSSMDB_HOG.mat;load TSSMSAMPLES_HOG.mat;
     ntotalbh = 3; % l = 0,1,2,3 (L=3) blocks are 2^(l)
-    % temporal pyramid baded on spooling sparce coding
+    % temporal pyramid based on spooling sparse coding
     [traindata, testdata, sum_ScSPM_time] = GeneScCodeJointPyramid(TSSMDB_HOG, TSSMSAMPLES_HOG, jointNum, ntotalbh);
     compu_time_bof(experiment_num) = sum_ScSPM_time/length(testGID);
     save traindata traindata; save testdata testdata; clear traindata testdata; % avoid Out of Memory
@@ -130,7 +130,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     %% SSM and skeleton based sparse coding
     load TSSMDB_HOG.mat;load TSSMSAMPLES_HOG.mat;load TSSMDB_SKELETON.mat;load TSSMSAMPLES_SKELETON.mat;
     ntotalbh = 3; % l = 0,1,2,3 (L=3) blocks are 2^(l)
-    % pyramid baded on spooling sparce coding based on
+    % pyramid based on spooling sparse coding based on
     % self-similarity descriptor and skeleton features
     [traindataOfssm, testdataOfssm, ~] = GeneScCodeJointPyramid(TSSMDB_HOG, TSSMSAMPLES_HOG, jointNum, ntotalbh);
     [traindataOfskel, testdataOfskel, ~] = GeneScCodeJointPyramid(TSSMDB_SKELETON, TSSMSAMPLES_SKELETON, jointNum, ntotalbh);
@@ -180,7 +180,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     sum_time_svm = toc;
     compu_time_ssm(experiment_num) = sum_time_svm/length(predict_label);
 
-    %%%%%%%%%%%%%%%%% using stardard kernels  %%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%% using standard kernels  %%%%%%%%%%%%%%%%%%%%%%%%
     % model = svmtrain(trainGID,traindata,'-t 2 -b 0');
     % tic;
     % [predict_label1, accuracy1, dec_values1] = svmpredict(testGID,testdata, model,'-b 0');

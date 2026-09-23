@@ -7,7 +7,7 @@ for i = 1:m_num
                 d(i, j) = feature_dist_matching(des((i-1)*4+1:i*4), des((j-1)*4+1:j*4));
             case  3
                 d(i, j) = feature_dist_matching(des((i-1)*2+1:i*2), des((j-1)*2+1:j*2));
-            % d(i,j) = distance_matrix_norm2(des((i-1)*2+1:i*2),des((j-1)*2+1:j*2));
+                % d(i,j) = distance_matrix_norm2(des((i-1)*2+1:i*2),des((j-1)*2+1:j*2));
             case  4
                 d(i, j) = feature_dist_matching(des((i-1)*10+1:i*10), des((j-1)*10+1:j*10));
             case 1

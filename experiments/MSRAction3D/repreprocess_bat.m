@@ -31,7 +31,7 @@ for j = 1:m_num
             TRAJSAMPLES{2, i} = marker_smooth(1:3, :)';
         else
             % continue; % for NaN data -- Perry 20130820
-            position_nan = find(nanflag==1);
+            position_nan = find(nanflag == 1);
             num_nan = sum(nonzeros(nanflag));
             marker_xyz_seg1 = TRAJSAMPLES{2, i}(1:position_nan(1)-1, :);
             % wave filter
@@ -50,7 +50,7 @@ for j = 1:m_num
 
                 TRAJSAMPLES{2, i}(1:position_nan(1)-1, 1:3)=marker_smooth(1:3, :)';
             end
-            %% kalman filter for sencond segmentation
+            %% kalman filter for second segmentation
             if isempty(marker_xyz_seg2)
                 continue;
             end

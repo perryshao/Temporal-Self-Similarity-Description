@@ -16,7 +16,7 @@ folder_content = dir(BAT_FOLDER);
 directory_num = size(folder_content, 1);
 for n = 3:directory_num % 2 class recognition, you can define it arbitrarily
     class_i = class_i+1;
-    if folder_content(n, 1).isdir==1
+    if folder_content(n, 1).isdir == 1
         class_folder = folder_content(n, 1).name;
         data_folder = [BAT_FOLDER class_folder '/'];
         class_folder_content = dir ([data_folder, '*', file_ext]);

@@ -10,7 +10,7 @@ else
 end
 fileextend = '_DES.mat';
 matfilename = [marker fileextend];
-%% read joint 3D data with matrix format and get the descritor
+%% read joint 3D data with matrix format and get the descriptor
 samples = size(TRAJDB, 2);
 % TRAJDB = normalization_basewhole(marker,joints_no);
 for i = 1:samples

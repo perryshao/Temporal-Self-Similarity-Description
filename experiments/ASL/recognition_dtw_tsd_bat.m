@@ -186,7 +186,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     [traindata, testdata, sum_BoF_time, num_words] = gene_codebook_pyramid(TRAJDB_DES, TRAJSAMPLES_DES, ntotalbh);
     compu_time_bof(experiment_num) = sum_BoF_time/size(testdata, 1);
 
-    % temporal pyramid baded on spooling sparce coding
+    % temporal pyramid based on spooling sparse coding
     %     [traindata,testdata,sum_ScSPM_time] = gene_codebook_ScSPM(TRAJDB_DES,TRAJSAMPLES_DES,ntotalbh);
     %     compu_time_bof(experiment_num) =sum_ScSPM_time/size(testdata,1);
 
@@ -233,7 +233,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     % sum_time_svm = toc;
     % compu_time_svm(experiment_num) =sum_time_svm/size(testdata,1);
 
-    %%%%%%%%%%%%%%%%% using stardard kernels  %%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%% using standard kernels  %%%%%%%%%%%%%%%%%%%%%%%%
 
     % model = svmtrain(trainGID,traindata,'-t 2 -b 0');
     % tic;
@@ -296,7 +296,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     % %         [dtw_distance(i,j), ~, ~]=dtw_adj_orien(TRAJSAMPLES_DES{1,i},TRAJDB_DES{1,j},INTEGRATESAMPLES_DES{1,i},INTEGRATE_DES{1,j},80);
     %     end
     % end
-    % dtw_distance = exp(-gamma*dtw_distance); %% tranform to Likelihood of dtw distance -- Perry 28/05/2013
+    % dtw_distance = exp(-gamma*dtw_distance); %% transform to Likelihood of dtw distance -- Perry 28/05/2013
     % dtw_distance = dtw_distance./repmat(sum(dtw_distance,2),1, samples_r);%% softmax of dtw distance -- Perry 28/05/2013
     % [~,I]=max(dtw_distance,[],2); % sum up the recognition accurate ratio
     %
@@ -336,7 +336,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     [traindata, testdata, sum_BoF_time, num_words] = gene_codebook_pyramid(TRAJDB_DES, TRAJSAMPLES_DES, ntotalbh);
     compu_time_bof(experiment_num) = sum_BoF_time/size(testdata, 1);
 
-    % temporal pyramid baded on spooling sparce coding
+    % temporal pyramid based on spooling sparse coding
     %     [traindata,testdata,sum_ScSPM_time] = gene_codebook_ScSPM(TRAJDB_DES,TRAJSAMPLES_DES,ntotalbh);
     %     compu_time_bof(experiment_num) =sum_ScSPM_time/size(testdata,1);
 
@@ -383,7 +383,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     % sum_time_svm = toc;
     % compu_time_svm(experiment_num) =sum_time_svm/size(testdata,1);
 
-    %%%%%%%%%%%%%%%%% using stardard kernels  %%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%% using standard kernels  %%%%%%%%%%%%%%%%%%%%%%%%
     % model = svmtrain(trainGID,traindata,'-t 2 -b 0');
     % tic;
     % [predict_label1, accuracy1, dec_values1] = svmpredict(testGID,testdata, model,'-b 0');

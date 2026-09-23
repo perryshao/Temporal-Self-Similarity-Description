@@ -52,7 +52,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     %     copymat_file = joints_no{1,i};
     %     copyfile(['mat/' copymat_file '*.mat'],'../MSRActionEvaluatingCode/','f');
     % end
-    %% add Guassian White Noise to Samples data
+    %% add Gaussian White Noise to Samples data
     % add_noise_bat(joints_no,noise_level(experiment_num));
     % repreprocess_bat(joints_no);
     %%  get the average of ensemble trajectories
@@ -61,7 +61,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     fprintf ('generate the relative descriptor...\n');
     [INTEGRATE_DES, INTEGRATESAMPLES_DES] = relative_descrip_bat(joints_no, ROOT);
     preprocess_bat(ensemble_no, 0);
-    %% generate the invariant represenation
+    %% generate the invariant representation
     fprintf ('get the database descriptor for root trajectory...\n');
     gene_descriptor_integral(ENSEMBLE);
     fprintf ('get the samples descriptor for root trajectory...\n');
@@ -149,7 +149,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     % temporal pyramid matching kernels
     %     [traindata,testdata,sum_BoF_time,num_words] = gene_codebook_pyramid(TRAJDB_DES,TRAJSAMPLES_DES,ntotalbh);
     %     compu_time_bof(experiment_num) =sum_BoF_time/size(testdata,1);
-    % temporal pyramid baded on spooling sparce coding
+    % temporal pyramid based on spooling sparse coding
     [traindata, testdata, sum_ScSPM_time] = gene_codebook_ScSPM(TSSMDB_HOG, TSSMSAMPLES_HOG, ntotalbh);
     compu_time_bof(experiment_num) = sum_ScSPM_time/size(testdata, 1);
 
@@ -193,7 +193,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     sum_time_svm = toc;
     compu_time_svm(experiment_num) = sum_time_svm/size(testdata, 1);
 
-    %%%%%%%%%%%%%%%%% using stardard kernels  %%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%% using standard kernels  %%%%%%%%%%%%%%%%%%%%%%%%
     % model = svmtrain(trainGID,traindata,'-t 2 -b 0');
     % tic;
     % [predict_label1, accuracy1, dec_values1] = svmpredict(testGID,testdata, model,'-b 0');
@@ -250,7 +250,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
             [dtw_distance(i, j), ~, ~] = dtw_adj_orien(TRAJSAMPLES_DES{1, i}, TRAJDB_DES{1, j}, INTEGRATESAMPLES_DES{1, i}, INTEGRATE_DES{1, j}, 1, 50);
         end
     end
-    dtw_distance = exp(-gamma*dtw_distance); %% tranform to Likelihood of dtw distance -- Perry 28/05/2013
+    dtw_distance = exp(-gamma*dtw_distance); %% transform to Likelihood of dtw distance -- Perry 28/05/2013
     dtw_distance = dtw_distance./repmat(sum(dtw_distance, 2), 1, samples_r); %% softmax of dtw distance -- Perry 28/05/2013
 
     dtw_distance(:, 77) = [];dtw_distance(:, 77)=[];dtw_distance(:, 243)=[]; % for eliminate the failure of LWAR differential invariant

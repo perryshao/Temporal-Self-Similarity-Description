@@ -8,8 +8,8 @@ des_matrix = zeros(m-slide_win+1, n*slide_win);
 joint_num = 13;
 
 for i = path+1:m-path
-    des_matrix(i-path, 1:slide_win) = reshape(des(i-path:i+path, 1), 1, slide_win*1); % consturct the path with size = 5
-    des_matrix(i-path, 1*slide_win+1:2*slide_win) = reshape(des(i-path:i+path, 2), 1, slide_win*1); % consturct the path with size = 5
+    des_matrix(i-path, 1:slide_win) = reshape(des(i-path:i+path, 1), 1, slide_win*1); % construct the path with size = 5
+    des_matrix(i-path, 1*slide_win+1:2*slide_win) = reshape(des(i-path:i+path, 2), 1, slide_win*1); % construct the path with size = 5
     des_matrix(i-path, 2*slide_win+1:end) = reshape(des(i-path:i+path, 3:end), 1, slide_win*3*joint_num);
 end
 

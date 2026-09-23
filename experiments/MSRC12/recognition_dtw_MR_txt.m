@@ -50,7 +50,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     %     copymat_file = joints_no{1,i};
     %     copyfile(['mat/' copymat_file '*.mat'],'../MicrosoftGestureEvaluatingCode/','f');
     % end
-    %% add Guassian White Noise to Samples data
+    %% add Gaussian White Noise to Samples data
     % add_noise_bat(joints_no,noise_level(experiment_num));
     % repreprocess_bat(joints_no);
     %% shuffling the whole dataset
@@ -136,7 +136,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     Recall = zeros(Q_num, 11); % initial value, 0.11-0.22-0.33...0.99,1
     Precision = zeros(Q_num, 11); % initial value, 0.11-0.22-0.33...0.99,1
     for i = 1:Q_num
-        Recall(i, 1) = 1/length(ClusterData(ClusterID==QueryID(i)));
+        Recall(i, 1) = 1/length(ClusterData(ClusterID == QueryID(i)));
         [Query_Indx, Q_distance] = Query_distance_RankOne(Qdata{i}, ClusterData, joints_no);
         Precision(i, 1) = 1;
         for j = 2:11 % initial value, 0.11-0.22-0.33...0.99,1
@@ -177,7 +177,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     Recall = zeros(Q_num, 11); % initial value, 0.11-0.22-0.33...0.99,1
     Precision = zeros(Q_num, 11); % initial value, 0.11-0.22-0.33...0.99,1
     for i = 1:Q_num
-        Recall(i, 1) = 1/length(ClusterData(ClusterID==QueryID(i)));
+        Recall(i, 1) = 1/length(ClusterData(ClusterID == QueryID(i)));
         [Query_Indx, Q_distance] = Query_distance(Qdata{i}, ClusterData);
         Precision(i, 1) = 1;
         for j = 2:11 % initial value, 0.11-0.22-0.33...0.99,1
@@ -206,7 +206,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     % % temporal pyramid matching kernels
     % % [traindata,testdata,sum_BoF_time,num_words] = gene_codebook_pyramid(TRAJDB_DES,TRAJSAMPLES_DES,ntotalbh);
     % % compu_time_bof(experiment_num) =sum_BoF_time/size(testdata,1);
-    % % temporal pyramid baded on spooling sparce coding
+    % % temporal pyramid based on spooling sparse coding
     % [traindata,testdata,sum_ScSPM_time] = gene_codebook_ScSPM(TRAJDB_DES,TRAJSAMPLES_DES,ntotalbh);
     % compu_time_bof(experiment_num) =sum_ScSPM_time/size(testdata,1);
     %
@@ -251,7 +251,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     % compu_time_svm(experiment_num) =sum_time_svm/size(testdata,1);
     %
     %
-    % %%%%%%%%%%%%%%%%% using stardard kernels  %%%%%%%%%%%%%%%%%%%%%%%%
+    % %%%%%%%%%%%%%%%%% using standard kernels  %%%%%%%%%%%%%%%%%%%%%%%%
     % % model = svmtrain(trainGID,traindata,'-t 2 -b 0');
     % % tic;
     % % [predict_label1, accuracy1, dec_values1] = svmpredict(testGID,testdata, model,'-b 0');
@@ -268,7 +268,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     % recog_ratio_interg(experiment_num) = trace(confusion_matrix)/sum(confusion_matrix(:));
     % recog_ratio_final_interg = mean(recog_ratio_interg) %#ok<NOPTS>
     % confusion_matrix_interg{1,experiment_num} = confusion_matrix;
-    %% implement recognition using fusion descriptor for two hand simultantaneously
+    %% implement recognition using fusion descriptor for two hand simultaneously
     % load ([ROOT,'.mat']);load ([ROOT,'samples.mat']);
     % [trainGID,testGID]=construct_ID(TRAJDB,TRAJSAMPLES);
     % samples_r=size(TRAJDB_DES,2);
@@ -281,7 +281,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     % %         [dtw_distance(i,j), ~, ~]=dtw_adj_matching(TRAJSAMPLES_DES{1,i},TRAJDB_DES{1,j},50,7);
     %     end
     % end
-    % dtw_distance = exp(-dtw_distance); %% tranform to Likelihood of dtw distance -- Perry 28/05/2013
+    % dtw_distance = exp(-dtw_distance); %% transform to Likelihood of dtw distance -- Perry 28/05/2013
     % dtw_distance = dtw_distance./repmat(sum(dtw_distance,2),1, samples_r);%% softmax of dtw distance -- Perry 28/05/2013
     % [~,I]=max(dtw_distance,[],2); % sum up the recognition accurate ratio
     %
@@ -310,7 +310,7 @@ for experiment_num = 1:EXPERIMENT_TIMES
     %         [dtw_distance(i,j), ~, ~]=dtw_adj_orien(TRAJSAMPLES_DES{1,i},TRAJDB_DES{1,j},INTEGRATESAMPLES_DES{1,i},INTEGRATE_DES{1,j},50);
     %     end
     % end
-    % dtw_distance = exp(-gamma*dtw_distance); %% tranform to Likelihood of dtw distance -- Perry 28/05/2013
+    % dtw_distance = exp(-gamma*dtw_distance); %% transform to Likelihood of dtw distance -- Perry 28/05/2013
     % dtw_distance = dtw_distance./repmat(sum(dtw_distance,2),1, samples_r);%% softmax of dtw distance -- Perry 28/05/2013
     % [~,I]=max(dtw_distance,[],2); % sum up the recognition accurate ratio
     %

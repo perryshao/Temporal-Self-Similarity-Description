@@ -11,7 +11,7 @@ end
 %% read required length of joint 3D data with matrix format and filter it
 samples = size(TRAJDB, 2);
 for i = 1:samples
-    % segmentation of NaN occlusion and filter them seperately.
+    % segmentation of NaN occlusion and filter them separately.
     marker_xyz = TRAJDB{2, i};
 
     % mindim = min([max(marker_xyz(:,1))-min(marker_xyz(:,1))...

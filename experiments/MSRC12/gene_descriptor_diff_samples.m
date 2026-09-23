@@ -9,13 +9,13 @@ else
 end
 fileextend = 'samples_DES.mat';
 matfilename = [marker fileextend];
-%% read joint 3D data with matrix format and get the descritor
+%% read joint 3D data with matrix format and get the descriptor
 samples = size(TRAJSAMPLES, 2);
 TRAJSAMPLES_DES = cell (1, samples);
 for i = 1:samples
     marker_xyz = double(TRAJSAMPLES{2, i});
     fprintf ('%d of %d samples differential descriptor...\n', i, samples);
-    %% differential invaraints
+    %% differential invariants
     % marker_des = integral_invariant_dist_ms(marker_xyz,0.4);
     marker_des = descriptor_comp(marker_xyz);
     %% raw data

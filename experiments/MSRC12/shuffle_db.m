@@ -17,7 +17,7 @@ end
 subjectID_SAMPLES = str2num(TEMP);
 joints_num = size(joints_no, 2);
 for n = 1:joints_num
-    %% load trainning and sampling mat files of corresponding marker
+    %% load training and sampling mat files of corresponding marker
     tempTRAJDB = cell(2, []);
     tempTRAJSAMPLES = cell(2, []);
     matfilename_db = [joints_no{1, n} '.mat'];

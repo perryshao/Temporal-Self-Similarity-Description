@@ -10,7 +10,7 @@ end
 %% read required length of joint 3D data with matrix format and filter it
 samples = size(TRAJDB, 2);
 for i = 1:samples
-    % segmentation of NaN occlusion and filter them seperately.
+    % segmentation of NaN occlusion and filter them separately.
     marker_xyz = TRAJDB{2, i};
     %% wave filter
     % [marker_xyz staindex] = remove_stapoint(marker_xyz);

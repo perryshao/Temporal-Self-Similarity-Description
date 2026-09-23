@@ -8,7 +8,7 @@ samples_t = size(TSSMSAMPLES_HOG, 2);
 % dictionary training for sparse coding
 nBases = 512;
 nsmp = 10000;
-beta = 1e-5; % a small regularization for stablizing sparse coding
+beta = 1e-5; % a small regularization for stabilizing sparse coding
 num_iters = 50;
 
 % feature pooling parameters
@@ -25,25 +25,25 @@ lastNsmp = 0;
 % to avoid all(0) feature vector
 while lastNsmp < nsmp
     currentTime = currentTime+1;
-    % randomly seleting local training features
+    % randomly selecting local training features
     currentX{currentTime} = rand_sampling_ts(TSSMDB_HOG, nsmp);
-    currentNsmp = size(currentX{currentTime}, 2); % remeausre the nsmp after sampling
+    currentNsmp = size(currentX{currentTime}, 2); % re-measure the nsmp after sampling
     emptyIndx = zeros(1, currentNsmp);
     for i = 1:currentNsmp
         if ~any(currentX{currentTime}(:, i))
             emptyIndx(i) = i;
         end
     end
-    emptyIndx(emptyIndx==0) = [];
-    currentX{currentTime}(:, emptyIndx) =[];
-    lastNsmp = lastNsmp + size(currentX{currentTime}, 2); % remeausre the nsmp after sampling
+    emptyIndx(emptyIndx == 0) = [];
+    currentX{currentTime}(:, emptyIndx) = [];
+    lastNsmp = lastNsmp + size(currentX{currentTime}, 2); % re-measure the nsmp after sampling
 end
 X = [];
 for i = 1:currentTime
     X = [X currentX{currentTime}];
 end
 clear currentX emptyIndx;
-nsmp = size(X, 2); % remeausre the nsmp after sampling
+nsmp = size(X, 2); % re-measure the nsmp after sampling
 batch_size = floor(nsmp/1); % batch size when learning sparse codes
 
 [B, S, stat] = reg_sparse_coding(X, nBases, eye(nBases), beta, gamma, num_iters, batch_size);

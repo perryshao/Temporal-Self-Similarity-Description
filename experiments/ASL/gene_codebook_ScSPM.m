@@ -10,7 +10,7 @@ samples_t = size(TRAJSAMPLES_DES, 2);
 nBases = 1024;
 % nsmp = 10000; %default for asl dataset -- thesis Sec. 5.2.1 setting
 nsmp = 6000;
-beta = 1e-5; % a small regularization for stablizing sparse coding
+beta = 1e-5; % a small regularization for stabilizing sparse coding
 num_iters = 50;
 
 % feature pooling parameters
@@ -32,9 +32,9 @@ testdata = zeros(nBases*sum(pyramid), samples_t);
 % end
 % X = X';
 
-% randomly seleting local training features
+% randomly selecting local training features
 X = rand_sampling_ts(TRAJDB_DES, nsmp);
-nsmp = size(X, 2); % remeausre the nsmp after sampling
+nsmp = size(X, 2); % re-measure the nsmp after sampling
 batch_size = floor(nsmp/1); % batch size when learning sparse codes
 
 [B, S, stat] = reg_sparse_coding(X, nBases, eye(nBases), beta, gamma, num_iters, batch_size);

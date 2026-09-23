@@ -26,7 +26,7 @@ NaN_index = isnan(d);
 d(NaN_index) = 0;
 I = size(d, 1);J = size(d, 2);
 d = double(d);
-%% search optimal path using C for acceleratting the computation
+%% search optimal path using C for accelerating the computation
 [g, steps] = dtwpath(d, r);
 % time normalize global distance matrix
 N = I+J;

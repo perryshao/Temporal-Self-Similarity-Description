@@ -1,52 +1,30 @@
 function [F_t, F] = Log_hogcalculator(img, radius, nbins_theta, nbins_r, ...
     nthet, issigned, normmethod)
-% HOGCALCULATOR calculate C-HOG feature vector of an input SSM using the
-% procedure presented in Dalal and Triggs's paper in CVPR 2005.
+%LOG_HOGCALCULATOR  Log-polar HOG self-similarity descriptors along an SSM diagonal.
+%   F_T = LOG_HOGCALCULATOR(IMG) computes one descriptor per diagonal element
+%   of the M-by-M self-similarity matrix IMG (thesis Sec. 3.4).  Around each
+%   diagonal element a log-polar patch of radius RADIUS, rotated by -pi/4 so it
+%   lies along the diagonal, is split into NBINS_THETA angular x NBINS_R radial
+%   cells; a histogram of NTHET gradient orientations with trilinear
+%   interpolation is accumulated in every cell and each block is normalised.
+%   The NBINS_THETA innermost cells are then merged into one, giving
+%   NBINS_THETA*(NBINS_R-1)+1 cells.  F_T is M x (that * NTHET): 150 columns
+%   with the defaults.
 %
-% Author:   Perry
-% Time:     Dec 22, 2014
-%         Dec 12 2014 update.
+%   F_T = LOG_HOGCALCULATOR(IMG, RADIUS, NBINS_THETA, NBINS_R, NTHET, ISSIGNED,
+%   NORMMETHOD) overrides the defaults
+%     RADIUS = 30, NBINS_THETA = 8, NBINS_R = 4, NTHET = 6,
+%     ISSIGNED = 'unsigned' (orientations 0..pi; 'signed' for 0..2*pi),
+%     NORMMETHOD = 'l2hys'  ('none' | 'l1' | 'l1sqrt' | 'l2' | 'l2hys').
 %
-%     this copy of code is written for calculate the HOG descriptor of SSM image, which is an
-%     original and inornate realization of [Dalal CVPR2005]'s algorithm
-%     without any optimization.
-
+%   [F_T, F] = LOG_HOGCALCULATOR(...) also returns F, the row vector of all
+%   block histograms before the centre cells are merged.
 %
-% F = Log_hogcalculator(img,radius, nbins_theta, nbins_r,
-%     nthet, overlap, isglobalinterpolate, issigned, normmethod)
+%   Adapted by Perry (Dec 2014) from the HOG implementation of Dalal & Triggs,
+%   CVPR 2005 (see hogcalculator.m).  LogHog.mex is a C++/OpenCV port with the
+%   default parameters hard-coded.
 %
-% IMG:
-%     IMG is the input image.
-
-% RADIUS
-%         RADIUS is the radius of central bin in pixel
-% NBINS_THETA, NBINS_R:
-%     NBINS_THETA and NBINS_R are the mumber of angular and radial bins
-%
-% NTHET, ISSIGNED:
-%     NTHET is the number of the bins of the histogram of oriented
-%     gradient. The histogram of oriented gradient ranges from 0 to pi in
-%     'unsigned' condition while to 2*pi in 'signed' condition, which can
-%     be specified through setting the value of the variable ISSIGNED by
-%     the string 'unsigned' or 'signed'.
-%
-% OVERLAP:
-%     OVERLAP is the overlap proportion of two neighboring block.
-%
-% NORMMETHOD?
-%     NORMMETHOD is the block histogram normalized method which can be
-%     set as one of the following strings:
-%             'none', which means non-normalization;
-%             'l1', which means L1-norm normalization;
-%             'l2', which means L2-norm normalization;
-%             'l1sqrt', which means L1-sqrt-norm normalization;
-%             'l2hys', which means L2-hys-norm normalization.
-% F?
-%     F is a row vector storing the final histogram of all of the blocks
-%     one by one in a top-left to bottom-right image scan manner, the
-%     cells histogram are stored in the same manner in each block's
-%     section of F.
-%
+%   See also TEMPORAL_SSM, LOG_HOGCALCULATORSAMEBLOCK, LOCALSSMCALCULATOR.
 if nargin < 2
     % set default parameters value.
     radius = 30; % default
@@ -94,7 +72,7 @@ if K > 1
     for kn = 1:K
         ttempx = gradscalx(:, :, kn);
         ttempy = gradscaly(:, :, kn);
-        tmpindex = find(gidx==kn);
+        tmpindex = find(gidx == kn);
         gxtemp(tmpindex) = ttempx(tmpindex);
         gytemp(tmpindex) = ttempy(tmpindex);
     end
@@ -161,7 +139,7 @@ for btlx = 1:xbstep:xbstridend
     % the pixel indexes of log-polar block
     btpixels = indx_matrix(:, 0 < sqrt(sum(t_matrix.*t_matrix))&...
                                      sqrt(sum(t_matrix.*t_matrix)) <= radius);
-    % the pixel indexes of the trasformed log-polar block
+    % the pixel indexes of the transformed log-polar block
     npixels = size(btpixels, 2);
     rt_matrix = [cos(rot_theta) -sin(rot_theta);...
         sin(rot_theta) cos(rot_theta)]*(btpixels-repmat(double([btlx;btly]), 1, npixels));

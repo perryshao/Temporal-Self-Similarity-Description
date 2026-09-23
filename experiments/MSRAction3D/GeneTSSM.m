@@ -115,7 +115,7 @@ for i = 1:samples_r
         trajectory = ENSEMBLE{n, i};
         desMatrix = trajectory;
         Image_TSSM = Temporal_SSM(desMatrix, 5, 1, 1, 0.25); % trajectory,descrip_flag,kernel,belta,c
-        Image_TSSM(Image_TSSM <=0) = 0;
+        Image_TSSM(Image_TSSM <= 0) = 0;
         % Image_TSSM = floor(Image_TSSM*(2^16-1));
         Image_TSSM = floor((Image_TSSM/max(max(Image_TSSM)))*(2^16-1));
         Image_TSSM(isnan(Image_TSSM)) = 0;
@@ -140,7 +140,7 @@ for i = 1:samples_t
         trajectory = ENSEMBLE_SAMPLES{n, i};
         desMatrix = trajectory;
         Image_TSSM = Temporal_SSM(desMatrix, 5, 1, 1, 0.25);
-        Image_TSSM(Image_TSSM <=0) = 0;
+        Image_TSSM(Image_TSSM <= 0) = 0;
         % Image_TSSM = floor(Image_TSSM*(2^16-1));
         Image_TSSM = floor((Image_TSSM/max(max(Image_TSSM)))*(2^16-1));
         Image_TSSM(isnan(Image_TSSM)) = 0;

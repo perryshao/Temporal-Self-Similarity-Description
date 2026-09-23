@@ -1,39 +1,20 @@
 function [F_t, F] = LocalSsmcalculator(img, radius, nbins_theta, nbins_r, ...
     nthet)
-% LocalSsmcalculator calculate local self-similarity feature vector of an input SSM using the
-% procedure presented in Dalal and Triggs's paper in CVPR 2005.
+%LOCALSSMCALCULATOR  Log-polar max-pooled SSM values along an SSM diagonal.
+%   F_T = LOCALSSMCALCULATOR(IMG) is the gradient-free counterpart of
+%   LOG_HOGCALCULATOR: around every diagonal element of the self-similarity
+%   matrix IMG it takes the maximum raw SSM value in each of the
+%   NBINS_THETA x NBINS_R log-polar cells.  F_T is M x (NBINS_THETA*NBINS_R).
 %
-% Author:   Perry
-% Time:     Feb 05, 2015
-%         Feb 08 2015 update.
-% IMG:
-%     IMG is the input image.
-
-% RADIUS
-%         RADIUS is the radius of central bin in pixel
-% NBINS_THETA, NBINS_R:
-%     NBINS_THETA and NBINS_R are the mumber of angular and radial bins
+%   F_T = LOCALSSMCALCULATOR(IMG, RADIUS, NBINS_THETA, NBINS_R, NTHET)
+%   overrides the defaults RADIUS = 20, NBINS_THETA = 8, NBINS_R = 3, NTHET = 1.
+%   Blocks are L2-Hys normalised.
 %
-% NTHET, ISSIGNED:
-%     NTHET is the number of the bins of the histogram of oriented
-%     gradient. The histogram of oriented gradient ranges from 0 to pi in
-%     'unsigned' condition while to 2*pi in 'signed' condition, which can
-%     be specified through setting the value of the variable ISSIGNED by
-%     the string 'unsigned' or 'signed'.
-% NORMMETHOD?
-%     NORMMETHOD is the block histogram normalized method which can be
-%     set as one of the following strings:
-%             'none', which means non-normalization;
-%             'l1', which means L1-norm normalization;
-%             'l2', which means L2-norm normalization;
-%             'l1sqrt', which means L1-sqrt-norm normalization;
-%             'l2hys', which means L2-hys-norm normalization.
-% F?
-%     F is a row vector storing the final histogram of all of the blocks
-%     one by one in a top-left to bottom-right image scan manner, the
-%     cells histogram are stored in the same manner in each block's
-%     section of F.
+%   [F_T, F] = LOCALSSMCALCULATOR(...) also returns the concatenated row vector.
 %
+%   Author: Perry, Feb 2015.
+%
+%   See also LOG_HOGCALCULATOR, LOCALSSMCALCULATORSAMEBLOCK.
 if nargin < 2
     % set default parameters value.
     %     radius = 60;% default
@@ -42,7 +23,7 @@ if nargin < 2
     nbins_theta = 8;
     % nbins_r = 4;% default
     nbins_r = 3;
-    nthet = 1; % find histogroam or maximum value in SSM
+    nthet = 1; % find histogram or maximum value in SSM
     normmethod = 'l2hys'; % default
 else
     if nargin < 5
@@ -79,7 +60,7 @@ ntotalbh = M/xbstride;
 % bigger than the area where it covers by adding additional elements
 % (corresponding to the cells) to the surround for calculation convenience.
 
-% for historgram(bins(x,y))
+% for histogram(bins(x,y))
 % hist2dbig = zeros(nbins_theta+2, nbins_r+2);
 % for max(bins(x,y))
 hist2dbig = zeros(nbins_theta, nbins_r);
@@ -99,13 +80,13 @@ for btlx = 1:xbstep:xbstridend
     % diagonal pixels
     t_matrix = indx_matrix - repmat(double([btlx;btly]), 1, size(indx_matrix, 2));
     %% the pixel indexes of log-polar block
-    % for historgram(bins(x,y))
+    % for histogram(bins(x,y))
     %     btpixels= indx_matrix(:,0 < sqrt(sum(t_matrix.*t_matrix))&...
     %                                     sqrt(sum(t_matrix.*t_matrix)) <= radius);
     % for max(bins(x,y))
     btpixels = indx_matrix(:, 0 < sqrt(sum(t_matrix.*t_matrix))&...
                                      sqrt(sum(t_matrix.*t_matrix)) < radius);
-    %% the pixel indexes of the trasformed log-polar block
+    %% the pixel indexes of the transformed log-polar block
     npixels = size(btpixels, 2);
     rt_matrix = [cos(rot_theta) -sin(rot_theta);...
         sin(rot_theta) cos(rot_theta)]*(btpixels-repmat(double([btlx;btly]), 1, npixels));
@@ -121,7 +102,7 @@ for btlx = 1:xbstep:xbstridend
         gs = gradscal(i, j);
         jorbj = ro(bi);iorbi=theta_array(bi);
         %% calculate bin index of hist2dbig
-        % for historgram(bins(x,y))
+        % for histogram(bins(x,y))
         %         binx1 = floor((jorbj+cellro/2)/cellro) + 1;
         %         biny1 = floor((iorbi+celltheta/2)/celltheta) + 1;
         % for max(bins(x,y))
@@ -131,13 +112,13 @@ for btlx = 1:xbstep:xbstridend
         if gs < 1E-5
             continue;
         end
-        % for historgram(bins(x,y))
+        % for histogram(bins(x,y))
         %         binx2 = binx1 + 1;
         %         biny2 = biny1 + 1;
         %         x1 = (binx1-1.5)*cellro;% don't need add 0.5 here
         % %         x1 = (binx1-1.5)*cellro+0.5;
         %         y1 = (biny1-1.5)*celltheta;
-        %% compute the descriptors with maxmum or histrogram voting with trilinear interpolation.
+        %% compute the descriptors with maximum or histogram voting with trilinear interpolation.
         % for max(bins(x,y))
         hist2dbig(biny1, binx1) = ...
             max(hist2dbig(biny1, binx1), gs);
@@ -156,7 +137,7 @@ for btlx = 1:xbstep:xbstridend
         %             ((jorbj-x1)/cellro)*((iorbi-y1)/celltheta);
     end
     %% extract hist2dbig
-    % for histogram(bins(x,y)), shuold extract them with eliminated the
+    % for histogram(bins(x,y)), should extract them with eliminated the
     % first and final bins.
     %     hist2d = hist2dbig(2:(nbins_theta+1), 2:(nbins_r+1));
     % for max(bins(x,y))

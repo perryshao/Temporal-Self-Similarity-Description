@@ -1,6 +1,6 @@
 function noise_variance = add_noise(marker, level)
 %% detect whether there are existing required mat files for C3D data
-if nargin<=2
+if nargin <= 2
     fileprefix = '.mat';
     matfilename = [marker fileprefix];
     if exist(matfilename, 'file')
@@ -11,7 +11,7 @@ if nargin<=2
     %% read required length of joint 3D data with matrix format and filter it
     samples = size(TRAJDB, 2);
     for i = 1:samples
-        % segmentation of NaN occlusion and filter them seperately.
+        % segmentation of NaN occlusion and filter them separately.
         marker_xyz = TRAJDB{2, i};
         nanflag = isnan(marker_xyz);
         % marker_xyz(nanflag(:,1),:) = [];
@@ -27,7 +27,7 @@ if nargin<=2
             % TRAJDB{2,i} = Y;
         else
             % continue; % for NaN data -- Perry 20130820
-            position_nan = find(nanflag==1);
+            position_nan = find(nanflag == 1);
             num_nan = sum(nonzeros(nanflag));
             marker_xyz_seg1 = TRAJDB{2, i}(1:position_nan(1)-1, :);
             % % wave filter
@@ -42,7 +42,7 @@ if nargin<=2
 
                 %%%
             end
-            %% kalman filter for sencond segmentation
+            %% kalman filter for second segmentation
             if isempty(marker_xyz_seg2)
                 continue;
             end
@@ -86,7 +86,7 @@ if nargin<=2
             TRAJSAMPLES{2, i} = marker_xyz;
         else
             % continue; % for NaN data -- Perry 20130820
-            position_nan = find(nanflag==1);
+            position_nan = find(nanflag == 1);
             num_nan = sum(nonzeros(nanflag));
             marker_xyz_seg1 = TRAJSAMPLES{2, i}(1:position_nan(1)-1, :);
             % wave filter
@@ -100,7 +100,7 @@ if nargin<=2
             if ~isempty(marker_xyz_seg1)
                 %%%
             end
-            %% kalman filter for sencond segmentation
+            %% kalman filter for second segmentation
             if isempty(marker_xyz_seg2)
                 continue;
             end
@@ -118,8 +118,8 @@ else
     end
     samples = size(TSDDB, 2);
     for i = 1:samples
-        right_xyz = TSDDB{2, i}; % right hand xyz postion
-        left_xyz = TSDDB{3, i}; % letf hand xyz postion
+        right_xyz = TSDDB{2, i}; % right hand xyz position
+        left_xyz = TSDDB{3, i}; % left hand xyz position
         %% wave filter
         % right_xyz=wav_filter(right_xyz);
         % left_xyz=wav_filter(left_xyz);
@@ -161,8 +161,8 @@ else
     end
     samples = size(TSDSAMPLES, 2);
     for i = 1:samples
-        right_xyz = TSDSAMPLES{2, i}; % right hand xyz postion
-        left_xyz = TSDSAMPLES{3, i}; % letf hand xyz postion
+        right_xyz = TSDSAMPLES{2, i}; % right hand xyz position
+        left_xyz = TSDSAMPLES{3, i}; % left hand xyz position
         %% wave filter
         % right_xyz=wav_filter(right_xyz);
         % left_xyz=wav_filter(left_xyz);
