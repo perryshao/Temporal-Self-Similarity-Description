@@ -130,7 +130,7 @@ TSSM/
 │   ├── MSRAction3D/   2015 extension — joint-group SSMs + ScTPM / cost-sensitive regression
 │   └── MSRC12/        2015 extension — AII/DI windowed SSMs on MSRC-12 gestures
 ├── thirdparty/    code-only subsets of the toolboxes the pipeline calls
-├── tools/         provenance.tsv — origin and md5 of every file
+├── tools/         provenance.tsv — origin and md5 of every file; cleanup_originals.sh
 └── setup_path.m
 ```
 
