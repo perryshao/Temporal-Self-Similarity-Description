@@ -5,16 +5,14 @@ function [f, df, ddf] = costFunctionReg(theta, X, Y, lambda, C, jointNum, modula
 %   W = reshape(THETA, D, C) plus three penalties weighted by LAMBDA(1:3):
 %   an L2,1 norm over the rows of W, a group norm over the JOINTNUM joint
 %   groups and MODULANUM feature modalities, and ||THETA - INITTHETA||^2,
-%   which keeps the solution near a previous one.  Also returns the gradient.
+%   intended to keep the solution near a previous one. The current nargout
+%   guard always resets INITTHETA to zero. Also returns the implemented gradient;
+%   its agreement with the stated objective has not been numerically verified.
 %   X is D x N, Y is N x C one-hot.  For use with MINIMIZE.
 %
 %   See also TRAINBINREGRESSION.
 
-% cosFunctionReg.m This function returns the function value, partial derivatives
-% and Hessian of the (general dimension) rosenbrock function, given by:
-% C is the class number
-% Initialize some useful values
-% Y = NxC column vector
+% Y is an N-by-C one-hot target matrix.
 if nargout < 7
     initTheta = 0;
 end

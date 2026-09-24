@@ -4,11 +4,13 @@ function [F_t, F] = LocalSsmcalculator(img, radius, nbins_theta, nbins_r, ...
 %   F_T = LOCALSSMCALCULATOR(IMG) is the gradient-free counterpart of
 %   LOG_HOGCALCULATOR: around every diagonal element of the self-similarity
 %   matrix IMG it takes the maximum raw SSM value in each of the
-%   NBINS_THETA x NBINS_R log-polar cells.  F_T is M x (NBINS_THETA*NBINS_R).
+%   NBINS_THETA x NBINS_R log-polar cells. With default NTHET = 1,
+%   F_T is M x (NBINS_THETA*NBINS_R).
 %
 %   F_T = LOCALSSMCALCULATOR(IMG, RADIUS, NBINS_THETA, NBINS_R, NTHET)
 %   overrides the defaults RADIUS = 20, NBINS_THETA = 8, NBINS_R = 3, NTHET = 1.
-%   Blocks are L2-Hys normalised.
+%   The default call uses L2-Hys normalisation. The explicit-argument path
+%   currently leaves normmethod undefined and fails at the normalisation step.
 %
 %   [F_T, F] = LOCALSSMCALCULATOR(...) also returns the concatenated row vector.
 %
