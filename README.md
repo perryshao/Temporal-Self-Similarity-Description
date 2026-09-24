@@ -246,8 +246,8 @@ Not changed, but worth knowing:
 | `hist_cost` | `experiments/MSRAction3D/hist_cost.c` | Windows DLL |
 | `svmtrain` / `svmpredict` | `thirdparty/libsvm-3.17/matlab` (`make.m`) | w32, w64 |
 | `yael_kmeans` | `thirdparty/yael_v438/matlab` (`Make.m`) | a64, w32 |
-| `mexCalcSsdescs` (Chatfield/Shechtman self-similarity) | none | w32, w64 |
-| `MelkmanConvexHull` | **none** | w32, w64 |
+| `mexCalcSsdescs` (Chatfield/Shechtman self-similarity) | `thirdparty/mexCalcSsdescs` (recovered source) | w32, w64 |
+| `MelkmanConvexHull` | `iid/mbs/src/MelkmanConvexHull.cpp` (recovered source) | w32, w64 |
 
 ```matlab
 cd loghog/src
@@ -271,3 +271,15 @@ The C++ source of `LogHog.mex` was recovered from `Projects/Work/Log_Hog/Log_Hog
 Excluded as not code: ScSPM's Caltech-101 images and SIFT features (3.2 GB), and
 `ScSPM/Results/reg_sc_b1024_20150402T092740.mat`, which appears to be a 1024-atom
 dictionary learned in April 2015.
+
+## Recovered source and retired workspaces
+
+See [MEX recovery](docs/MEX_RECOVERY.md) for restored sources, separate build targets, and validation limits. Old workspace sources/data are preserved by SHA-256 under `~/Documents/Projects/LegacyResearchAssets`; consult its README and manifest before using historical paths above.
+
+## Validation without MATLAB
+
+A reproducible Python numerical suite plus native C++/LIBSVM checks covers the
+raw/sigmoid SSM → Log-HOG → VQ or sparse coding → temporal pyramid → SVM paths
+on synthetic held-out trajectories. See [validation instructions and limits](docs/VALIDATION.md)
+and [the recorded result](docs/PIPELINE_VALIDATION.json). This does not certify
+MATLAB/MEX runtime compatibility or reproduce published dataset scores.

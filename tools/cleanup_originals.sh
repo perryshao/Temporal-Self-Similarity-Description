@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# Retired on 2026-09-24: the old roots are covered by the verified central cleanup.
+printf '%s\n' 'This historical cleanup script is retired. See LegacyResearchAssets and docs/MEX_RECOVERY.md.' >&2
+exit 1
+
 #
 # cleanup_originals.sh — remove, from the old MATLAB workspaces, the intermediate
 # results, figures and raw dataset files left out of the consolidated TSSM

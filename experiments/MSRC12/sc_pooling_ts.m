@@ -72,4 +72,8 @@ if bId ~= tBins
 end
 
 beta = beta(:);
-beta = beta./sqrt(sum(beta.^2));
+% A zero code sequence has a zero pooled descriptor.
+pooledNorm = sqrt(sum(beta.^2));
+if pooledNorm > 0
+    beta = beta./pooledNorm;
+end

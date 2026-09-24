@@ -57,3 +57,9 @@ Thumbs.db
 ipch/
 Debug/
 x64/
+
+# Portable validation runtime artefacts
+__pycache__/
+*.pyc
+.venv/
+build/

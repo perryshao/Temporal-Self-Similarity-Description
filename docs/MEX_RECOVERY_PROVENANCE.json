@@ -1,0 +1,730 @@
+[
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Melkman/Melkman/MelkmanConvexHull.cpp",
+    "target": "iid/mbs/src/MelkmanConvexHull.cpp",
+    "original_sha256": "d855561a7ac8b6e4d8c632727fb251b8d19e41daa91b3b481e8a769c0339b0c3",
+    "installed_sha256": "0a7347005e92d66cc74b12ad4bc4a8c3611c169788b90dba5bf49404adf0bf29",
+    "adapted": true
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_matrix/distance_matrix/distance_matrix/distance_matrix.cpp",
+    "target": "iid/matching/src/distance_matrix/distance_matrix.cpp",
+    "original_sha256": "35b3bf22e1ffb35f2bc89c2a8db3e1655aed7fa17246da8f2dfb7345dd93b023",
+    "installed_sha256": "9ec9a5823afe77576349d8159922f269f43e037eeb13daccd1ac8d635fbb2b1f",
+    "adapted": true
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_matrix_for_MSRGesture/distance_matrix/distance_matrix/distance_matrix.cpp",
+    "target": "iid/matching/src/distance_matrix/distance_matrix_msrc12.cpp",
+    "original_sha256": "d061aa58018fead71eda494a5954d28aed9dc2fd8bad51ceffef0f286126bab2",
+    "installed_sha256": "ee59a02595bfd0fadce908a42de6318afce9a5f788f9065d55080ff888db97a5",
+    "adapted": true
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/ssdesc-cpp-1.1.1/ssdesc.cc",
+    "target": "thirdparty/mexCalcSsdescs/ssdesc.cc",
+    "original_sha256": "f303d8a02058947167ac494ff397fbd8aa672569f6073f8e1a724a2bf3abb30a",
+    "installed_sha256": "f303d8a02058947167ac494ff397fbd8aa672569f6073f8e1a724a2bf3abb30a",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/ssdesc-cpp-1.1.1/ssdesc.h",
+    "target": "thirdparty/mexCalcSsdescs/ssdesc.h",
+    "original_sha256": "4f118af20418318b55dc48e7ccfcb61a61ada48a96dbe12d3042fcdb4796a603",
+    "installed_sha256": "4f118af20418318b55dc48e7ccfcb61a61ada48a96dbe12d3042fcdb4796a603",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/ssdesc-cpp-1.1.1/readme.txt",
+    "target": "thirdparty/mexCalcSsdescs/readme.txt",
+    "original_sha256": "b46e4a88263f94053aa72b8b2d57332b51126ead9c113654808550cfaa74243f",
+    "installed_sha256": "b46e4a88263f94053aa72b8b2d57332b51126ead9c113654808550cfaa74243f",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/ssdesc-cpp-1.1.1/mexCalcSsdescs.cc",
+    "target": "thirdparty/mexCalcSsdescs/mexCalcSsdescs.cc",
+    "original_sha256": "894e3e5ae00c938d4163d11c878bb95165cdc04e3300d6529c32130c51455d3f",
+    "installed_sha256": "0379f9a4c7e86094942c51ffb3da38ce8f3ddc1e3b7e2074f1fcd8fb536bc138",
+    "adapted": true
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/configure.sh",
+    "target": "thirdparty/yael_v438/configure.sh",
+    "original_sha256": "bb0d6526e429942fb5a146780711f55fd442093f3daf6afc31709d2ab8bcaf44",
+    "installed_sha256": "bb0d6526e429942fb5a146780711f55fd442093f3daf6afc31709d2ab8bcaf44",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/Makefile",
+    "target": "thirdparty/yael_v438/Makefile",
+    "original_sha256": "b363021371a9a928c68b8f884b96263ca752c37c7f59409e2d9a3ebc81b84df1",
+    "installed_sha256": "b363021371a9a928c68b8f884b96263ca752c37c7f59409e2d9a3ebc81b84df1",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/__init__.py",
+    "target": "thirdparty/yael_v438/__init__.py",
+    "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "installed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/binheap.c",
+    "target": "thirdparty/yael_v438/yael/binheap.c",
+    "original_sha256": "42a3a380a5a04e27fc67951ded250cf20b16d70689fa8b7adec306758654a07a",
+    "installed_sha256": "42a3a380a5a04e27fc67951ded250cf20b16d70689fa8b7adec306758654a07a",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/binheap.h",
+    "target": "thirdparty/yael_v438/yael/binheap.h",
+    "original_sha256": "cd98c71d87963e41bfe2169db789721ca0c8be30ea12fa252d5f2ee0357ca86c",
+    "installed_sha256": "cd98c71d87963e41bfe2169db789721ca0c8be30ea12fa252d5f2ee0357ca86c",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/common.swg",
+    "target": "thirdparty/yael_v438/yael/common.swg",
+    "original_sha256": "6d9fec1cf620b0afafad6095d5b6a3196c5c694ab8e73f8012a6fe7ebb081179",
+    "installed_sha256": "6d9fec1cf620b0afafad6095d5b6a3196c5c694ab8e73f8012a6fe7ebb081179",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/eigs.c",
+    "target": "thirdparty/yael_v438/yael/eigs.c",
+    "original_sha256": "56de71c02782d400a8545365b771243fe5d7ed9fad261e590b268d99e6373001",
+    "installed_sha256": "56de71c02782d400a8545365b771243fe5d7ed9fad261e590b268d99e6373001",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/eigs.h",
+    "target": "thirdparty/yael_v438/yael/eigs.h",
+    "original_sha256": "53f859d3660d614c6682b5d87af97cbdd6e71ebcbe2fb355a49be9f85769b00b",
+    "installed_sha256": "53f859d3660d614c6682b5d87af97cbdd6e71ebcbe2fb355a49be9f85769b00b",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/embedding.c",
+    "target": "thirdparty/yael_v438/yael/embedding.c",
+    "original_sha256": "86722d16d9b47b638a86c5d9a70aadadb8a42c95a3b646fa6633be23961fb2ad",
+    "installed_sha256": "86722d16d9b47b638a86c5d9a70aadadb8a42c95a3b646fa6633be23961fb2ad",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/embedding.h",
+    "target": "thirdparty/yael_v438/yael/embedding.h",
+    "original_sha256": "531579bd01418acb7c7281563c0d07000f8121f7c0c28a1230faebdd83043f3c",
+    "installed_sha256": "531579bd01418acb7c7281563c0d07000f8121f7c0c28a1230faebdd83043f3c",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/gmm.c",
+    "target": "thirdparty/yael_v438/yael/gmm.c",
+    "original_sha256": "dee94d14dc05a103c0c87e3140ebf8008a7edbb8c9d8b4bb68def8d5062bd047",
+    "installed_sha256": "dee94d14dc05a103c0c87e3140ebf8008a7edbb8c9d8b4bb68def8d5062bd047",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/gmm.h",
+    "target": "thirdparty/yael_v438/yael/gmm.h",
+    "original_sha256": "99572605ea5928c663e7a3d67295e1d65242311eb629557ce2ae6da613e4e174",
+    "installed_sha256": "99572605ea5928c663e7a3d67295e1d65242311eb629557ce2ae6da613e4e174",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/hamming.c",
+    "target": "thirdparty/yael_v438/yael/hamming.c",
+    "original_sha256": "69a9a969b1e2b1dd41aa0575c4328fb95d43ed71aabab0aee77bdba686398254",
+    "installed_sha256": "69a9a969b1e2b1dd41aa0575c4328fb95d43ed71aabab0aee77bdba686398254",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/hamming.h",
+    "target": "thirdparty/yael_v438/yael/hamming.h",
+    "original_sha256": "f44992763ca61925654ad3d5a0f1e3a204c0a7e9c475477f05c36eabb21ae9a3",
+    "installed_sha256": "f44992763ca61925654ad3d5a0f1e3a204c0a7e9c475477f05c36eabb21ae9a3",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/hkm.c",
+    "target": "thirdparty/yael_v438/yael/hkm.c",
+    "original_sha256": "bbeb7d8b213c65f0ada0b4f369f0e897b134652aacc2130b1d8c5aa3125e4597",
+    "installed_sha256": "bbeb7d8b213c65f0ada0b4f369f0e897b134652aacc2130b1d8c5aa3125e4597",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/hkm.h",
+    "target": "thirdparty/yael_v438/yael/hkm.h",
+    "original_sha256": "aaa2c9664a33cd30a99b92002e4107def133467b0549f278ad2d5031934491cc",
+    "installed_sha256": "aaa2c9664a33cd30a99b92002e4107def133467b0549f278ad2d5031934491cc",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/ivf.c",
+    "target": "thirdparty/yael_v438/yael/ivf.c",
+    "original_sha256": "a202f800bb27e9ae7f4857298a9310cc5bef5e9e48e03376d468766237335fd7",
+    "installed_sha256": "a202f800bb27e9ae7f4857298a9310cc5bef5e9e48e03376d468766237335fd7",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/ivf.h",
+    "target": "thirdparty/yael_v438/yael/ivf.h",
+    "original_sha256": "0075fa70edb3df2110837c1f89f4e0573c41bd583f802172f92b8b8bb346d18f",
+    "installed_sha256": "0075fa70edb3df2110837c1f89f4e0573c41bd583f802172f92b8b8bb346d18f",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/kmeans.c",
+    "target": "thirdparty/yael_v438/yael/kmeans.c",
+    "original_sha256": "4e55368aabd4e086e78807d3429035ae205122ed735074633157d95cb7b5f29c",
+    "installed_sha256": "4e55368aabd4e086e78807d3429035ae205122ed735074633157d95cb7b5f29c",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/kmeans.h",
+    "target": "thirdparty/yael_v438/yael/kmeans.h",
+    "original_sha256": "4edb9815327f27b9b877280526e416b9703b20baf52426d9b9a91f869e38e4d2",
+    "installed_sha256": "4edb9815327f27b9b877280526e416b9703b20baf52426d9b9a91f869e38e4d2",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/kmlsh.c",
+    "target": "thirdparty/yael_v438/yael/kmlsh.c",
+    "original_sha256": "071c3df5c39bee25fad956faa6222793d874e7c37fbe360c821f80801a573eed",
+    "installed_sha256": "071c3df5c39bee25fad956faa6222793d874e7c37fbe360c821f80801a573eed",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/kmlsh.h",
+    "target": "thirdparty/yael_v438/yael/kmlsh.h",
+    "original_sha256": "d99cefc424d516c6bdebdb6a1d35c09d8755a3354b3a2511ec1942a37cd32dc8",
+    "installed_sha256": "d99cefc424d516c6bdebdb6a1d35c09d8755a3354b3a2511ec1942a37cd32dc8",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/machinedeps.c",
+    "target": "thirdparty/yael_v438/yael/machinedeps.c",
+    "original_sha256": "b8dc999257336d8e4aa281ae227eed2d3d39f635f4ed584b6e98bd14345f17c5",
+    "installed_sha256": "b8dc999257336d8e4aa281ae227eed2d3d39f635f4ed584b6e98bd14345f17c5",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/machinedeps.h",
+    "target": "thirdparty/yael_v438/yael/machinedeps.h",
+    "original_sha256": "7be3a1fb1a1500fc7961da2086c94124e5616ccbd274204719661d936b1da0e3",
+    "installed_sha256": "7be3a1fb1a1500fc7961da2086c94124e5616ccbd274204719661d936b1da0e3",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/Makefile",
+    "target": "thirdparty/yael_v438/yael/Makefile",
+    "original_sha256": "41446e0a67d7b89c3815e2435df3a47313314ec7047273bc251ba7b1b5a44dcd",
+    "installed_sha256": "41446e0a67d7b89c3815e2435df3a47313314ec7047273bc251ba7b1b5a44dcd",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/matrix.c",
+    "target": "thirdparty/yael_v438/yael/matrix.c",
+    "original_sha256": "a9f07419494e940ceae4d91fa218ad7030131d3eaae5faf6f4b81d7cdce84fe3",
+    "installed_sha256": "a9f07419494e940ceae4d91fa218ad7030131d3eaae5faf6f4b81d7cdce84fe3",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/matrix.h",
+    "target": "thirdparty/yael_v438/yael/matrix.h",
+    "original_sha256": "9badd86eccfa7d85aa4e05edd91ffbe8301952e52d903a3be1b701a2aa1bbac9",
+    "installed_sha256": "9badd86eccfa7d85aa4e05edd91ffbe8301952e52d903a3be1b701a2aa1bbac9",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/nn.c",
+    "target": "thirdparty/yael_v438/yael/nn.c",
+    "original_sha256": "286e944972618308ff17c3276c8655ec4f8d41c39aaef43c6ee57c95de99ad92",
+    "installed_sha256": "286e944972618308ff17c3276c8655ec4f8d41c39aaef43c6ee57c95de99ad92",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/nn.h",
+    "target": "thirdparty/yael_v438/yael/nn.h",
+    "original_sha256": "6352b41e80fb2f39a797a1db91cb5948a64a1c7496702ea0c25656fd326594c8",
+    "installed_sha256": "6352b41e80fb2f39a797a1db91cb5948a64a1c7496702ea0c25656fd326594c8",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/sorting.c",
+    "target": "thirdparty/yael_v438/yael/sorting.c",
+    "original_sha256": "3484ab9338d8179d436336fcbbf4768cbdfab36b2ff99a20f5705483f6b7825d",
+    "installed_sha256": "3484ab9338d8179d436336fcbbf4768cbdfab36b2ff99a20f5705483f6b7825d",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/sorting.h",
+    "target": "thirdparty/yael_v438/yael/sorting.h",
+    "original_sha256": "ca8dd11e08d808dcef2287e3d02232e23e94ad8a0a9a9d996c3c5daf793b2148",
+    "installed_sha256": "ca8dd11e08d808dcef2287e3d02232e23e94ad8a0a9a9d996c3c5daf793b2148",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/spectral_clustering.c",
+    "target": "thirdparty/yael_v438/yael/spectral_clustering.c",
+    "original_sha256": "d862afe3f0481ede7a8a661cd832c8fcd6a5d4644d94df369e0c1fcd8dce8503",
+    "installed_sha256": "d862afe3f0481ede7a8a661cd832c8fcd6a5d4644d94df369e0c1fcd8dce8503",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/spectral_clustering.h",
+    "target": "thirdparty/yael_v438/yael/spectral_clustering.h",
+    "original_sha256": "435054f87cb726c67fcce28c9b3211956b51c0554fe716f8c8b2da4b096eaed2",
+    "installed_sha256": "435054f87cb726c67fcce28c9b3211956b51c0554fe716f8c8b2da4b096eaed2",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/threads.py",
+    "target": "thirdparty/yael_v438/yael/threads.py",
+    "original_sha256": "53e50a419a2881fd0bbe53f62037759a5f34e377743121b888bc3c802144664e",
+    "installed_sha256": "53e50a419a2881fd0bbe53f62037759a5f34e377743121b888bc3c802144664e",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/vector.c",
+    "target": "thirdparty/yael_v438/yael/vector.c",
+    "original_sha256": "c7371e15d9f4388a480331dc272aaa189c9681ef8eeb6be2e906ca201b994181",
+    "installed_sha256": "c7371e15d9f4388a480331dc272aaa189c9681ef8eeb6be2e906ca201b994181",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/vector.h",
+    "target": "thirdparty/yael_v438/yael/vector.h",
+    "original_sha256": "35696ed5d9e39e133bb4d59d2374cfabd9f1c59c48c2dae14559ee02bbce6223",
+    "installed_sha256": "35696ed5d9e39e133bb4d59d2374cfabd9f1c59c48c2dae14559ee02bbce6223",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/vlad.c",
+    "target": "thirdparty/yael_v438/yael/vlad.c",
+    "original_sha256": "9927df974f64ed51634e5ac542e5c02154d4beeac3d6d9bf9b9c887e8b35b28d",
+    "installed_sha256": "9927df974f64ed51634e5ac542e5c02154d4beeac3d6d9bf9b9c887e8b35b28d",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/vlad.h",
+    "target": "thirdparty/yael_v438/yael/vlad.h",
+    "original_sha256": "6c318b83bf2e638c8b46c75cf2e1a2f57ff53c8daf2d8aa324f677e9a83619c3",
+    "installed_sha256": "6c318b83bf2e638c8b46c75cf2e1a2f57ff53c8daf2d8aa324f677e9a83619c3",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/yael.swg",
+    "target": "thirdparty/yael_v438/yael/yael.swg",
+    "original_sha256": "f43581afe3f0e8d7d5a4917f60eb55dbc56619bab7669fcd3b476b7f297e3825",
+    "installed_sha256": "f43581afe3f0e8d7d5a4917f60eb55dbc56619bab7669fcd3b476b7f297e3825",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/ynumpy.py",
+    "target": "thirdparty/yael_v438/yael/ynumpy.py",
+    "original_sha256": "5016b55c20ad495a52cbdd3610a9db67543fb1fd25439c4d0edced2384409649",
+    "installed_sha256": "5016b55c20ad495a52cbdd3610a9db67543fb1fd25439c4d0edced2384409649",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/yael_v438/yael/yutils.py",
+    "target": "thirdparty/yael_v438/yael/yutils.py",
+    "original_sha256": "723b73c33616fa7ca2716a80d9560a4f71f3665a75d847c0c915a9b143b5d504",
+    "installed_sha256": "723b73c33616fa7ca2716a80d9560a4f71f3665a75d847c0c915a9b143b5d504",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_hogcalculator.m",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_hogcalculator.m",
+    "original_sha256": "da8da9b4c9a79fb4e365d1db4040c94192fa8e81e74c7839f1e469086e9201e9",
+    "installed_sha256": "da8da9b4c9a79fb4e365d1db4040c94192fa8e81e74c7839f1e469086e9201e9",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/pingme.txt",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/pingme.txt",
+    "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "installed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog.sln",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog.sln",
+    "original_sha256": "0ec52a1f6c157e2316274cd778ba921d947bd890160dacaba1a1d8e66069f4fb",
+    "installed_sha256": "0ec52a1f6c157e2316274cd778ba921d947bd890160dacaba1a1d8e66069f4fb",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/mexopencv.hpp",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/mexopencv.hpp",
+    "original_sha256": "e3db7c934bba702b6a6e4a2868f6ca856412fe921c006be265148e804f04f3c4",
+    "installed_sha256": "e3db7c934bba702b6a6e4a2868f6ca856412fe921c006be265148e804f04f3c4",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/stdafx.h",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/stdafx.h",
+    "original_sha256": "ff44deb2b79526b7fe40d5064101e5d1ab31b14a0148eca956f9dfd45d171a6d",
+    "installed_sha256": "ff44deb2b79526b7fe40d5064101e5d1ab31b14a0148eca956f9dfd45d171a6d",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/mexopencv_features2d.hpp",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/mexopencv_features2d.hpp",
+    "original_sha256": "c4ebc17025670fbfadb116fb4e2522dcd869490d2cec55beeed045fd5a952260",
+    "installed_sha256": "c4ebc17025670fbfadb116fb4e2522dcd869490d2cec55beeed045fd5a952260",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/LogHog.cpp",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/LogHog.cpp",
+    "original_sha256": "a9e3776d522745c26a28584b280dc642b57596a988618ce99ae3a0033a359002",
+    "installed_sha256": "a9e3776d522745c26a28584b280dc642b57596a988618ce99ae3a0033a359002",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/Log_Hog.vcxproj",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/Log_Hog.vcxproj",
+    "original_sha256": "686640721082e62b72241275d54726aa2fd154fa13a4355ced2f11771b9f8b86",
+    "installed_sha256": "686640721082e62b72241275d54726aa2fd154fa13a4355ced2f11771b9f8b86",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/MxArray.hpp",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/MxArray.hpp",
+    "original_sha256": "1eb020add0c524daed5b6c6a6654afc340ed962ee6c025c437606d623ee75aa8",
+    "installed_sha256": "1eb020add0c524daed5b6c6a6654afc340ed962ee6c025c437606d623ee75aa8",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/log_hogcalculator.cpp",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/log_hogcalculator.cpp",
+    "original_sha256": "53efc4440f249d429cc7ca7f8f74ca26bcfdb73a851ec974dcab204194a183eb",
+    "installed_sha256": "53efc4440f249d429cc7ca7f8f74ca26bcfdb73a851ec974dcab204194a183eb",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/targetver.h",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/targetver.h",
+    "original_sha256": "da47f4465520c4b42438a39079bd10b3aef624382bea2fc43c3039da3d9bddbf",
+    "installed_sha256": "da47f4465520c4b42438a39079bd10b3aef624382bea2fc43c3039da3d9bddbf",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/ReadMe.txt",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/ReadMe.txt",
+    "original_sha256": "1fef5d87e8ec9f602ac693c9b25bec5da1e577579d02b4c92fab5e40cb5d9f9f",
+    "installed_sha256": "1fef5d87e8ec9f602ac693c9b25bec5da1e577579d02b4c92fab5e40cb5d9f9f",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/stdafx.cpp",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/stdafx.cpp",
+    "original_sha256": "5e3002ca7b3c288e021247698e50e2794f5eded042469e63764eda5e4a048c93",
+    "installed_sha256": "5e3002ca7b3c288e021247698e50e2794f5eded042469e63764eda5e4a048c93",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/log_hogcalculator.h",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/log_hogcalculator.h",
+    "original_sha256": "6230362053793b4d9ec80bc5cecc45489cec817dbec8af37e2d608e59d474c86",
+    "installed_sha256": "6230362053793b4d9ec80bc5cecc45489cec817dbec8af37e2d608e59d474c86",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/MxArray.cpp",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/MxArray.cpp",
+    "original_sha256": "9d5d7b1cdbe2dcd0d7e4bf3dbeea02a350d3400857c80dd36f7961c25cee4a4c",
+    "installed_sha256": "9d5d7b1cdbe2dcd0d7e4bf3dbeea02a350d3400857c80dd36f7961c25cee4a4c",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/include/mexopencv.hpp",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/include/mexopencv.hpp",
+    "original_sha256": "a470ad6016c5f3abdc568b17d5ed9fa8d9c9602714523530b0d0f57005b2a179",
+    "installed_sha256": "a470ad6016c5f3abdc568b17d5ed9fa8d9c9602714523530b0d0f57005b2a179",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/include/mexopencv_features2d.hpp",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/include/mexopencv_features2d.hpp",
+    "original_sha256": "c4ebc17025670fbfadb116fb4e2522dcd869490d2cec55beeed045fd5a952260",
+    "installed_sha256": "c4ebc17025670fbfadb116fb4e2522dcd869490d2cec55beeed045fd5a952260",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/include/MxArray.hpp",
+    "target": "legacy/Mexfunction_C/Log_Hog/Log_Hog/Log_Hog/include/MxArray.hpp",
+    "original_sha256": "2b770965bb21733eaf0e190275f33db20e3843a38ee8405c93c8515c9bbc0f88",
+    "installed_sha256": "2b770965bb21733eaf0e190275f33db20e3843a38ee8405c93c8515c9bbc0f88",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/sc_distance/sc_distance/distance_matrix.sln",
+    "target": "legacy/Mexfunction_C/sc_distance/sc_distance/distance_matrix.sln",
+    "original_sha256": "6793d33378041dc1960f2eb10e211b1abc6c0edf76578ef699e6f8cad39ca3fa",
+    "installed_sha256": "6793d33378041dc1960f2eb10e211b1abc6c0edf76578ef699e6f8cad39ca3fa",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/sc_distance/sc_distance/distance_matrix/stdafx.h",
+    "target": "legacy/Mexfunction_C/sc_distance/sc_distance/distance_matrix/stdafx.h",
+    "original_sha256": "406f9223afd6cd9a1a7d7048c7bf5c40685d2d67ae4a3c6ca375d169b0694144",
+    "installed_sha256": "406f9223afd6cd9a1a7d7048c7bf5c40685d2d67ae4a3c6ca375d169b0694144",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/sc_distance/sc_distance/distance_matrix/hist_cost.cpp",
+    "target": "legacy/Mexfunction_C/sc_distance/sc_distance/distance_matrix/hist_cost.cpp",
+    "original_sha256": "87ec6619993d1610ed53b13aa58996120570e864ae164d0a68657885d79faea3",
+    "installed_sha256": "87ec6619993d1610ed53b13aa58996120570e864ae164d0a68657885d79faea3",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/sc_distance/sc_distance/distance_matrix/targetver.h",
+    "target": "legacy/Mexfunction_C/sc_distance/sc_distance/distance_matrix/targetver.h",
+    "original_sha256": "da47f4465520c4b42438a39079bd10b3aef624382bea2fc43c3039da3d9bddbf",
+    "installed_sha256": "da47f4465520c4b42438a39079bd10b3aef624382bea2fc43c3039da3d9bddbf",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/sc_distance/sc_distance/distance_matrix/distance_matrix_sc.cpp",
+    "target": "legacy/Mexfunction_C/sc_distance/sc_distance/distance_matrix/distance_matrix_sc.cpp",
+    "original_sha256": "c4a0bccd6f81c346c55c16a1632a10aa4b77c1b97a681edebfa7a7efbc7a267b",
+    "installed_sha256": "c4a0bccd6f81c346c55c16a1632a10aa4b77c1b97a681edebfa7a7efbc7a267b",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/sc_distance/sc_distance/distance_matrix/ReadMe.txt",
+    "target": "legacy/Mexfunction_C/sc_distance/sc_distance/distance_matrix/ReadMe.txt",
+    "original_sha256": "ccadee3bdf244265163a03ad6a129c690a50674b307017f490802a6c6d3d2885",
+    "installed_sha256": "ccadee3bdf244265163a03ad6a129c690a50674b307017f490802a6c6d3d2885",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/sc_distance/sc_distance/distance_matrix/hist_cost.h",
+    "target": "legacy/Mexfunction_C/sc_distance/sc_distance/distance_matrix/hist_cost.h",
+    "original_sha256": "08354509540a8bd27288034de4cfa68b2b5a2b074d839ce8d2c808c953eab34a",
+    "installed_sha256": "08354509540a8bd27288034de4cfa68b2b5a2b074d839ce8d2c808c953eab34a",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/sc_distance/sc_distance/distance_matrix/stdafx.cpp",
+    "target": "legacy/Mexfunction_C/sc_distance/sc_distance/distance_matrix/stdafx.cpp",
+    "original_sha256": "6a852123bd4bd685374e423883beca41e7f406b4eb529443d1ca05596ea32732",
+    "installed_sha256": "6a852123bd4bd685374e423883beca41e7f406b4eb529443d1ca05596ea32732",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/sc_distance/sc_distance/distance_matrix/distance_matrix.vcxproj",
+    "target": "legacy/Mexfunction_C/sc_distance/sc_distance/distance_matrix/distance_matrix.vcxproj",
+    "original_sha256": "ff5ecb2ae1c46154a94adbc54be459d7a396891389932e30ff3c47b1e555cfef",
+    "installed_sha256": "ff5ecb2ae1c46154a94adbc54be459d7a396891389932e30ff3c47b1e555cfef",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/sc_distance/sc_distance/distance_matrix/matrix_comp.h",
+    "target": "legacy/Mexfunction_C/sc_distance/sc_distance/distance_matrix/matrix_comp.h",
+    "original_sha256": "e8601d9d14cdb78b54c4db5cbc051e2ee060e89e06e4dd7f15441722fc097b26",
+    "installed_sha256": "e8601d9d14cdb78b54c4db5cbc051e2ee060e89e06e4dd7f15441722fc097b26",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm.sln",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm.sln",
+    "original_sha256": "d49e6538eef26a4523c56bd6c73d391263f1321cef524f2db5863839b8da6647",
+    "installed_sha256": "d49e6538eef26a4523c56bd6c73d391263f1321cef524f2db5863839b8da6647",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/stdafx.h",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/stdafx.h",
+    "original_sha256": "406f9223afd6cd9a1a7d7048c7bf5c40685d2d67ae4a3c6ca375d169b0694144",
+    "installed_sha256": "406f9223afd6cd9a1a7d7048c7bf5c40685d2d67ae4a3c6ca375d169b0694144",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/kd-tree.cpp",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/kd-tree.cpp",
+    "original_sha256": "5f32e8704eee1a65e600fb6f22809a4708cc9a42c0e864d52e724518cffdca72",
+    "installed_sha256": "5f32e8704eee1a65e600fb6f22809a4708cc9a42c0e864d52e724518cffdca72",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/c.h",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/c.h",
+    "original_sha256": "fa346bddd4392560cc918c767aa940872a1c32a9f0a64c6e1fa2eff871226c3b",
+    "installed_sha256": "fa346bddd4392560cc918c767aa940872a1c32a9f0a64c6e1fa2eff871226c3b",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/kd-tree.h",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/kd-tree.h",
+    "original_sha256": "8ed5a7900e940514f972cb8b72405cad1371555671ec111e79adfd16fc5e75bf",
+    "installed_sha256": "8ed5a7900e940514f972cb8b72405cad1371555671ec111e79adfd16fc5e75bf",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/distance_mhmm.cpp",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/distance_mhmm.cpp",
+    "original_sha256": "8d8d69f36cbcad2d36e700dcd32866afd58ee1bd455d47c57e827a0459119430",
+    "installed_sha256": "8d8d69f36cbcad2d36e700dcd32866afd58ee1bd455d47c57e827a0459119430",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/targetver.h",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/targetver.h",
+    "original_sha256": "da47f4465520c4b42438a39079bd10b3aef624382bea2fc43c3039da3d9bddbf",
+    "installed_sha256": "da47f4465520c4b42438a39079bd10b3aef624382bea2fc43c3039da3d9bddbf",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/knn-interface.cpp",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/knn-interface.cpp",
+    "original_sha256": "d2022fa4998441e32077988cc26b9c0e194004fad80c77b57ef723fa37d8a5f3",
+    "installed_sha256": "d2022fa4998441e32077988cc26b9c0e194004fad80c77b57ef723fa37d8a5f3",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/ReadMe.txt",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/ReadMe.txt",
+    "original_sha256": "bee7a5f3534b081106c5b4933625ee1a4faef30a57cff6036bffe430451f0135",
+    "installed_sha256": "bee7a5f3534b081106c5b4933625ee1a4faef30a57cff6036bffe430451f0135",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/knn.h",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/knn.h",
+    "original_sha256": "fe9e5d1c34942e52015af32e8c135e8d2c0744a7fb01ec2d2b8849c206069512",
+    "installed_sha256": "fe9e5d1c34942e52015af32e8c135e8d2c0744a7fb01ec2d2b8849c206069512",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/stdafx.cpp",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/stdafx.cpp",
+    "original_sha256": "e439b53193e0fe3a7482da73b243ff289d8aa16e282dee19b9b904a377a56a47",
+    "installed_sha256": "e439b53193e0fe3a7482da73b243ff289d8aa16e282dee19b9b904a377a56a47",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/distance_mhmm.vcxproj",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/distance_mhmm.vcxproj",
+    "original_sha256": "913d2dbc2d37a031080d2a3030e64792868457d0e6b120c7de6220b380f304f2",
+    "installed_sha256": "913d2dbc2d37a031080d2a3030e64792868457d0e6b120c7de6220b380f304f2",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/k-nearest-neighbors.cpp",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_mhmm/distance_mhmm/k-nearest-neighbors.cpp",
+    "original_sha256": "1bc88c04931c1d08936102048ad486fddfd1f77b2cdad40586237a8201028915",
+    "installed_sha256": "1bc88c04931c1d08936102048ad486fddfd1f77b2cdad40586237a8201028915",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_ise/distance_ise.sln",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_ise/distance_ise.sln",
+    "original_sha256": "28c92a6d7a382c52ff40943ae6cc0ae153834fa08d0a18255a1257738d6eb639",
+    "installed_sha256": "28c92a6d7a382c52ff40943ae6cc0ae153834fa08d0a18255a1257738d6eb639",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/stdafx.h",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/stdafx.h",
+    "original_sha256": "406f9223afd6cd9a1a7d7048c7bf5c40685d2d67ae4a3c6ca375d169b0694144",
+    "installed_sha256": "406f9223afd6cd9a1a7d7048c7bf5c40685d2d67ae4a3c6ca375d169b0694144",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/kd-tree.cpp",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/kd-tree.cpp",
+    "original_sha256": "5f32e8704eee1a65e600fb6f22809a4708cc9a42c0e864d52e724518cffdca72",
+    "installed_sha256": "5f32e8704eee1a65e600fb6f22809a4708cc9a42c0e864d52e724518cffdca72",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/distance_ise.cpp",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/distance_ise.cpp",
+    "original_sha256": "edc97053964cbcacbb695268ae12fa5758030b558d0b88537f67ced7aad2b3e2",
+    "installed_sha256": "edc97053964cbcacbb695268ae12fa5758030b558d0b88537f67ced7aad2b3e2",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/kd-tree.h",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/kd-tree.h",
+    "original_sha256": "8ed5a7900e940514f972cb8b72405cad1371555671ec111e79adfd16fc5e75bf",
+    "installed_sha256": "8ed5a7900e940514f972cb8b72405cad1371555671ec111e79adfd16fc5e75bf",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/targetver.h",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/targetver.h",
+    "original_sha256": "da47f4465520c4b42438a39079bd10b3aef624382bea2fc43c3039da3d9bddbf",
+    "installed_sha256": "da47f4465520c4b42438a39079bd10b3aef624382bea2fc43c3039da3d9bddbf",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/knn-interface.cpp",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/knn-interface.cpp",
+    "original_sha256": "a162285964e37b987d9e126a9c2c58e349bd493cdba42809db865c566e8aca3e",
+    "installed_sha256": "a162285964e37b987d9e126a9c2c58e349bd493cdba42809db865c566e8aca3e",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/ReadMe.txt",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/ReadMe.txt",
+    "original_sha256": "500e636167e6f339663daa99c821da6e023fae4cdfef4e597a7435e71f1ffab8",
+    "installed_sha256": "500e636167e6f339663daa99c821da6e023fae4cdfef4e597a7435e71f1ffab8",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/distance_ise.vcxproj",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/distance_ise.vcxproj",
+    "original_sha256": "661bc50a354f9923e73ab04094ef0395a77226cc6f0d47af6058168c53fd6e02",
+    "installed_sha256": "661bc50a354f9923e73ab04094ef0395a77226cc6f0d47af6058168c53fd6e02",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/knn.h",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/knn.h",
+    "original_sha256": "fe9e5d1c34942e52015af32e8c135e8d2c0744a7fb01ec2d2b8849c206069512",
+    "installed_sha256": "fe9e5d1c34942e52015af32e8c135e8d2c0744a7fb01ec2d2b8849c206069512",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/stdafx.cpp",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/stdafx.cpp",
+    "original_sha256": "e1275a3d71381ddbdbac27fdfacf0ef237ee745e5376d2bd16ba3c98397f6ce2",
+    "installed_sha256": "e1275a3d71381ddbdbac27fdfacf0ef237ee745e5376d2bd16ba3c98397f6ce2",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/nnSearchMEX.cpp",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/nnSearchMEX.cpp",
+    "original_sha256": "35ae95764ffd043b3bee0397fbfeeacdfa3b9808e8a4242619f5945c09c09d23",
+    "installed_sha256": "35ae95764ffd043b3bee0397fbfeeacdfa3b9808e8a4242619f5945c09c09d23",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/k-nearest-neighbors.cpp",
+    "target": "legacy/Mexfunction_C/distance_mhmm/distance_ise/distance_ise/k-nearest-neighbors.cpp",
+    "original_sha256": "17610f3d0b9611698882e2b770df92789a7a5838ee8bd20689f1801cd8968ba7",
+    "installed_sha256": "17610f3d0b9611698882e2b770df92789a7a5838ee8bd20689f1801cd8968ba7",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/sc_distance/sc_distance/distance_matrix/hist_cost.lib",
+    "target": "legacy/Mexfunction_C/sc_distance/sc_distance/distance_matrix/hist_cost.lib",
+    "original_sha256": "ef1085d15982b569cd021ac03e5a945a786e0150411450befa8fc36034a816c0",
+    "installed_sha256": "ef1085d15982b569cd021ac03e5a945a786e0150411450befa8fc36034a816c0",
+    "adapted": false
+  },
+  {
+    "source": "/Volumes/OneTouch/Phd-Related/MyWork/Mexfunction_C/sc_distance/sc_distance/distance_matrix/hist_cost.dll",
+    "target": "legacy/Mexfunction_C/sc_distance/sc_distance/distance_matrix/hist_cost.dll",
+    "original_sha256": "bf02afffc3285231151d4fbddf0ac38d363a64e4883e25d93ee8ee4519401c7e",
+    "installed_sha256": "bf02afffc3285231151d4fbddf0ac38d363a64e4883e25d93ee8ee4519401c7e",
+    "adapted": false
+  }
+]

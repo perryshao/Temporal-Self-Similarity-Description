@@ -12,9 +12,8 @@
 *.tsv    text
 *.sh     text eol=lf
 
-# Prebuilt binaries are tracked on purpose.  mexCalcSsdescs, costFuncRegMex,
-# optiCostFuncRegMex and MelkmanConvexHull have no surviving source, so the
-# binaries are the only copy.  Never let git apply newline translation to them.
+# Prebuilt binaries are retained for historical compatibility. Some sources
+# have since been recovered; see docs/MEX_RECOVERY.md. Never translate binaries.
 *.mex*       binary
 *.mexw32     binary
 *.mexw64     binary
@@ -32,3 +31,6 @@
 # bundled toolboxes.
 thirdparty/** linguist-vendored
 iid/**        linguist-vendored
+
+# Preserve byte-level provenance of recovered historical source archives.
+legacy/** -text !eol linguist-vendored

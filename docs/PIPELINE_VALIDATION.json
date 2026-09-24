@@ -1,0 +1,84 @@
+{
+  "scope": "Python numerical reference and native LIBSVM; not MATLAB parity",
+  "python": "3.9.6",
+  "numpy": "2.0.2",
+  "scipy": "1.13.1",
+  "unit_tests": 8,
+  "pipelines": {
+    "native_distance": {
+      "fixtures": 6,
+      "sanitizers": [
+        "address",
+        "undefined"
+      ],
+      "scope": "valid inputs only; MEX test shim, not MATLAB ABI"
+    },
+    "raw": {
+      "train_sequences": 18,
+      "held_out_sequences": 9,
+      "descriptor_shape": [
+        32,
+        150
+      ],
+      "vq_shape": [
+        18,
+        56
+      ],
+      "sparse_shape": [
+        18,
+        56
+      ],
+      "vq_ktpm_accuracy": 1.0,
+      "sparse_linear_accuracy": 1.0,
+      "dictionary_objective": [
+        287.5202436542163,
+        160.89919311188177,
+        122.8737785733523,
+        114.10135026863114,
+        112.59555590877474
+      ]
+    },
+    "sigmoid": {
+      "train_sequences": 18,
+      "held_out_sequences": 9,
+      "descriptor_shape": [
+        32,
+        150
+      ],
+      "vq_shape": [
+        18,
+        56
+      ],
+      "sparse_shape": [
+        18,
+        56
+      ],
+      "vq_ktpm_accuracy": 1.0,
+      "sparse_linear_accuracy": 1.0,
+      "dictionary_objective": [
+        289.19694288908204,
+        152.55232357161492,
+        116.3974824130483,
+        110.04651059726646,
+        108.72101468701567
+      ]
+    }
+  },
+  "source_sha256": {
+    "ssm/Temporal_SSM.m": "bffeff069edbdca848b2ca824b75e905d83160d1d51283aab2e8116ce9b4b3ef",
+    "descriptor/Log_hogcalculator.m": "83071a3147769b79965687d8b76d5287eb42fa4339cb0b5b9405ca93297b2f55",
+    "experiments/ASL/gene_codebook_pyramid.m": "e388cddda786cd0b93b7d41620a9427bb2485e3d06ba9759ff5ba301e22c5c12",
+    "experiments/ASL/PyramidMatching.m": "3ebd5478291824019d3850a84128e5c622cceb5a072b43dc9d199361a35922db",
+    "experiments/ASL/sc_pooling_ts.m": "09568a9bfb8eed1c1293891d83594e1e663c4fd174ce933a653cad99c8fa6e1f",
+    "thirdparty/libsvm-3.17/svm.cpp": "86133bfc92e1e76f48c17a510f19f7f7a1a5dfdaba78e5ca4962b7186398f610",
+    "thirdparty/ScSPM/sparse_coding/L1QP_FeatureSign_yang.m": "23f2da9ab5f9184c6847cb4e710ee797e1ac2a0ce1671109e69caf7baa93a5b5",
+    "iid/matching/src/distance_matrix/distance_matrix_norm1.cpp": "705f04d8ff1903771c5342a99ec858a6a61d39530cad4a2874750ad2a567e393",
+    "iid/matching/src/distance_matrix/distance_matrix_norm2.cpp": "8aa981f9609da1dbffcbaceba026eeec7b368fba4bae3c7b200b6fc53da6565a",
+    "tools/validation/distance_driver.cpp": "c97f429478f9c7aef46e35da3ed530b532d53c9de5cfc8f98849d68e7345de17",
+    "tools/validation/matrix.h": "8f82468318edd683b06ab568e282f3a6328252f9995c786e9ec7d8d7bb80f076",
+    "tools/validation/mex.h": "37a71cd208cb49a9620d85bf51d9ec2dec962c9edfe8b2a875602647d6cc4d18",
+    "tools/validation/reference.py": "9e7bc28903ed75302a9d5ca272af1b6f7dd252a5638e5e1c8c068f113a50886e",
+    "tools/validation/requirements.txt": "b1a0c4b6e571a19ffd3f71d95fbb5e48203c8d9f3b9cdde86f7c3b6f9643aa95",
+    "tools/validation/validate.py": "60f2573375bcd5153214e0a57d19f45185b70578eeea02d671b4b283139ae6ae"
+  }
+}

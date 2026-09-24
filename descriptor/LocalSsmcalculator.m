@@ -9,14 +9,14 @@ function [F_t, F] = LocalSsmcalculator(img, radius, nbins_theta, nbins_r, ...
 %
 %   F_T = LOCALSSMCALCULATOR(IMG, RADIUS, NBINS_THETA, NBINS_R, NTHET)
 %   overrides the defaults RADIUS = 20, NBINS_THETA = 8, NBINS_R = 3, NTHET = 1.
-%   The default call uses L2-Hys normalisation. The explicit-argument path
-%   currently leaves normmethod undefined and fails at the normalisation step.
+%   Both call forms use L2-Hys normalisation.
 %
 %   [F_T, F] = LOCALSSMCALCULATOR(...) also returns the concatenated row vector.
 %
 %   Author: Perry, Feb 2015.
 %
 %   See also LOG_HOGCALCULATOR, LOCALSSMCALCULATORSAMEBLOCK.
+normmethod = 'l2hys';
 if nargin < 2
     % set default parameters value.
     %     radius = 60;% default
@@ -26,7 +26,6 @@ if nargin < 2
     % nbins_r = 4;% default
     nbins_r = 3;
     nthet = 1; % find histogram or maximum value in SSM
-    normmethod = 'l2hys'; % default
 else
     if nargin < 5
         error('Input parameters are not enough.');

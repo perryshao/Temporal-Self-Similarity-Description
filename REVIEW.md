@@ -17,13 +17,11 @@ shapes, outputs and file side effects. Preserve attribution and experimental
 alternatives. Do not apply a text-only formatter to MATLAB matrix expressions
 without checking whitespace-sensitive concatenation, strings and transpose syntax.
 
-## Confirmed existing issues requiring separate functional changes
+## Remaining issues after portable validation (2026-09-24)
 
 | Severity | File / branch | Finding |
 |---|---|---|
-| High | `experiments/ASL/gene_descriptor.m`, `gene_descriptor_samples.m` | `if ssm_flag = 1` uses assignment in a condition and does not parse as MATLAB. The intended comparison needs a separate functional fix. |
 | High | `experiments/MSRAction3D/gene_TSSM.m` | Declaration is named `GeneTSSM` and takes two inputs; its caller passes six and its body refers to four missing descriptor arrays. Do not confuse it with the separate `GeneTSSM.m` implementation. |
-| High | `descriptor/LocalSsmcalculator.m` | The explicit five-argument branch never defines `normmethod`, later used by `switch`. Default calls use L2-Hys. |
 | High | `experiments/MSRAction3D/costFunctionReg.m` | `nargout < 7` always holds for its three declared outputs, resetting the supplied `initTheta`. Objective/gradient consistency also needs finite-difference verification before changing optimisation behaviour. |
 | High | `loghog/src/LogHog.cpp` | MEX gateway reads `prhs[0]` and writes `plhs[0]` without checking argument counts, numeric type, complexity or dimensions; invalid calls can crash MATLAB. Source changes would require rebuilding the binary. |
 | Medium | `experiments/MSRC12/Query_distance.m` | Distance computations are commented out; returned distances are all zero. |
@@ -32,8 +30,10 @@ without checking whitespace-sensitive concatenation, strings and transpose synta
 | Medium | `rand_sampling_ts.m` variants | ASL assumes every sequence contains enough descriptors; the other versions repeat only once and still fail for sufficiently short/empty sequences. |
 | Medium | Descriptor scaling and pooling | Several paths divide by a maximum or norm without an explicit zero-input policy. Constant trajectories/empty features require targeted tests. |
 
-These findings are recorded rather than silently repaired in a style-only pass.
-Their presence means the repository is not yet verified as runnable end to end.
+The ASL condition syntax, LocalSSM explicit-call normalization, and zero sparse
+pooling have now been corrected. Other findings above remain unresolved. The
+portable reference pipelines pass, but original MATLAB experiments are not yet
+verified as runnable end to end. See [validation scope](docs/VALIDATION.md).
 
 ## Verification and recovery
 
@@ -46,4 +46,6 @@ Validation compares every changed MATLAB file with pre-polish commit `85771fe`
 using the previous formatter's code normalisation, and checks file inventory,
 unchanged binary/vendor files and whitespace errors. This is a static regression
 check, not a MATLAB parser or a proof of semantic equivalence. MATLAB execution,
-MEX compilation and numerical reproduction have not been performed.
+MATLAB MEX compilation and published-result reproduction have not been performed.
+Subsequent native distance-kernel checks and portable numerical validation are
+recorded separately in `docs/VALIDATION.md`.

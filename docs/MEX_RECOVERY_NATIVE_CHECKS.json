@@ -1,0 +1,23 @@
+[
+  {
+    "name": "melkman",
+    "compile_exit": 0,
+    "compile_output": "",
+    "run_exit": 0,
+    "run_output": "PASS hull: batch/incremental, 1201 points, shape/type/arity/degenerate guards\n"
+  },
+  {
+    "name": "distance",
+    "compile_exit": 0,
+    "compile_output": "",
+    "run_exit": 0,
+    "run_output": "PASS distance: 12 numeric fixtures, 8/9-output contract and invalid-input guards\n"
+  },
+  {
+    "name": "distance-msrc",
+    "compile_exit": 0,
+    "compile_output": "",
+    "run_exit": 0,
+    "run_output": "PASS distance: 12 numeric fixtures, 8/9-output contract and invalid-input guards\n"
+  }
+]

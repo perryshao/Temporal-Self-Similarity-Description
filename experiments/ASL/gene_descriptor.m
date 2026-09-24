@@ -100,7 +100,7 @@ for i = 1:samples
         otherwise
             disp('error input descrip_flag')
     end
-    if ssm_flag = 1
+    if ssm_flag == 1
         %% Self-similarity descriptor
         TSSM = Temporal_SSM(marker_des, descrip_flag);
         Image_TSSM = TSSM(2+1:end-2, 2+1:end-2);
