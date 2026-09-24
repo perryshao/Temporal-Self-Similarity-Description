@@ -1,4 +1,11 @@
 function preprocess_tsd(marker, upsamples, transform_flag)
+%PREPROCESS_TSD  Smooth, upsample and transform the trajectories of one marker (ASL).
+%   PREPROCESS_TSD(MARKER, UPSAMPLES, TRANSFORM_FLAG) Kalman-smooths every
+%   trajectory in <MARKER>.mat and <MARKER>samples.mat, doubles the frame rate
+%   by spline interpolation if UPSAMPLES is true, and if TRANSFORM_FLAG is true
+%   applies the test-set transformation of thesis Sec. 5.2.1 (rotation by 30
+%   and 45 degrees about x and z, translation, scaling by 0.5) to the test set.
+
 %% detect whether there are existing required mat files for tsd data
 fileprefix = '.mat';
 matfilename = [marker fileprefix];

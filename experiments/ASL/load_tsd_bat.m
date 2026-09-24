@@ -1,4 +1,15 @@
 function load_tsd_bat(markers, random_seed, CLASS_SELECTED, BAT_FOLDER)
+%LOAD_TSD_BAT  Load ASL (Auslan) .tsd sign files into training / test sets.
+%   LOAD_TSD_BAT(MARKERS, RANDOM_SEED, CLASS_SELECTED, BAT_FOLDER) reads the
+%   class sub-folders of BAT_FOLDER whose index is in CLASS_SELECTED, splits
+%   every class at random into halves and saves, per marker, <MARKER>.mat
+%   (TRAJDB) and <MARKER>samples.mat (TRAJSAMPLES).  MARKERS are 'LWRA' / 'RWRA'
+%   (left / right hand, columns 1-3 / 12-14 of a .tsd line).  RANDOM_SEED is
+%   unused; the split is seeded from the clock.
+%
+%   NOTE: class folders are indexed from the 3rd entry of DIR, assuming the
+%   first two are '.' and '..'.  Remove any other hidden entries (e.g.
+%   .DS_Store) from BAT_FOLDER first.
 
 file_ext = '.tsd';
 fileprefix = '.mat';

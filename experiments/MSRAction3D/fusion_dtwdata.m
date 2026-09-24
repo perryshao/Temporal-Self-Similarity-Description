@@ -1,4 +1,9 @@
 function fused_data = fusion_dtwdata(align_path, align_data_1, align_data_2, w)
+%FUSION_DTWDATA  Fuse two DTW-aligned sequences into one weighted average.
+%   FUSED = FUSION_DTWDATA(ALIGN_PATH, ALIGN_DATA_1, ALIGN_DATA_2, W) walks the
+%   warping path ALIGN_PATH and averages the aligned columns of the two
+%   sequences with weights W(1), W(2).  Helper of TRAIN_DTW.
+
 fused_data = [];
 align_length = size(align_path, 1);
 warp_num_1 = 1;warp_num_2 = 1;

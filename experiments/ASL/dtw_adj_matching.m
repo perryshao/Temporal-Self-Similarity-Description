@@ -1,4 +1,12 @@
 function [min_distance, d, g] = dtw_adj_matching(A, B, adjustment_window_size, descrip_flag)
+%DTW_ADJ_MATCHING  DTW distance between two descriptor sequences.
+%   [MIN_DISTANCE, D, G] = DTW_ADJ_MATCHING(A, B, ADJUSTMENT_WINDOW_SIZE,
+%   DESCRIP_FLAG) builds the local distance matrix D for the descriptor type
+%   (1 FD: plain Euclidean, no warping; 2-4 FEATURE_DIST_MATCHING; 5-6 L2;
+%   7-8 L1), runs DTWPATH with a Sakoe-Chiba band of ADJUSTMENT_WINDOW_SIZE and
+%   returns the path cost G normalised by the path length bound I+J.  The two
+%   zero-padded frames at each end are dropped for flags 2-6.
+
 switch descrip_flag
     case   {2, 3, 4}
         A = A(3:end-2, :);B = B(3:end-2, :); % because beginning and ending two features are zero

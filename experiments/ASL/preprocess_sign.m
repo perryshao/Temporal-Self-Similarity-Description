@@ -1,4 +1,9 @@
 function preprocess_sign(marker, upsamples)
+%PREPROCESS_SIGN  Smooth the training and test trajectories of one marker.
+%   PREPROCESS_SIGN(MARKER, UPSAMPLES) applies a 20-frame moving average and a
+%   constant-velocity Kalman smoother to every trajectory in <MARKER>.mat and
+%   <MARKER>samples.mat, and doubles the frame rate if UPSAMPLES is true.
+
 %% detect whether there are existing required mat files for tsd data
 fileprefix = '.mat';
 matfilename = [marker fileprefix];

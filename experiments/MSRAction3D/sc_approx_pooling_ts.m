@@ -1,4 +1,9 @@
 function [beta] = sc_approx_pooling_ts(feaSet, B, pyramid, gamma, knn)
+%SC_APPROX_POOLING_TS  SC_POOLING_TS with approximate (k-NN) sparse coding.
+%   BETA = SC_APPROX_POOLING_TS(FEASET, B, PYRAMID, GAMMA, KNN) codes every
+%   column on its KNN nearest bases only.  Temporal version of ScSPM's
+%   SC_APPROX_POOLING.
+
 % ================================================
 %
 % Usage:

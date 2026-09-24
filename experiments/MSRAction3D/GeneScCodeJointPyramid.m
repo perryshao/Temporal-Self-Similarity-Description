@@ -1,4 +1,11 @@
 function [traindata, testdata, sum_ScSPM_time] = GeneScCodeJointPyramid(TSSMDB_HOG, TSSMSAMPLES_HOG, jointNum, ntotalbh)
+%GENESCCODEJOINTPYRAMID  Per-joint-group ScTPM features.
+%   [TRAINDATA, TESTDATA, SUM_SCSPM_TIME] = GENESCCODEJOINTPYRAMID(TSSMDB_HOG,
+%   TSSMSAMPLES_HOG, JOINTNUM, NTOTALBH) learns one sparse-coding dictionary
+%   (512 bases, gamma = 0.15) from all-zero-free descriptors of the training
+%   set, splits every sample's descriptors into JOINTNUM equal groups (as
+%   stacked by GENETSSM) and concatenates the temporal-pyramid max-pooled codes
+%   (levels 0..NTOTALBH) of the groups.  Columns are samples.
 
 %% collect the visual words
 

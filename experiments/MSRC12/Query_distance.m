@@ -1,4 +1,12 @@
 function [Indx, dtw_distance] = Query_distance(Qdata, Clusterdata)
+%QUERY_DISTANCE  Rank a data set by distance to a query.
+%   [INDX, DTW_DISTANCE] = QUERY_DISTANCE(QDATA, CLUSTERDATA) returns the
+%   indices of CLUSTERDATA sorted by increasing distance to QDATA.
+%
+%   NOTE: as last saved every distance line below is commented out, so all
+%   distances are 0 and the ranking is the identity.  Enable one of them (or
+%   use QUERY_DISTANCE_RANKONE) before running a retrieval test.
+
 num = length(Clusterdata);
 dtw_distance = zeros(1, num);
 for i = 1:num

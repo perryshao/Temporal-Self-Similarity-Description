@@ -1,4 +1,9 @@
 function gene_descriptor_diff_samples(marker)
+%GENE_DESCRIPTOR_DIFF_SAMPLES  DI-based windowed SSM Log-HOG descriptors, test set.
+%   GENE_DESCRIPTOR_DIFF_SAMPLES(MARKER): DESCRIPTOR_COMP (DI) ->
+%   TEMPORAL_SSM(des, 3, 5) -> LOG_HOGCALCULATOR.
+%   Reads <MARKER>samples.mat (TRAJSAMPLES) and writes <MARKER>samples_DES.mat
+%   (TRAJSAMPLES_DES).  Must compute the same descriptor as the training twin.
 
 fileprefix = 'samples.mat';
 matfilename = [marker fileprefix];

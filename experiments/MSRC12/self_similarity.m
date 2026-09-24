@@ -1,4 +1,10 @@
 function d = self_similarity(des, m_num, descrip_flag)
+%SELF_SIMILARITY  Distances between the joints of one frame's descriptor.
+%   D = SELF_SIMILARITY(DES, M_NUM, DESCRIP_FLAG) splits the row DES into
+%   M_NUM per-joint descriptors and returns their symmetric M_NUM-by-M_NUM
+%   distance matrix (1 FD, 2 DI, 3 AII, 4 MAII, 5 DII, 6 raw xyz).  Used by
+%   RANKONEDECOM_FEAURES; unrelated to the temporal SSM of TEMPORAL_SSM.
+
 d = zeros(m_num, m_num);
 for i = 1:m_num
     for j = 1:i-1

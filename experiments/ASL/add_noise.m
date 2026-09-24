@@ -1,4 +1,11 @@
 function add_noise(marker, level)
+%ADD_NOISE  Add white Gaussian noise to the test trajectories of one joint.
+%   ADD_NOISE(MARKER, LEVEL) rewrites <MARKER>samples.mat with i.i.d. Gaussian
+%   noise on x, y and z, whose standard deviation is LEVEL times a signal
+%   scale derived from the trajectory's smallest extent (the "normalised
+%   standard deviation" of the conference paper's noise test).  The training
+%   set <MARKER>.mat is saved back unchanged.
+
 %% detect whether there are existing required mat files for C3D data
 
 fileprefix = '.mat';

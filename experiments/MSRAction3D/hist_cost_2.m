@@ -1,4 +1,6 @@
 function HC=hist_cost_2(BH1, BH2)
+%HIST_COST_2  Chi-square cost between two sets of shape-context histograms.
+
 % HC=hist_cost_2(BH1,BH2);
 %
 % same as hist_cost.m but BH1 and BH2 can be of different lengths

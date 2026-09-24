@@ -1,4 +1,10 @@
 function gene_descriptor_integral_samples(marker)
+%GENE_DESCRIPTOR_INTEGRAL_SAMPLES  Multiscale area integral invariants (MAII), test set.
+%   GENE_DESCRIPTOR_INTEGRAL_SAMPLES(MARKER) is a menu of per-frame descriptors;
+%   as last saved it computes 0.5 - INTEGRAL_INVARIANT_MS(xyz, 6, 0.2).
+%   Reads <MARKER>samples.mat (TRAJSAMPLES) and writes <MARKER>samples_DES.mat
+%   (TRAJSAMPLES_DES).  Must compute the same descriptor as the training twin.
+
 fileprefix = 'samples.mat';
 matfilename = [marker fileprefix];
 if exist(matfilename, 'file')

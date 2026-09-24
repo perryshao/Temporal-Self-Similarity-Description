@@ -1,4 +1,11 @@
 function preprocess(marker, upsamples, transform_flag)
+%PREPROCESS  Kalman-smooth (and optionally upsample) one joint's trajectories.
+%   PREPROCESS(MARKER, UPSAMPLES, TRANSFORM_FLAG) applies a constant-velocity Kalman smoother to
+%   every trajectory in <MARKER>.mat and <MARKER>samples.mat, and doubles the
+%   frame rate if UPSAMPLES is true;
+%   TRANSFORM_FLAG rotates, translates and scales the test set as in
+%   thesis Sec. 5.2.1.
+
 %% detect whether there are existing required mat files for C3D data
 fileprefix = '.mat';
 matfilename = [marker fileprefix];

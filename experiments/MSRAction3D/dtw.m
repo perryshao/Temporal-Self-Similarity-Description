@@ -1,4 +1,10 @@
 function [min_distance, steps, path] = dtw(testdata, traindata, adjustment_window_size)
+%DTW  Sakoe-Chiba DTW with an L2 local distance, returning the warping path.
+%   [MIN_DISTANCE, STEPS, PATH] = DTW(TESTDATA, TRAINDATA, ADJUSTMENT_WINDOW_SIZE)
+%   aligns the rows of the two sequences with DTWPATH inside a band of
+%   ADJUSTMENT_WINDOW_SIZE and returns the length-normalised cost, the step
+%   matrix and the warping path (TRACEBACK_PATH).  Used by DBA and TRAIN_DTW.
+%
 % Minimal time normalized dtw distance between speech patterns A and B.
 
 % References:

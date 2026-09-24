@@ -1,4 +1,9 @@
 function [subjectID_DB, subjectID_SAMPLES] = shuffle_db(joints_no, shuffle_sort)
+%SHUFFLE_DB  Re-split training and test sets by subject.
+%   [SUBJECTID_DB, SUBJECTID_SAMPLES] = SHUFFLE_DB(JOINTS_NO, SHUFFLE_SORT)
+%   reads the subject number encoded in each file path and, for every joint,
+%   rewrites <JOINT>.mat with the samples of the subjects in SHUFFLE_SORT(1,:)
+%   and <JOINT>samples.mat with those in SHUFFLE_SORT(2,:).
 
 %% look for the index of whole dataset
 load([joints_no{1, 1} '.mat']);

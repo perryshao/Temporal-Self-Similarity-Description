@@ -1,5 +1,13 @@
 function [traindata, testdata, trainGID, testGID]= construct_hmmdata(TRAJDB, TRAJSAMPLES, ...
                               TRAJDB_DES, TRAJSAMPLES_DES)
+%CONSTRUCT_HMMDATA  Arrange descriptors as observation sequences for the HMM baseline.
+%   [TRAINDATA, TESTDATA, TRAINGID, TESTGID] = CONSTRUCT_HMMDATA(TRAJDB,
+%   TRAJSAMPLES, TRAJDB_DES, TRAJSAMPLES_DES) returns one (dims x frames)
+%   sequence per trajectory, without the two zero-padded frames at each end,
+%   and the class labels (HMMs-AII in thesis Table 5.1).
+%
+%   See also MHMM_CLASSIFIER.
+
 samples_r = size(TRAJDB, 2);
 samples_t = size(TRAJSAMPLES, 2);
 for i = 1:samples_r

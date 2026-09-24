@@ -1,5 +1,11 @@
 function [Retrieved_Data, Retrieved_Indx] = Retrieval_data(Query_Indx, QueryID, Clustered_Indx, ...
                                             ClusterData, ClusterID, Recall)
+%RETRIEVAL_DATA  Retrieve the top-ranked samples up to a target recall.
+%   [RETRIEVED_DATA, RETRIEVED_INDX] = RETRIEVAL_DATA(QUERY_INDX, QUERYID,
+%   CLUSTERED_INDX, CLUSTERDATA, CLUSTERID, RECALL) walks down the ranking
+%   QUERY_INDX until the fraction of class QUERYID retrieved exceeds RECALL (or
+%   reaches 1).  CLUSTERED_INDX is not used by the active code.
+
 num = length(ClusterData);
 %% Clustering-based retrieval
 % K = length(Clustered_Indx);

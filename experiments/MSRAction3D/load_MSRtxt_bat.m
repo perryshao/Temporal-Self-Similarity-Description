@@ -1,4 +1,14 @@
 function load_MSRtxt_bat(joints_no, BAT_FOLDER)
+%LOAD_MSRTXT_BAT  Load MSR Action3D skeleton files into training / test sets.
+%   LOAD_MSRTXT_BAT(JOINTS_NO, BAT_FOLDER) reads the skeleton files in the
+%   sub-folders of BAT_FOLDER (READMSRTXT) and saves, per joint number in
+%   JOINTS_NO, <JOINT>.mat (TRAJDB) and <JOINT>samples.mat (TRAJSAMPLES).
+%   Files in the sub-folder named 'db' form the training set, all other
+%   sub-folders the test set.
+%
+%   NOTE: sub-folders are indexed from the 3rd entry of DIR, assuming the
+%   first two are '.' and '..'.
+
 file_ext = '.txt';
 fileprefix = '.mat';
 samplesfileprefix = 'samples.mat';

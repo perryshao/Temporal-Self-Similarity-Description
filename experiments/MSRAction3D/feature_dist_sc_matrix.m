@@ -1,4 +1,9 @@
 function d=feature_dist_sc_matrix(t, r, sc1, sc2, flag)
+%FEATURE_DIST_SC_MATRIX  Frame-to-frame cost of 3-D shape-context descriptors.
+%   D = FEATURE_DIST_SC_MATRIX(T, R, SC1, SC2, FLAG) compares, frame by frame,
+%   the 3-D shape contexts of 9 joints (60 theta bins + alpha bins each) with
+%   the chi-square cost HIST_COST_2 and a symmetric best-match rule.
+%
 % flag1 -- 0: for tsd database; 1: for hdm05 database
 % flag2 -- 0: for integral invariants 1: for differential invariants
 % weight_h=1;

@@ -1,5 +1,9 @@
 function [X] = rand_sampling_ts(TRAJDB_DES, num_smp)
-% sample local features for unsupervised codebook training
+%RAND_SAMPLING_TS  Randomly sample descriptors for dictionary learning.
+%   X = RAND_SAMPLING_TS(TRAJDB_DES, NUM_SMP) draws about NUM_SMP descriptors
+%   (columns of X), the same number from every training sequence.
+%   Sequences shorter than their share are sampled with repetition.
+%
 
 num_training = length(TRAJDB_DES); % num of images
 num_per_training = round(num_smp/num_training);

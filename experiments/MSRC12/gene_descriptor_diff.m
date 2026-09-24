@@ -1,4 +1,11 @@
 function gene_descriptor_diff(marker)
+%GENE_DESCRIPTOR_DIFF  DI-based windowed SSM Log-HOG descriptors, training set.
+%   GENE_DESCRIPTOR_DIFF(MARKER): DESCRIPTOR_COMP (DI) -> TEMPORAL_SSM(des, 3, 5)
+%   (5-frame windows, local distance) -> LOG_HOGCALCULATOR.
+%   Reads <MARKER>.mat (TRAJDB) and writes <MARKER>_DES.mat (TRAJDB_DES).
+%   Keep in sync with the _samples twin, which must compute the SAME
+%   descriptor for the test set; a mismatch gives meaningless accuracies.
+
 fileprefix = '.mat';
 matfilename = [marker fileprefix];
 if exist(matfilename, 'file')

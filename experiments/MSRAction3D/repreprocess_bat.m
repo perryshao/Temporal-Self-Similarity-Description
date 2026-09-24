@@ -1,4 +1,9 @@
 function repreprocess_bat(joints_no)
+%REPREPROCESS_BAT  Re-smooth the test trajectories of several joints.
+%   REPREPROCESS_BAT(JOINTS_NO) Kalman-smooths <JOINT>samples.mat again for
+%   every joint in JOINTS_NO (e.g. after ADD_NOISE); trajectories broken by NaN
+%   occlusions are smoothed segment by segment.
+
 %% preprocess and descriptor computation
 m_num = length(joints_no);
 for j = 1:m_num

@@ -1,4 +1,13 @@
 function gene_descriptor_integral(marker)
+%GENE_DESCRIPTOR_INTEGRAL  Log-HOG SSM descriptors of the training set (ASL).
+%   GENE_DESCRIPTOR_INTEGRAL(MARKER) is a menu of per-frame descriptors; the
+%   one left uncommented is used.  As last saved: raw xyz -> sigmoid-distance
+%   SSM TEMPORAL_SSM(xyz, 5, 1, 1) -> LOG_HOGCALCULATOR, i.e. SSM-sig-TPM of
+%   the conference paper.  For the thesis ScTPM use the AII block with
+%   TEMPORAL_SSM(des, 3, 5).
+%   Reads <MARKER>.mat (TRAJDB) and writes <MARKER>_DES.mat (TRAJDB_DES).
+%   Keep in sync with the _samples twin, which must compute the SAME
+%   descriptor for the test set; a mismatch gives meaningless accuracies.
 
 fileprefix = '.mat';
 matfilename = [marker fileprefix];

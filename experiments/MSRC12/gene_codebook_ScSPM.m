@@ -1,4 +1,14 @@
 function [traindata, testdata, sum_ScSPM_time] = gene_codebook_ScSPM(TRAJDB_DES, TRAJSAMPLES_DES, ntotalbh)
+%GENE_CODEBOOK_SCSPM  Sparse codes max-pooled over a temporal pyramid (ScTPM).
+%   [TRAINDATA, TESTDATA, SUM_SCSPM_TIME] = GENE_CODEBOOK_SCSPM(TRAJDB_DES,
+%   TRAJSAMPLES_DES, NTOTALBH) learns an nBases = 1024 dictionary by sparse
+%   coding (REG_SPARSE_CODING, lambda = gamma = 0.15) on NSMP randomly sampled
+%   training descriptors, sparse-codes every descriptor and max-pools the codes
+%   over a temporal pyramid of 2^l blocks, l = 0..NTOTALBH (thesis Sec. 3.5,
+%   Eq. 3.9-3.10).  Columns of TRAINDATA / TESTDATA are samples.
+%
+%   NSMP differs per folder: ASL 6000 (the thesis states 10000 -- see the
+%   commented line), MSRAction3D 10000, MSRC12 20000.
 
 %% collect the visual words
 

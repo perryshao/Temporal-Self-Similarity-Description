@@ -1,5 +1,12 @@
 function [traindata, testdata, trainGID, testGID]= gene_TSSM(TRAJDB, TRAJSAMPLES, ...
                               TRAJDB_DES, TRAJSAMPLES_DES, INTEGRATE_DES, INTEGRATESAMPLES_DES)
+%GENE_TSSM  Log-HOG descriptors of hierarchical SSMs (root + relative descriptors).
+%   [TRAINDATA, TESTDATA, TRAINGID, TESTGID] = GENE_TSSM(TRAJDB, TRAJSAMPLES,
+%   TRAJDB_DES, TRAJSAMPLES_DES, INTEGRATE_DES, INTEGRATESAMPLES_DES) builds,
+%   for every sample, the SSM of [root descriptor | relative descriptors]
+%   (TEMPORAL_SSMOFHIERARD) and returns its LOG_HOGCALCULATOR descriptors,
+%   together with the class labels encoded in the file paths.
+
 samples_r = size(TRAJDB, 2);
 samples_t = size(TRAJSAMPLES, 2);
 trainGID = zeros(samples_r, 1);

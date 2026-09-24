@@ -1,4 +1,13 @@
 function [TSSMDB_HOG, TSSMSAMPLES_HOG, trainGID, testGID]= GeneTSSM(joints_no)
+%GENETSSM  Per-joint-group SSM Log-HOG descriptors (MSR Action3D).
+%   [TSSMDB_HOG, TSSMSAMPLES_HOG] = GENETSSM(JOINTS_NO) averages the joints of
+%   every row (group) of JOINTS_NO into one trajectory,
+%   scales every frame to unit distance from the origin, builds a
+%   sigmoid-distance SSM TEMPORAL_SSM(traj, 5, 1, 1, 0.25) (this
+%   folder's 5-argument TEMPORAL_SSM: kernel 1, belta 1, c 0.25) and stacks the
+%   LOG_HOGCALCULATOR descriptors of all groups, group after group.  Saves
+%   TSSMDB_HOG.mat / TSSMSAMPLES_HOG.mat; the groups are split again by
+%   GENESCCODEJOINTPYRAMID.
 
 %% dbs: ensemble the joints in terms of the joint grouping
 % load([joints_no{1,1} '.mat']);

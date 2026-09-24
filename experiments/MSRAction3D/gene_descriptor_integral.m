@@ -1,4 +1,10 @@
 function gene_descriptor_integral(marker)
+%GENE_DESCRIPTOR_INTEGRAL  Area integral invariants (AII) of the training set.
+%   GENE_DESCRIPTOR_INTEGRAL(MARKER) computes 0.5 - INTEGRAL_INVARIANT_KN(xyz,
+%   6, 5) for every trajectory.
+%   Reads <MARKER>.mat (TRAJDB) and writes <MARKER>_DES.mat (TRAJDB_DES).
+%   Keep in sync with the _samples twin, which must compute the SAME
+%   descriptor for the test set; a mismatch gives meaningless accuracies.
 
 fileprefix = '.mat';
 matfilename = [marker fileprefix];

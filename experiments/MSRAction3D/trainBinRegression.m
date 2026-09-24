@@ -1,4 +1,11 @@
 function theta = trainBinRegression(X, trainGID, lambda, jointNum, modulaNum)
+%TRAINBINREGRESSION  Train the group-sparse multi-output linear regressor.
+%   THETA = TRAINBINREGRESSION(X, TRAINGID, LAMBDA, JOINTNUM, MODULANUM)
+%   minimises COSTFUNCTIONREG with MINIMIZE (Rasmussen's conjugate gradients):
+%   50 rounds over two shuffled mini-batches, then a final pass on all of X
+%   (D x N) with lambda = [0.5 0.5 0.5].  THETA is D x C.
+%
+%   See also PREDICTBINREGRESSION.
 
 % Labels and training data
 clear traind

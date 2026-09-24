@@ -1,4 +1,13 @@
 function [traindata, testdata, sum_BoF_time, num_words] = gene_codebook_pyramid(TRAJDB_DES, TRAJSAMPLES_DES, ntotalbh)
+%GENE_CODEBOOK_PYRAMID  VQ temporal-pyramid histograms (KTPM).
+%   [TRAINDATA, TESTDATA, SUM_BOF_TIME, NUM_WORDS] = GENE_CODEBOOK_PYRAMID(
+%   TRAJDB_DES, TRAJSAMPLES_DES, NTOTALBH) learns a k-means codebook of
+%   NUM_WORDS = one word per ten training descriptors and describes every
+%   sequence by its BoF histograms over a temporal pyramid with 2^l blocks at
+%   levels l = 0..NTOTALBH, concatenated level by level (thesis Sec. 3.5.2,
+%   Fig. 3.4).  Rows of TRAINDATA / TESTDATA are samples.
+%
+%   See also PYRAMIDMATCHING.
 
 %% collect the visual words
 % K = 10000; % the numbers of words

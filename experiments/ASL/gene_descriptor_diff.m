@@ -1,4 +1,12 @@
 function gene_descriptor_diff(marker)
+%GENE_DESCRIPTOR_DIFF  Euclidean-SSM Log-HOG descriptors of the training set (ASL).
+%   GENE_DESCRIPTOR_DIFF(MARKER): as last saved, raw xyz -> Euclidean SSM
+%   TEMPORAL_SSM(xyz, 5, 1, 0) -> LOG_HOGCALCULATOR, i.e. SSM-raw-TPM of the
+%   conference paper.  The DI block above it gives ScTPM-SSM-DI.
+%   Reads <MARKER>.mat (TRAJDB) and writes <MARKER>_DES.mat (TRAJDB_DES).
+%   Keep in sync with the _samples twin, which must compute the SAME
+%   descriptor for the test set; a mismatch gives meaningless accuracies.
+
 fileprefix = '.mat';
 matfilename = [marker fileprefix];
 if exist(matfilename, 'file')

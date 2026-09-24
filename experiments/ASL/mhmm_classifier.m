@@ -1,4 +1,12 @@
 function [confusion_matrix, test_loglik, I, compu_time_hmm] = mhmm_classifier(traindata, trainGID, testdata, testGID)
+%MHMM_CLASSIFIER  Left-right Gaussian-mixture HMM classifier (HMMs-AII baseline).
+%   [CONFUSION_MATRIX, TEST_LOGLIK, I, COMPU_TIME_HMM] = MHMM_CLASSIFIER(
+%   TRAINDATA, TRAINGID, TESTDATA, TESTGID) trains one left-right HMM per class
+%   with MHMM_EM (Murphy's HMM toolbox) and labels every test sequence by the
+%   class of largest log-likelihood.  I holds the predicted labels.
+%
+%   See also CONSTRUCT_HMMDATA.
+
 O = size(traindata{1}, 1); % Number of coefficients in a vector
 % nex = length(traindata);        %Number of sequences
 M = 5; % Number of mixtures

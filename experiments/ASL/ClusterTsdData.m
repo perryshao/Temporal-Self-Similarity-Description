@@ -1,5 +1,10 @@
 function [ClusterRawData, ClusterData, ClusterID]= ClusterTsdData(TRAJDB, TRAJSAMPLES, ...
                               TRAJDB_DES, TRAJSAMPLES_DES)
+%CLUSTERTSDDATA  Pool training and test sets for clustering / retrieval (ASL).
+%   [CLUSTERRAWDATA, CLUSTERDATA, CLUSTERID] = CLUSTERTSDDATA(TRAJDB,
+%   TRAJSAMPLES, TRAJDB_DES, TRAJSAMPLES_DES) concatenates both sets: raw xyz
+%   trajectories, their descriptors and their class labels.
+
 samples_r = size(TRAJDB, 2);
 samples_t = size(TRAJSAMPLES, 2);
 for i = 1:samples_r

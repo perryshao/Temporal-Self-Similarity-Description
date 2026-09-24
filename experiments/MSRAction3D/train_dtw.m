@@ -1,4 +1,10 @@
 function [theta, trained_data] = train_dtw(traindata, trainGID, testdata, testGID)
+%TRAIN_DTW  Build one DTW-averaged template per class (exploratory).
+%   [THETA, TRAINED_DATA] = TRAIN_DTW(TRAINDATA, TRAINGID, TESTDATA, TESTGID)
+%   computes all pairwise DTW alignments inside each class and repeatedly
+%   merges the closest pair with FUSION_DTWDATA until one template per class
+%   remains.  THETA is all ones (no weights are learned).
+
 num = length(traindata);
 dtw_distance = zeros(num, num);
 dtw_path = cell(num, num);

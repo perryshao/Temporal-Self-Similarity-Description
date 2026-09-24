@@ -1,4 +1,9 @@
 function [trainGID, testGID]=getLabels(joints_no)
+%GETLABELS  Action labels of the MSR Action3D training and test sets.
+%   [TRAINGID, TESTGID] = GETLABELS(JOINTS_NO) loads the first joint's
+%   <JOINT>.mat / <JOINT>samples.mat and reads the two-digit action number
+%   that follows the second '/' of each file path.
+
 %%  build the labels for training and testing
 load([joints_no{1, 1} '.mat']);
 load([joints_no{1, 1} 'samples.mat']);

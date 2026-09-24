@@ -1,4 +1,8 @@
 function [min_distance, d, g] = dtw_adj_orien(A, B, orientation1, orientation2, adjustment_window_size)
+%DTW_ADJ_ORIEN  DTW distance of descriptors combined with relative orientations.
+%   [MIN_DISTANCE, D, G] = DTW_ADJ_ORIEN(A, B, ORIENTATION1, ORIENTATION2,
+%   ADJUSTMENT_WINDOW_SIZE) is DTW_ADJ_MATCHING with the local distance of
+%   FEATURE_DIST_ORIEN_MATRIX.
 
 r = adjustment_window_size;
 A = A(3:end-2, :);B = B(3:end-2, :); % because beginning and ending two features are zero

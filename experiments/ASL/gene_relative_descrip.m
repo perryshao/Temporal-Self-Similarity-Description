@@ -1,4 +1,10 @@
 function [orientation, metric_variation]=gene_relative_descrip(curve1, curve2)
+%GENE_RELATIVE_DESCRIP  Relative descriptor of one trajectory w.r.t. another.
+%   [ORIENTATION, METRIC_VARIATION] = GENE_RELATIVE_DESCRIP(CURVE1, CURVE2)
+%   describes CURVE2 - CURVE1 frame by frame by its two spherical angles
+%   (polar, azimuth), relative to the first frame and wrapped to [-pi, pi],
+%   and by its length normalised by the mean length over the sequence.
+
 %% relative curve are got by subtracting one from another one
 relative_curve = curve2-curve1;
 samples = size(relative_curve, 1);

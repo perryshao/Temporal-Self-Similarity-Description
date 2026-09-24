@@ -1,4 +1,11 @@
 function [beta] = sc_pooling_ts(feaSet, B, pyramid, gamma)
+%SC_POOLING_TS  Sparse-code a sequence and max-pool over a temporal pyramid.
+%   BETA = SC_POOLING_TS(FEASET, B, PYRAMID, GAMMA) codes every column of
+%   FEASET on dictionary B (feature-sign search, sparsity GAMMA), splits the
+%   sequence into PYRAMID(l) equal temporal blocks per level and returns the
+%   L2-normalised concatenation of the block-wise max-pooled absolute codes
+%   (thesis Eq. 3.9-3.10).  Temporal version of ScSPM's SC_POOLING.
+
 % ================================================
 %
 % Usage:

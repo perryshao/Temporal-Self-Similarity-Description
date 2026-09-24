@@ -1,4 +1,9 @@
 function gene_descriptor_integral_samples(marker)
+%GENE_DESCRIPTOR_INTEGRAL_SAMPLES  Area integral invariants (AII) of the test set.
+%   GENE_DESCRIPTOR_INTEGRAL_SAMPLES(MARKER) computes 0.5 - INTEGRAL_INVARIANT_KN(
+%   xyz, 6, 5) for every trajectory.
+%   Reads <MARKER>samples.mat (TRAJSAMPLES) and writes <MARKER>samples_DES.mat
+%   (TRAJSAMPLES_DES).  Must compute the same descriptor as the training twin.
 
 fileprefix = 'samples.mat';
 matfilename = [marker fileprefix];

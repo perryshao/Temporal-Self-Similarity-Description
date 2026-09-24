@@ -1,4 +1,9 @@
 function average = dba(sequences)
+%DBA  DTW barycenter averaging of a set of sequences.
+%   AVERAGE = DBA(SEQUENCES) refines the first sequence of the cell array
+%   SEQUENCES towards their DTW barycenter with 5 DBA iterations (Petitjean et
+%   al., 2011), using this folder's DTW with a window of 50.
+
 % index=randi(length(sequences),1);
 index = 1;
 average = sequences{index};

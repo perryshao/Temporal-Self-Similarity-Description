@@ -1,4 +1,10 @@
 function [ClusterData, ClusterID]= ClusterAllData_JointFeatures(joints_no, descrip_flag)
+%CLUSTERALLDATA_JOINTFEATURES  Per-joint descriptors of every sample, for retrieval.
+%   [CLUSTERDATA, CLUSTERID] = CLUSTERALLDATA_JOINTFEATURES(JOINTS_NO,
+%   DESCRIP_FLAG) loads <JOINT>.mat for every joint in JOINTS_NO, computes the
+%   descriptor selected by DESCRIP_FLAG for each joint trajectory (1 FD, 2 DI,
+%   3 AII, 4 MAII, 5 DII, 6 raw xyz) and concatenates them per sample.
+
 m_num = length(joints_no);
 for j = 1:m_num
     load([joints_no{1, j} '.mat']);

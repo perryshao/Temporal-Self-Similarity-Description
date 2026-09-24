@@ -1,4 +1,9 @@
 function gene_descriptor_samples(marker)
+%GENE_DESCRIPTOR_SAMPLES  Differential-invariant (DI) descriptors of the test set.
+%   GENE_DESCRIPTOR_SAMPLES(MARKER) computes DESCRIPTOR_COMP for every trajectory.
+%   Reads <MARKER>samples.mat (TRAJSAMPLES) and writes <MARKER>samples_DES.mat
+%   (TRAJSAMPLES_DES).  Must compute the same descriptor as the training twin.
+
 if nargin <= 2
 
     fileprefix = 'samples.mat';

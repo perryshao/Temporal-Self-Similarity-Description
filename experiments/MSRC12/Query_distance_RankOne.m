@@ -1,4 +1,10 @@
 function [Indx, dtw_distance] = Query_distance_RankOne(Qdata, ClusterData, joints_no)
+%QUERY_DISTANCE_RANKONE  Rank samples by a rank-one-decomposition distance.
+%   [INDX, DTW_DISTANCE] = QUERY_DISTANCE_RANKONE(QDATA, CLUSTERDATA,
+%   JOINTS_NO) compares feature vectors laid out as [rank-one factor 1 |
+%   factor 2 | sequence] (RANKONEDECOM_FEAURES): DTW distance between the
+%   sequence parts plus the Euclidean distances between the two factors.
+
 num = length(ClusterData);
 adjustment_window_size = 50;
 m_num = length(joints_no);

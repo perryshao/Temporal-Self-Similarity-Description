@@ -1,4 +1,10 @@
 function noise_variance = add_noise(marker, level)
+%ADD_NOISE  Add Gaussian noise to the test trajectories of one joint.
+%   NOISE_VARIANCE = ADD_NOISE(MARKER, LEVEL) rewrites <MARKER>samples.mat with
+%   Gaussian noise of level LEVEL, scaled by the trajectory length, on the test trajectories and returns the
+%   noise variance.  Trajectories broken by NaN occlusions are handled segment
+%   by segment.  The training set <MARKER>.mat is saved back unchanged.
+
 %% detect whether there are existing required mat files for C3D data
 if nargin <= 2
     fileprefix = '.mat';

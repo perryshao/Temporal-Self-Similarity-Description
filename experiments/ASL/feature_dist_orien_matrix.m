@@ -1,4 +1,10 @@
 function d=feature_dist_orien_matrix(t, r, orientation1, orientation2)
+%FEATURE_DIST_ORIEN_MATRIX  Local distance of descriptors with relative orientations.
+%   D = FEATURE_DIST_ORIEN_MATRIX(T, R, ORIENTATION1, ORIENTATION2) calls the
+%   DISTANCE_MATRIX mex, which also measures the relative-descriptor terms of
+%   ORIENTATION1/2 (from RELATIVE_DESCRIP_BAT); the active line keeps only the
+%   integral-invariant term (dK./SK).*(dT./ST).  The alternative weightings are
+%   commented out below.
 
 [det_k, det_t, det_orien, det_rd, S_k, S_t, S_orien, S_rd] = distance_matrix(t, r, orientation1, orientation2);
 % [det_k,det_t,S_k,S_t] = distance_matrix_kt(t,r);

@@ -1,4 +1,11 @@
 function gene_descriptor_fd(marker)
+%GENE_DESCRIPTOR_FD  Fourier descriptors of the training set.
+%   GENE_DESCRIPTOR_FD(MARKER) takes the FFT of every xyz trajectory,
+%   normalises it by the magnitude of the first harmonic and keeps
+%   coefficients 2..end (the 1-NN-FD baseline).
+%   Reads <MARKER>.mat (TRAJDB) and writes <MARKER>_DES.mat (TRAJDB_DES).
+%   Keep in sync with the _samples twin, which must compute the SAME
+%   descriptor for the test set; a mismatch gives meaningless accuracies.
 
 TRAJDB_DES = cell (1, []);
 fileprefix = '.mat';

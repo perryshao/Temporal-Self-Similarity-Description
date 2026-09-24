@@ -1,4 +1,9 @@
 function gene_descriptor_fd_samples(marker)
+%GENE_DESCRIPTOR_FD_SAMPLES  Fourier descriptors of the test set.
+%   GENE_DESCRIPTOR_FD_SAMPLES(MARKER): see GENE_DESCRIPTOR_FD.
+%   Reads <MARKER>samples.mat (TRAJSAMPLES) and writes <MARKER>samples_DES.mat
+%   (TRAJSAMPLES_DES).  Must compute the same descriptor as the training twin.
+
 TRAJSAMPLES_DES = cell (1, []);
 fileprefix = 'samples.mat';
 matfilename = [marker fileprefix];

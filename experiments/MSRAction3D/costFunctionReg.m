@@ -1,4 +1,14 @@
 function [f, df, ddf] = costFunctionReg(theta, X, Y, lambda, C, jointNum, modulaNum, initTheta)
+%COSTFUNCTIONREG  Cost and gradient of the group-sparse multi-output regression.
+%   [F, DF] = COSTFUNCTIONREG(THETA, X, Y, LAMBDA, C, JOINTNUM, MODULANUM,
+%   INITTHETA) returns the loss ||X'*W - Y|| of the D x C weight matrix
+%   W = reshape(THETA, D, C) plus three penalties weighted by LAMBDA(1:3):
+%   an L2,1 norm over the rows of W, a group norm over the JOINTNUM joint
+%   groups and MODULANUM feature modalities, and ||THETA - INITTHETA||^2,
+%   which keeps the solution near a previous one.  Also returns the gradient.
+%   X is D x N, Y is N x C one-hot.  For use with MINIMIZE.
+%
+%   See also TRAINBINREGRESSION.
 
 % cosFunctionReg.m This function returns the function value, partial derivatives
 % and Hessian of the (general dimension) rosenbrock function, given by:

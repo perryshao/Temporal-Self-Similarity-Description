@@ -1,5 +1,12 @@
 function [ClusterRawData, ClusterData, ClusterID]= ClusterAllData(TRAJDB, TRAJSAMPLES, ...
                               TRAJDB_DES, TRAJSAMPLES_DES, INTEGRATE_DES, INTEGRATESAMPLES_DES)
+%CLUSTERALLDATA  Pool training and test sets for clustering / retrieval.
+%   [CLUSTERRAWDATA, CLUSTERDATA, CLUSTERID] = CLUSTERALLDATA(TRAJDB,
+%   TRAJSAMPLES, TRAJDB_DES, TRAJSAMPLES_DES, INTEGRATE_DES,
+%   INTEGRATESAMPLES_DES) concatenates both sets: raw xyz trajectories, their
+%   descriptors (root descriptor followed by the relative descriptors) and
+%   their class labels.
+
 samples_r = size(TRAJDB, 2);
 samples_t = size(TRAJSAMPLES, 2);
 for i = 1:samples_r

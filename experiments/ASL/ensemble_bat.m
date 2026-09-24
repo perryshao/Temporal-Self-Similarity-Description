@@ -1,4 +1,9 @@
 function ensemble_bat(joints_no)
+%ENSEMBLE_BAT  Average several joint trajectories into one root trajectory.
+%   ENSEMBLE_BAT(JOINTS_NO) loads <JOINT>.mat / <JOINT>samples.mat for every
+%   joint in JOINTS_NO and saves their frame-wise mean as ENSEMBLE.mat /
+%   ENSEMBLEsamples.mat.  For ASL this is the root trajectory of a sign, the
+%   average of the two hands (thesis Sec. 5.2).
 
 %% dbs
 load([joints_no{1, 1} '.mat']);

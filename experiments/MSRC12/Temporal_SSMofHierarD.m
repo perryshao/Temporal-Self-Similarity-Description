@@ -1,4 +1,13 @@
 function TSSM = Temporal_SSMofHierarD(des, descrip_flag)
+%TEMPORAL_SSMOFHIERARD  SSM of a hierarchical (root + relative) descriptor.
+%   TSSM = TEMPORAL_SSMOFHIERARD(DES, DESCRIP_FLAG) windows DES over 5 frames:
+%   columns 1-2 (root integral invariants) and 3:end (relative descriptors of
+%   13 joints) are stacked separately.  DESCRIP_FLAG = 0 uses
+%   FEATURE_DIST_ORIEN_MATRIX on the windows; flags 1-8 are as in TEMPORAL_SSM
+%   but, except for 2-4, act on the unwindowed DES.
+%
+%   See also TEMPORAL_SSM, GENE_TSSM.
+
 m = size(des, 1); % temporal length
 n = size(des, 2); % dimension
 d = zeros(m, m); % Similarity matrix

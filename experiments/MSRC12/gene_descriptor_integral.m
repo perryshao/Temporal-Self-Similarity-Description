@@ -1,4 +1,10 @@
 function gene_descriptor_integral(marker)
+%GENE_DESCRIPTOR_INTEGRAL  Multiscale area integral invariants (MAII), training set.
+%   GENE_DESCRIPTOR_INTEGRAL(MARKER) is a menu of per-frame descriptors; as last
+%   saved it computes 0.5 - INTEGRAL_INVARIANT_MS(xyz, 6, 0.2).
+%   Reads <MARKER>.mat (TRAJDB) and writes <MARKER>_DES.mat (TRAJDB_DES).
+%   Keep in sync with the _samples twin, which must compute the SAME
+%   descriptor for the test set; a mismatch gives meaningless accuracies.
 
 fileprefix = '.mat';
 matfilename = [marker fileprefix];

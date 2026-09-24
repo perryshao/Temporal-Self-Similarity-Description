@@ -1,5 +1,12 @@
 function [traindata, testdata, trainGID, testGID]=construct_gmmdata(TRAJDB, TRAJSAMPLES, ...
                               TRAJDB_DES, TRAJSAMPLES_DES)
+%CONSTRUCT_GMMDATA  Arrange descriptors for the per-class GMM baseline.
+%   [TRAINDATA, TESTDATA, TRAINGID, TESTGID] = CONSTRUCT_GMMDATA(TRAJDB,
+%   TRAJSAMPLES, TRAJDB_DES, TRAJSAMPLES_DES) stacks all training frames of
+%   each class into one matrix (TRAINDATA{class}) and keeps one matrix per test
+%   trajectory.  Column 1 is the frame index; the two zero-padded frames at
+%   each end of a descriptor sequence are dropped.
+
 samples_r = size(TRAJDB, 2);
 samples_t = size(TRAJSAMPLES, 2);
 r_rows = zeros(1, samples_r);

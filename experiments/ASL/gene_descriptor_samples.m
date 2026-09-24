@@ -1,4 +1,13 @@
 function gene_descriptor_samples(marker, level, descrip_flag, occlu_ratio, ssm_flag)
+%GENE_DESCRIPTOR_SAMPLES  Per-frame descriptors of the test set, chosen by flag (ASL).
+%   GENE_DESCRIPTOR_SAMPLES(MARKER, LEVEL, DESCRIP_FLAG, OCCLU_RATIO, SSM_FLAG) loads
+%   <MARKER>samples.mat, optionally adds Gaussian noise of level LEVEL and occlusion
+%   OCCLU_RATIO, computes the descriptor selected by DESCRIP_FLAG (2 DI,
+%   3 AII, 4 MAII, 5 DII, 6 MDII, 7 raw xyz) and, if SSM_FLAG == 1, replaces it
+%   by the local self-similarity descriptors of its SSM.  Writes
+%   <MARKER>samples_DES.mat.  Used by the older experiments, not by
+%   RECOGNITION_DTW_TSD_BAT.
+
 if occlu_ratio == 0
     occlu_flag = 0;
 else

@@ -1,4 +1,13 @@
 function load_txt_bat(joints_no, CLASS_SELECTED, BAT_FOLDER)
+%LOAD_TXT_BAT  Load MSRC-12 skeleton .txt files into training / test sets.
+%   LOAD_TXT_BAT(JOINTS_NO, CLASS_SELECTED, BAT_FOLDER) reads the class
+%   sub-folders of BAT_FOLDER whose index is in CLASS_SELECTED, splits every
+%   class at random into halves and saves, per joint (JOINTS_NO are joint
+%   numbers as strings), <JOINT>.mat (TRAJDB) and <JOINT>samples.mat.
+%
+%   NOTE: class folders are indexed from the 3rd entry of DIR, assuming the
+%   first two are '.' and '..'.
+
 file_ext = '.txt';
 fileprefix = '.mat';
 samplesfileprefix = 'samples.mat';

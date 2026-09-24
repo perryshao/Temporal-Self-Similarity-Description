@@ -1,5 +1,8 @@
-% USAGE: drawskt(1,3,1,4,1,2) --- show actions 1,2,3 performed by subjects 1,2,3,4 with instances 1 and 2.
 function [X Y Z] = readMSRtxt(skeleton_txt)
+%READMSRTXT  Read one MSR Action3D skeleton file.
+%   [X, Y, Z] = READMSRTXT(SKELETON_TXT) returns 20 x frames matrices of joint
+%   coordinates, with the axes rearranged (and the depth axis rescaled) as in
+%   the data set's DRAWSKT viewer.
 
 file = sprintf(skeleton_txt);
 fp = fopen(file);

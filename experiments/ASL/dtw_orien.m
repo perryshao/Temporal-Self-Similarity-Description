@@ -1,4 +1,12 @@
 function dist = dtw_orien(t, r, orientation1, orientation2, flag)
+%DTW_ORIEN  Plain O(n*m) DTW with the orientation-aware local distance (older version).
+%   DIST = DTW_ORIEN(T, R, ORIENTATION1, ORIENTATION2, FLAG) accumulates the
+%   FEATURE_DIST_ORIEN_MATRIX local distance with an unconstrained DTW
+%   recursion.  Superseded by DTW_ADJ_ORIEN.
+%
+%   NOTE: calls FEATURE_DIST_ORIEN_MATRIX with 5 arguments, but that function
+%   now takes 4, so this file errors as last saved.
+%
 % Compare two model using a efficient DTW
 % inputs:
 % test -- test model

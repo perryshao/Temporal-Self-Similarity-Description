@@ -1,4 +1,9 @@
 function Clustered_accuracy = Get_ClusterAccuracy(Clustered_Indx, clusterID)
+%GET_CLUSTERACCURACY  Accuracy of a clustering against the true classes.
+%   ACC = GET_CLUSTERACCURACY(CLUSTERED_INDX, CLUSTERID) matches every cluster
+%   (a cell of member indices) to the class it overlaps most and averages the
+%   fraction of that class it recovers.
+
 K = length(Clustered_Indx);
 intersect_indx = cell(K, K);
 interscet_num = zeros(K, K);

@@ -1,4 +1,9 @@
 function [INTEGRATE_DES, INTEGRATESAMPLES_DES] = relative_descrip_bat(joints_no, marker)
+%RELATIVE_DESCRIP_BAT  Relative descriptors of child joints w.r.t. a root trajectory.
+%   [INTEGRATE_DES, INTEGRATESAMPLES_DES] = RELATIVE_DESCRIP_BAT(JOINTS_NO,
+%   MARKER) loads the root trajectory MARKER and the first numel(JOINTS_NO)-1
+%   joints, and for every sample concatenates GENE_RELATIVE_DESCRIP (two
+%   orientation angles and a distance per joint) over the joints.
 
 %% dbs
 load([marker '.mat']);

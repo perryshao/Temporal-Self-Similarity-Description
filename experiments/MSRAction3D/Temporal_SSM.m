@@ -1,4 +1,11 @@
 function TSSM = Temporal_SSM(des_matrix, descrip_flag, kernel, belta, c)
+%TEMPORAL_SSM  Temporal SSM of a sequence, frame by frame (MSR Action3D version).
+%   TSSM = TEMPORAL_SSM(DES_MATRIX, DESCRIP_FLAG, KERNEL, BELTA, C) is the older
+%   form of ssm/Temporal_SSM without the frame window: rows of DES_MATRIX are
+%   compared directly.  Flags and the sigmoid distance tanh(BELTA*d - C)
+%   (KERNEL = 1) are as in ssm/Temporal_SSM.  Kept here because GENETSSM calls
+%   it with this signature; it shadows ssm/Temporal_SSM in this folder.
+
 m = size(des_matrix, 1); % temporal length
 n = size(des_matrix, 2); % dimension
 d = zeros(m, m); % Similarity matrix

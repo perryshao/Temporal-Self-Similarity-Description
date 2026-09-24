@@ -1,4 +1,11 @@
 function gene_descriptor(marker)
+%GENE_DESCRIPTOR  Differential-invariant (DI) descriptors of the training set.
+%   GENE_DESCRIPTOR(MARKER) computes DESCRIPTOR_COMP for every trajectory.
+%   Reads <MARKER>.mat (TRAJDB) and writes <MARKER>_DES.mat (TRAJDB_DES).
+%   Keep in sync with the _samples twin, which must compute the SAME
+%   descriptor for the test set; a mismatch gives meaningless accuracies.
+%   The no-argument branch is a leftover for the two-hand ASL .tsd database.
+
 if nargin == 1
 
     fileprefix = '.mat';

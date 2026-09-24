@@ -1,4 +1,11 @@
 function [traindata, testdata, sum_BoF_time] = gene_codebook(TRAJDB_DES, TRAJSAMPLES_DES, ntotalbh)
+%GENE_CODEBOOK  Bag-of-features histograms over equal temporal blocks.
+%   [TRAINDATA, TESTDATA, SUM_BOF_TIME] = GENE_CODEBOOK(TRAJDB_DES,
+%   TRAJSAMPLES_DES, NTOTALBH) learns a k-means codebook (LEARNCODEBOOK, K =
+%   one word per ten training descriptors) and describes every sequence by the
+%   concatenated BoF histograms of NTOTALBH equal temporal blocks (one pyramid
+%   level).  NTOTALBH = 1 gives the orderless BoF-SSM baseline.  SUM_BOF_TIME
+%   is the time spent encoding the test set.
 
 %% collect the visual words
 % K = 5000; % the numbers of words
