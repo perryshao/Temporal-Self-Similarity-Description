@@ -281,8 +281,9 @@ See [MEX recovery](docs/MEX_RECOVERY.md) for restored sources, separate build ta
 Validation now combines Python numerical oracles, C++ AddressSanitizer/UndefinedBehaviorSanitizer,
 and actual MATLAB-source execution through Octave with seven rebuilt MEX modules.
 Six synthetic raw/sigmoid SSM → Log-HOG → BoF/VQ/ScSPM → SVM paths pass with
-training-derived sparse initialization; a separate random-initialization failure
-is recorded. See [Octave validation and reproducibility](docs/OCTAVE_VALIDATION.md),
+training-derived sparse initialization. The former random-initialization defect
+is repaired and covered by seven training regressions plus independent constrained
+basis-solver tests; see [the correction](docs/SPARSE_DICTIONARY_FIX.md). See [Octave validation and reproducibility](docs/OCTAVE_VALIDATION.md),
 [recorded results](docs/OCTAVE_VALIDATION.json), and the
 [Python reference layer](docs/VALIDATION.md). This does not certify MATLAB ABI
 compatibility or reproduce published dataset scores.

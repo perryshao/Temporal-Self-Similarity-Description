@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-09-25T14:29:16.171266+00:00",
+  "timestamp_utc": "2026-09-25T15:11:41.211447+00:00",
   "passed": true,
   "octave_version": "10.3.0",
   "package_versions": [
@@ -60,23 +60,141 @@
   "dictionary_objectives": [
     [
       0.1693132675387169,
-      0.16754114043295112,
-      0.16707163542718217
+      0.16754114049945545,
+      0.1670716357472792
     ],
     [
       0.16535287710372004,
-      0.1642397644538064,
-      0.16405626556568204
+      0.16423976454261216,
+      0.1640562657119879
     ]
   ],
   "dictionary_norm_max": [
-    1.0000000108901352,
-    1.0000000434813436
+    1.0,
+    1.0000000000000002
   ],
-  "known_limitations": {
-    "random_zero_mean_init_max_atom_norm": 1.1225191149073246,
-    "random_init_unit_ball_violation": true,
-    "note": "Recorded failing initialization case; six passing paths use train-only Yael initialization"
+  "random_initialization_regressions": {
+    "names": [
+      "original_gaussian_raw",
+      "default_raw_0",
+      "default_raw_1",
+      "default_raw_7",
+      "default_raw_71",
+      "default_sigmoid_0",
+      "default_sigmoid_1"
+    ],
+    "max_atom_norm_per_epoch": [
+      [
+        1.0,
+        0.9999999999999998,
+        0.9999999999999998
+      ],
+      [
+        1.0000000000000002,
+        1.0000000000000002,
+        1.0000000000000002
+      ],
+      [
+        1.0000000000000004,
+        1.0000000000000004,
+        1.0000000000000004
+      ],
+      [
+        1.0000000000000002,
+        1.0000000000000007,
+        1.0000000000000002
+      ],
+      [
+        1.0,
+        1.0000000000000004,
+        1.0
+      ],
+      [
+        1.0000000000000002,
+        1.0000000000000002,
+        1.0000000000000002
+      ],
+      [
+        1.0000000000000004,
+        1.0000000000000004,
+        1.0000000000000004
+      ]
+    ],
+    "stationarity_residual_per_epoch": [
+      [
+        5.5914603504252485e-18,
+        1.119343596771572e-16,
+        8.640563666094511e-17
+      ],
+      [
+        8.769968323158012e-10,
+        2.6154423475782613e-10,
+        6.424628394616205e-10
+      ],
+      [
+        8.058832826019625e-11,
+        1.5404924508519596e-10,
+        7.501097321312925e-10
+      ],
+      [
+        8.105594085713982e-14,
+        1.5848561255333866e-10,
+        7.913315729237396e-10
+      ],
+      [
+        5.840231637287618e-12,
+        2.612316535152097e-10,
+        2.2124897283467333e-10
+      ],
+      [
+        1.84171164429678e-12,
+        7.021647000002314e-11,
+        8.484762880357675e-10
+      ],
+      [
+        9.993361063435199e-18,
+        8.629489445975156e-11,
+        2.288181052133123e-10
+      ]
+    ],
+    "objective_per_epoch": [
+      [
+        0.5023655470238657,
+        0.3668367684060484,
+        0.34751185788821126
+      ],
+      [
+        0.5023079355473565,
+        0.22748488691921315,
+        0.19082412792963974
+      ],
+      [
+        0.5023907436840803,
+        0.2684670053518958,
+        0.21678383472328713
+      ],
+      [
+        0.5021322974215505,
+        0.22120854896385234,
+        0.19646295804640926
+      ],
+      [
+        0.502177847997594,
+        0.20812452668983789,
+        0.18711674086009888
+      ],
+      [
+        0.5044877231864171,
+        0.2159346271037692,
+        0.1850709164877805
+      ],
+      [
+        0.504557884053809,
+        0.2540250135306802,
+        0.20240600446518692
+      ]
+    ],
+    "passed": true
   },
   "source_hash_convention": "Text CRLF normalized to LF",
   "source_sha256": {
@@ -246,8 +364,8 @@
     "thirdparty/ScSPM/sparse_coding/L1QP_FeatureSign_yang.m": "2510a9839df2cd2d6a745e5f3618cf3b15841c013b4284dc8dd290a062cc6712",
     "thirdparty/ScSPM/sparse_coding/feature_sign.m": "99ec998cd90477a6b4d27c5230d6d3da5bb64ca46d2a9988365d4cb0c6c3d1df",
     "thirdparty/ScSPM/sparse_coding/getObjective_RegSc.m": "0fab3dfc30a5e175a180f107bd8037baacadd9f0810cda188744287094e351e5",
-    "thirdparty/ScSPM/sparse_coding/l2ls_learn_basis_dual.m": "c27b53c1c86f21cc4056b4eb24fbd1f12f639315d8b8b215dd2bfeb92a36a9e4",
-    "thirdparty/ScSPM/sparse_coding/reg_sparse_coding.m": "93119872dd8698d353983a87607bdf8120f9c8cc2c930947edf62f655388b195",
+    "thirdparty/ScSPM/sparse_coding/l2ls_learn_basis_dual.m": "f3b152b642e3c5a925de53e6bab46e66fb19b8111c18b6ebd87c6982cdac4abc",
+    "thirdparty/ScSPM/sparse_coding/reg_sparse_coding.m": "b615ba8d443f71a922abae4b0a7252778ef33e80f34f6aba636c0186e7d2f83a",
     "thirdparty/ScSPM/sparse_coding/sc2/cgf_fitS_sc2.m": "1aa6589e5b6bcd58229c4115f333095d9951d340d065f9334d2baebc2fd82c85",
     "thirdparty/ScSPM/sparse_coding/sc2/cgf_sc.c": "8bf976699e771d10bb555dd1a926554d19b028155200d61f4ae686be12d3e964",
     "thirdparty/ScSPM/sparse_coding/sc2/getObjective2.m": "21ffb009aa5c8f31b5f7a6cbe867b8bb62f2ad39d86e075dc25a7f00112658e7",
@@ -375,13 +493,15 @@
     "iid/matching/src/dtwpath/stdafx.h": "45197cb370d9967b1d8c935275723c6925fa8813b4f29758ddc5099d77a15627",
     "iid/matching/src/dtwpath/targetver.h": "da20f3edb0b98f94bd485fa238b6641ccefa14237597c166be78811eda9fe227",
     "iid/matching/src/hist_isect_c.c": "5bb9d1142474e8c48cab201f09aed5950d34eeb97b617233416d0bd312419df3",
+    "tools/validation/basis_regression.m": "8392b01eb55fc38853ccc853b3767b0866794cb9e2636483125a81b6f584ad31",
+    "tools/validation/basis_validation.py": "c9e09274e1bcbaab77dfaf9ad410bea29b219504ce5683f541422f9e771126eb",
     "tools/validation/distance_driver.cpp": "c97f429478f9c7aef46e35da3ed530b532d53c9de5cfc8f98849d68e7345de17",
     "tools/validation/matrix.h": "8f82468318edd683b06ab568e282f3a6328252f9995c786e9ec7d8d7bb80f076",
     "tools/validation/mex.h": "37a71cd208cb49a9620d85bf51d9ec2dec962c9edfe8b2a875602647d6cc4d18",
     "tools/validation/octave_include/matrix.h": "11729b12857316665d3a229d995c5935e22323eb935358e2de3dd40b758a26e7",
-    "tools/validation/octave_validation.py": "226e35ea0b1ab827b32c3446c408e8eb641714cb99fda7d9cec4fbc618ba342b",
+    "tools/validation/octave_validation.py": "2b8dfc7e2b3e9a82e03f1a22eb8d5db9cdcc1c3186297e144239e44989dd6e47",
     "tools/validation/reference.py": "9e7bc28903ed75302a9d5ca272af1b6f7dd252a5638e5e1c8c068f113a50886e",
-    "tools/validation/run_octave_validation.m": "f931e9a29a6c3d83323f3f029c2d351cd1dec92d973ecb2186c759144ddc53fd",
+    "tools/validation/run_octave_validation.m": "f828443fb238c1179dedc6bfec8709c7c4a81c0547e3ed751a0637bad57fe3b9",
     "tools/validation/validate.py": "b02feebc1d79ea1a8114e8ae66416c2e990beddf45f5d2f1c68adf21b66281dc"
   }
 }

@@ -59,7 +59,9 @@ sanitizer checks. ASL zero-SSM scaling and the BoF helper's incompatible Yael
 call are fixed. The ScSPM optimizer has a documented Octave-only option branch.
 These are functional changes after the earlier style-only review.
 
-A zero-mean random-initialization fixture still causes ScSPM singular matrices
-and a dictionary norm constraint violation under Octave. Passing end-to-end
-tests use the existing initB interface with training-derived atoms. Neither
-those passes nor the source hashes certify the remaining alternatives above.
+The zero-mean random-initialization singularity and atom-norm violation have
+subsequently been fixed with certified dual/primal constrained updates and
+warm-start preservation of unused atoms. See `docs/SPARSE_DICTIONARY_FIX.md` and
+its independent solver tests. The original failure and six default-uniform
+initialization runs are now strict passing regressions. These checks do not
+certify the other experimental alternatives above.

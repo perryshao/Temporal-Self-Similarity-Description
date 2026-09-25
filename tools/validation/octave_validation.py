@@ -90,6 +90,9 @@ def run(octave, work, conda_prefix=None):
         assert np.all(np.diff(objective) <= 1e-7)
     accuracy = actual['accuracies']
     assert np.all(accuracy >= 8/9)
+    assert np.all(actual['random_init_norms'] <= 1+1e-12)
+    assert np.all(actual['random_init_residuals'] <= 1e-9)
+    assert np.all(np.diff(actual['random_init_objectives'], axis=1) <= 1e-7)
     hashes = {}
     # Bind to all tracked active numerical sources and validation files; no data.
     for folder in ('ssm', 'descriptor', 'experiments', 'thirdparty/computeBoV',
@@ -108,10 +111,14 @@ def run(octave, work, conda_prefix=None):
                 pipeline_accuracies=accuracy.tolist(),
                 dictionary_objectives=[np.atleast_1d(v).tolist() for v in actual['dictionary_objectives']],
                 dictionary_norm_max=[float(np.max(v)) for v in actual['dictionary_norms']],
-                known_limitations={
-                    'random_zero_mean_init_max_atom_norm': float(actual['random_init_max_norm']),
-                    'random_init_unit_ball_violation': bool(actual['random_init_max_norm'] > 1.01),
-                    'note': 'Recorded failing initialization case; six passing paths use train-only Yael initialization'},
+                random_initialization_regressions={
+                    'names': actual['random_init_names'].tolist(),
+                    'max_atom_norm_per_epoch': actual['random_init_norms'].tolist(),
+                    'stationarity_residual_per_epoch': actual['random_init_residuals'].tolist(),
+                    'objective_per_epoch': actual['random_init_objectives'].tolist(),
+                    'passed': bool(np.all(actual['random_init_norms'] <= 1+1e-12)
+                                   and np.all(actual['random_init_residuals'] <= 1e-9)
+                                   and np.all(np.diff(actual['random_init_objectives'], axis=1) <= 1e-7))},
                 source_hash_convention='Text CRLF normalized to LF', source_sha256=hashes)
 
 

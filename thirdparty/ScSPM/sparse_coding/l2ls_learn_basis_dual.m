@@ -1,96 +1,164 @@
-function B = l2ls_learn_basis_dual(X, S, l2norm, Binit)
-% Learning basis using Lagrange dual (with basis normalization)
+function [B, info] = l2ls_learn_basis_dual(X, S, l2norm, Binit)
+%L2LS_LEARN_BASIS_DUAL Constrained least-squares dictionary update.
+%   B minimizes 0.5*||X-B*S||_F^2 subject to ||B(:,j)||_2 <= L2NORM.
+%   BINIT is an optional feasible warm start; unused atoms retain its projected
+%   values because they do not affect the fixed-code objective. Without BINIT
+%   they are zero. [B, INFO] also reports the accepted solver and its residual.
 %
-% This code solves the following problem:
-% 
-%    minimize_B   0.5*||X - B*S||^2
-%    subject to   ||B(:,j)||_2 <= l2norm, forall j=1...size(S,1)
-% 
-% The detail of the algorithm is described in the following paper:
-% 'Efficient Sparse Codig Algorithms', Honglak Lee, Alexis Battle, Rajat Raina, Andrew Y. Ng, 
-% Advances in Neural Information Processing Systems (NIPS) 19, 2007
+%   Well-conditioned active codes use the original Lagrange-dual formulation.
+%   Rank-deficient codes, missing FMINCON, or an uncertified dual result use
+%   exact cyclic block minimization of the same constrained primal objective.
+%   No ridge penalty is added. Every returned result is feasible and passes a
+%   scaled projected-gradient stationarity check; nonconvergence raises an error.
 %
-% Written by Honglak Lee <hllee@cs.stanford.edu>
-% Copyright 2007 by Honglak Lee, Alexis Battle, Rajat Raina, and Andrew Y. Ng
+%   Original dual algorithm: Honglak Lee, Alexis Battle, Rajat Raina and
+%   Andrew Y. Ng, "Efficient Sparse Coding Algorithms", NIPS 19 (2007).
+%   Original implementation by Honglak Lee, copyright 2007 the above authors.
+%   Local robustness changes: singular-code handling and solver certification.
 
-L = size(X,1);
-N = size(X,2);
-M = size(S, 1);
-
-tic
-SSt = S*S';
-XSt = X*S';
-
-if exist('Binit', 'var')
-    dual_lambda = diag(Binit\XSt - SSt);
-else
-    dual_lambda = 10*abs(rand(M,1)); % any arbitrary initialization should be ok.
+if ~isnumeric(X) || ~isreal(X) || ~ismatrix(X) || ...
+        ~isnumeric(S) || ~isreal(S) || ~ismatrix(S) || ...
+        size(X, 2) ~= size(S, 2) || ...
+        any(~isfinite(X(:))) || any(~isfinite(S(:)))
+    error('TSSM:DictionaryInput', 'X and S must be finite real matrices with equal sample counts.');
 end
-
-c = l2norm^2;
-trXXt = sum(sum(X.^2));
-
-lb=zeros(size(dual_lambda));
-if exist('OCTAVE_VERSION', 'builtin')
-    % Octave optim requires the explicit option name for the objective Hessian.
-    options = optimset('GradObj', 'on', 'HessianFcn', 'objective');
-else
-    options = optimset('GradObj','on', 'Hessian','on');
+if ~isnumeric(l2norm) || ~isreal(l2norm) || ~isscalar(l2norm) || ...
+        ~isfinite(l2norm) || l2norm < 0
+    error('TSSM:DictionaryRadius', 'The atom radius must be a finite nonnegative scalar.');
 end
-% options = optimset('GradObj','on', 'Hessian','on', 'TolFun', 1e-16); %% perry modified 'Algorithm','trust-region'
-
-[x, fval, exitflag, output] = fmincon(@(x) fobj_basis_dual(x, SSt, XSt, X, c, trXXt), dual_lambda, [], [], [], [], lb, [], [], options);
-exitflag
-% output.iterations
-fval_opt = -0.5*N*fval;
-dual_lambda= x;
-
-Bt = (SSt+diag(dual_lambda)) \ XSt';
-B_dual= Bt';
-fobjective_dual = fval_opt;
-
-
-B= B_dual;
-fobjective = fobjective_dual;
-toc
-
-return;
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-function [f,g,H] = fobj_basis_dual(dual_lambda, SSt, XSt, X, c, trXXt)
-% Compute the objective function value at x
-L= size(XSt,1);
-M= length(dual_lambda);
-
-SSt_inv = inv(SSt + diag(dual_lambda));
-
-% trXXt = sum(sum(X.^2));
-if L>M
-    % (M*M)*((M*L)*(L*M)) => MLM + MMM = O(M^2(M+L))
-    f = -trace(SSt_inv*(XSt'*XSt))+trXXt-c*sum(dual_lambda);
-    
+X = double(X);
+S = double(S);
+[d, ~] = size(X);
+k = size(S, 1);
+if nargin < 4 || isempty(Binit)
+    B = zeros(d, k);
 else
-    % (L*M)*(M*M)*(M*L) => LMM + LML = O(LM(M+L))
-    f = -trace(XSt*SSt_inv*XSt')+trXXt-c*sum(dual_lambda);
+    if ~isnumeric(Binit) || ~isreal(Binit) || ...
+            ~isequal(size(Binit), [d k]) || any(~isfinite(Binit(:)))
+        error('TSSM:DictionaryInitial', 'Binit must be a finite real feature-by-atom matrix.');
+    end
+    B = project_atoms(double(Binit), l2norm);
 end
-f= -f;
-
-if nargout > 1   % fun called with two output arguments
-    % Gradient of the function evaluated at x
-    g = zeros(M,1);
-    temp = XSt*SSt_inv;
-    g = sum(temp.^2) - c;
-    g= -g;
-    
-    
-    if nargout > 2
-        % Hessian evaluated at x
-        % H = -2.*((SSt_inv*XSt'*XSt*SSt_inv).*SSt_inv);
-        H = -2.*((temp'*temp).*SSt_inv);
-        H = -H;
+G = full(S*S');
+Q = full(X*S');
+if any(~isfinite(G(:))) || any(~isfinite(Q(:)))
+    error('TSSM:DictionaryOverflow', 'Dictionary sufficient statistics overflowed.');
+end
+active = find(diag(G) > 0);
+info = struct('method', 'inactive', 'iterations', 0, 'dual_exitflag', NaN, ...
+    'projected_gradient_residual', 0, 'objective', 0, 'active_atoms', numel(active));
+if l2norm == 0
+    B(:) = 0;
+elseif ~isempty(active)
+    A = G(active, active);
+    C = Q(:, active);
+    initial = B(:, active);
+    tolerance = 1e-9;
+    % An infinity-norm bound is a safe Lipschitz constant for the symmetric A.
+    lipschitz = norm(A, inf);
+    accepted = false;
+    if rcond(A) > 1e-10 && exist('fmincon', 'file') ~= 0
+        try
+            if exist('OCTAVE_VERSION', 'builtin')
+                options = optimset('GradObj', 'on', 'HessianFcn', 'objective', ...
+                    'Display', 'off', 'TolFun', 1e-10, 'MaxIter', 1000);
+            else
+                options = optimset('GradObj', 'on', 'Hessian', 'on', ...
+                    'Display', 'off', 'TolFun', 1e-10, 'MaxIter', 1000);
+            end
+            lambda0 = max(1, mean(diag(A)))*ones(numel(active), 1);
+            [lambda, ~, flag] = fmincon(@(v) dual_objective(v, A, C, l2norm), ...
+                lambda0, [], [], [], [], zeros(size(lambda0)), [], [], options);
+            info.dual_exitflag = flag;
+            [R, failed] = chol(A + diag(lambda));
+            if flag > 0 && failed == 0 && all(isfinite(lambda)) && all(lambda >= 0)
+                candidate = (R \ (R' \ C'))';
+                % Only remove floating-point-sized feasibility error, then
+                % certify the projected candidate rather than trusting exitflag.
+                if all(isfinite(candidate(:))) && ...
+                        max(sqrt(sum(candidate.^2, 1))) <= l2norm*(1 + 1e-8)
+                    candidate = project_atoms(candidate, l2norm);
+                    accepted = residual(candidate, A, C, l2norm, lipschitz) <= tolerance;
+                    if accepted
+                        B(:, active) = candidate;
+                        info.method = 'dual';
+                    end
+                end
+            end
+        catch
+            % A solver failure cannot authorize returning an invalid dictionary.
+            % The independently certified primal solve below must still succeed.
+            accepted = false;
+        end
+    end
+    if ~accepted
+        candidate = initial;
+        converged = false;
+        for sweep = 0:10000
+            gradient = candidate*A - C;
+            if residual(candidate, A, C, l2norm, lipschitz) <= tolerance
+                converged = true;
+                break;
+            end
+            if sweep == 10000, break; end
+            for j = 1:numel(active)
+                % Exact minimizer over this atom's closed Euclidean ball.
+                atom = project_atoms(candidate(:, j) - gradient(:, j)/A(j, j), l2norm);
+                delta = atom - candidate(:, j);
+                candidate(:, j) = atom;
+                gradient = gradient + delta*A(j, :);
+            end
+        end
+        if ~converged
+            error('TSSM:DictionaryConvergence', 'Constrained dictionary update did not converge.');
+        end
+        B(:, active) = candidate;
+        info.method = 'coordinate';
+        info.iterations = sweep;
+    end
+    info.projected_gradient_residual = residual(B(:, active), A, C, l2norm, lipschitz);
+    % The fixed-code fit must not increase relative to a supplied warm start.
+    change = B(:, active) - initial;
+    objective_change = sum(sum(change.*(initial*A-C))) + ...
+        0.5*sum(sum((change*A).*change));
+    if objective_change > 1e-8*max(1, norm(C, 'fro')*norm(initial, 'fro'))
+        error('TSSM:DictionaryDescent', 'Dictionary update increased the fixed-code objective.');
     end
 end
+if any(~isfinite(B(:))) || any(sqrt(sum(B.^2, 1)) > l2norm*(1 + 1e-12))
+    error('TSSM:DictionaryFeasibility', 'Dictionary update violated an atom constraint.');
+end
+fit = X - B*S;
+info.objective = 0.5*sum(fit(:).^2);
+if ~isfinite(info.objective)
+    error('TSSM:DictionaryOverflow', 'Dictionary objective overflowed.');
+end
+end
 
-return
+function [f, g, H] = dual_objective(lambda, A, C, radius)
+% Cholesky solves avoid explicitly inverting a singular Gram matrix.
+R = chol(A + diag(lambda));
+B = (R \ (R' \ C'))';
+f = sum(sum(C.*B)) + radius^2*sum(lambda);
+g = radius^2 - sum(B.^2, 1)';
+if nargout > 2
+    inverse = R \ (R' \ eye(size(A)));
+    H = 2*((B'*B).*inverse);
+end
+end
+
+function B = project_atoms(B, radius)
+for j = 1:size(B, 2)
+    length = norm(B(:, j));
+    if length > radius
+        B(:, j) = B(:, j)*(radius/length);
+    end
+end
+end
+
+function value = residual(B, A, C, radius, lipschitz)
+gradient = B*A - C;
+mapping = lipschitz*(B - project_atoms(B-gradient/lipschitz, radius));
+scale = max([1, norm(C, 'fro'), lipschitz*norm(B, 'fro')]);
+value = norm(mapping, 'fro')/scale;
+end

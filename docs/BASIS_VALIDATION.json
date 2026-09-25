@@ -1,0 +1,143 @@
+{
+  "passed": true,
+  "timestamp_utc": "2026-09-25T15:10:39.268889+00:00",
+  "cases": [
+    {
+      "name": "orthogonal_closed_form",
+      "method": "dual",
+      "objective": 10.794820610683553,
+      "oracle_objective": 10.794820610679364,
+      "max_atom_norm": 1.0,
+      "projected_gradient_residual": 5.3106481667084165e-17
+    },
+    {
+      "name": "full_rank",
+      "method": "coordinate",
+      "objective": 11.779274372469697,
+      "oracle_objective": 11.779274372470333,
+      "max_atom_norm": 0.705069423452114,
+      "projected_gradient_residual": 3.7593371051551855e-10
+    },
+    {
+      "name": "unused_atoms",
+      "method": "coordinate",
+      "objective": 12.714654692671674,
+      "oracle_objective": 12.714654692671672,
+      "max_atom_norm": 1.0,
+      "projected_gradient_residual": 4.815346409130762e-10
+    },
+    {
+      "name": "duplicate_rows",
+      "method": "coordinate",
+      "objective": 14.297364248001173,
+      "oracle_objective": 14.297364248001168,
+      "max_atom_norm": 1.0,
+      "projected_gradient_residual": 1.145696313771604e-16
+    },
+    {
+      "name": "near_duplicate_rows",
+      "method": "coordinate",
+      "objective": 6.44333656910488,
+      "oracle_objective": 6.44333656905314,
+      "max_atom_norm": 1.0,
+      "projected_gradient_residual": 1.1589976647656823e-12
+    },
+    {
+      "name": "more_atoms_than_samples",
+      "method": "coordinate",
+      "objective": 0.00544348951078753,
+      "oracle_objective": 0.005443489513797042,
+      "max_atom_norm": 1.0000000000000002,
+      "projected_gradient_residual": 9.95726260266802e-10
+    },
+    {
+      "name": "zero_codes",
+      "method": "inactive",
+      "objective": 8.602970723254154,
+      "oracle_objective": 8.602970723254154,
+      "max_atom_norm": 1.0,
+      "projected_gradient_residual": 0.0
+    },
+    {
+      "name": "zero_data",
+      "method": "dual",
+      "objective": 0.0,
+      "oracle_objective": 9.833234345321583e-27,
+      "max_atom_norm": 0.0,
+      "projected_gradient_residual": 0.0
+    },
+    {
+      "name": "zero_radius",
+      "method": "inactive",
+      "objective": 12.711318789910464,
+      "oracle_objective": 12.711318789910464,
+      "max_atom_norm": 0.0,
+      "projected_gradient_residual": 0.0
+    },
+    {
+      "name": "small_radius",
+      "method": "coordinate",
+      "objective": 16.705714553356614,
+      "oracle_objective": 16.705714553352298,
+      "max_atom_norm": 0.2,
+      "projected_gradient_residual": 2.392458799195415e-11
+    },
+    {
+      "name": "random_inactive_0",
+      "method": "coordinate",
+      "objective": 6.589779900193071,
+      "oracle_objective": 6.589779900193072,
+      "max_atom_norm": 0.9999999999999999,
+      "projected_gradient_residual": 6.435691967187548e-10
+    },
+    {
+      "name": "random_inactive_1",
+      "method": "coordinate",
+      "objective": 10.792085200484047,
+      "oracle_objective": 10.792085200483882,
+      "max_atom_norm": 1.0,
+      "projected_gradient_residual": 6.336599481077029e-10
+    },
+    {
+      "name": "random_inactive_2",
+      "method": "coordinate",
+      "objective": 3.7853348385992893,
+      "oracle_objective": 3.785334838599289,
+      "max_atom_norm": 1.0,
+      "projected_gradient_residual": 3.510394930471342e-10
+    },
+    {
+      "name": "random_inactive_3",
+      "method": "coordinate",
+      "objective": 6.7234596275258,
+      "oracle_objective": 6.7234596275257985,
+      "max_atom_norm": 1.0,
+      "projected_gradient_residual": 6.723816282239815e-10
+    },
+    {
+      "name": "random_inactive_4",
+      "method": "coordinate",
+      "objective": 6.541711755572163,
+      "oracle_objective": 6.541711755571511,
+      "max_atom_norm": 1.0,
+      "projected_gradient_residual": 8.435163417736642e-10
+    },
+    {
+      "name": "random_inactive_5",
+      "method": "coordinate",
+      "objective": 7.405884389134312,
+      "oracle_objective": 7.405884389134311,
+      "max_atom_norm": 1.0,
+      "projected_gradient_residual": 2.2616928189945234e-10
+    }
+  ],
+  "injected_solver_failure_cases": 2,
+  "invalid_input_cases": 3,
+  "source_hash_convention": "Text CRLF normalized to LF",
+  "source_sha256": {
+    "thirdparty/ScSPM/sparse_coding/l2ls_learn_basis_dual.m": "f3b152b642e3c5a925de53e6bab46e66fb19b8111c18b6ebd87c6982cdac4abc",
+    "thirdparty/ScSPM/sparse_coding/reg_sparse_coding.m": "b615ba8d443f71a922abae4b0a7252778ef33e80f34f6aba636c0186e7d2f83a",
+    "tools/validation/basis_regression.m": "8392b01eb55fc38853ccc853b3767b0866794cb9e2636483125a81b6f584ad31",
+    "tools/validation/basis_validation.py": "c9e09274e1bcbaab77dfaf9ad410bea29b219504ce5683f541422f9e771126eb"
+  }
+}

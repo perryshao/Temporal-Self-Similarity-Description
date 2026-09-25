@@ -69,7 +69,9 @@ stat.elapsed_time=0;
 while t < pars.num_trials
     t=t+1;
     start_time= cputime;
-    stat.fobj_total=0;    
+    stat.fobj_total=0;
+    stat.basis_residual_max(t) = 0;
+    stat.basis_norm_max(t) = 0;
     % Take a random permutation of the samples
     indperm = randperm(size(X,2));
     
@@ -89,7 +91,10 @@ while t < pars.num_trials
         [fobj] = getObjective_RegSc(Xb, B, S, Sigma, pars.beta, pars.gamma);       
         stat.fobj_total = stat.fobj_total + fobj;
         % update basis
-        B = l2ls_learn_basis_dual(Xb, S, pars.VAR_basis);
+        [B, basisInfo] = l2ls_learn_basis_dual(Xb, S, pars.VAR_basis, B);
+        stat.basis_residual_max(t) = max(stat.basis_residual_max(t), ...
+            basisInfo.projected_gradient_residual);
+        stat.basis_norm_max(t) = max(stat.basis_norm_max(t), max(sqrt(sum(B.^2, 1))));
     end
     
     % get statistics

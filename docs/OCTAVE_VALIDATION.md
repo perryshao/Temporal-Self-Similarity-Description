@@ -64,8 +64,9 @@ The suite runs original `.m` functions for:
 
 Twelve intermediate arrays are compared with Python. SSM/HOG/VQ/kernel errors
 are around machine precision; sparse coefficients agree within 2e-7 and their
-independent KKT residual must be below 1e-8. Dictionary norms and objective
-descent are checked. SameBlock/LocalSSM coverage is execution/finiteness coverage,
+independent KKT residual must be below 1e-8. Dictionary norms, projected-gradient residuals and objective
+descent are checked. Independent constrained-basis tests are documented in
+[the sparse dictionary correction](SPARSE_DICTIONARY_FIX.md). SameBlock/LocalSSM coverage is execution/finiteness coverage,
 not full cross-language parity of every descriptor variant.
 
 Six complete synthetic paths combine raw/sigmoid SSM with BoF-linear-SVM,
@@ -92,13 +93,13 @@ Published experiment sample counts, repetitions and other settings are unchanged
 
 ## Known failing case and remaining limits
 
-The suite separately records a fixed zero-mean random-initialization probe.
-On the small fixture this produces unused atoms, singular-matrix warnings, and
-an atom outside the unit-ball constraint. The result is exposed under
-`known_limitations` in JSON. It is **not** included in the claim that the six
-train-initialized paths pass, and the fixture is not identical to the default
-uniform-random initializer. General random-initialization robustness remains
-unresolved; no constraint threshold was relaxed to hide this failure.
+The previously failing random-initialization case is repaired; see
+[the diagnosis, algorithm and regression checks](SPARSE_DICTIONARY_FIX.md).
+It and six actual default-uniform initialization runs are now required to pass
+strict per-epoch feasibility, stationarity and objective-descent checks. Results
+appear under `random_initialization_regressions` in JSON, not as an accepted
+known failure. Random initialization can still change learned dictionaries and
+accuracy because alternating sparse learning is nonconvex.
 
 There is no MATLAB runtime/ABI certification, published dataset reproduction,
 OpenCV LogHog-MEX parity, exhaustive malformed-input memory audit, or end-to-end

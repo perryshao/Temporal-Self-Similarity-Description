@@ -7,6 +7,8 @@ function run_octave_validation(root, work)
     pkg load image;
     pkg load statistics;
     pkg load optim;
+    warning('error', 'Octave:singular-matrix');
+    warning('error', 'Octave:nearly-singular-matrix');
     support = fileparts(mfilename('fullpath'));
     for name = {'distance_matrix_norm1', 'distance_matrix_norm2'}
         mkoctfile('--mex', ['-I' fullfile(support, 'octave_include')], ...
@@ -141,7 +143,8 @@ function run_octave_validation(root, work)
         dictionary_objectives{mode+1} = stat.fobj_avg;
         dictionary_norms{mode+1} = sqrt(sum(learned.^2, 1));
         assert(all(isfinite(learned(:))));
-        assert(max(dictionary_norms{mode+1}) < 1.01);
+        assert(max(dictionary_norms{mode+1}) <= 1 + 1e-12);
+        assert(all(stat.basis_residual_max <= 1e-9));
         tr = zeros(numel(training), 56); te = zeros(numel(testing), 56);
         for i = 1:numel(training)
             tr(i, :) = sc_pooling_ts(training{i}', learned, [1 2 4], .15)';
@@ -154,12 +157,29 @@ function run_octave_validation(root, work)
         accuracies(mode+1, 3) = mean(labels == fixture.test_y);
     end
     assert(all(accuracies(:) >= 8/9));
-    % Record the known random-init limitation separately from the supported
-    % train-derived initialization path. Do not relax its unit-ball constraint.
-    rand('state', 71); randn('state', 71);
-    [randomB, ~, ~] = reg_sparse_coding(raw_features, 8, eye(8), ...
-        1e-5, .15, 3, columns(raw_features), fixture.init_dictionary, 'random_init_probe');
-    random_init_max_norm = max(sqrt(sum(randomB.^2, 1)));
+    % The original failing Gaussian fixture and the real uniform-random
+    % default initializer are now mandatory numeric regressions.
+    random_init_names = {'original_gaussian_raw', 'default_raw_0', ...
+        'default_raw_1', 'default_raw_7', 'default_raw_71', ...
+        'default_sigmoid_0', 'default_sigmoid_1'};
+    seeds = [71 0 1 7 71 0 1];
+    random_init_norms = zeros(7, 3);
+    random_init_residuals = zeros(7, 3);
+    random_init_objectives = zeros(7, 3);
+    for run = 1:7
+        rand('state', seeds(run)); randn('state', seeds(run));
+        if run == 1, start = fixture.init_dictionary; else, start = []; end
+        if run <= 5, data = raw_features; else, data = features; end
+        [randomB, ~, stat] = reg_sparse_coding(data, 8, eye(8), ...
+            1e-5, .15, 3, columns(data), start, 'random_init_probe');
+        random_init_norms(run, :) = stat.basis_norm_max;
+        random_init_residuals(run, :) = stat.basis_residual_max;
+        random_init_objectives(run, :) = stat.fobj_avg;
+        assert(all(isfinite(randomB(:))));
+        assert(all(stat.basis_norm_max <= 1 + 1e-12));
+        assert(all(stat.basis_residual_max <= 1e-9));
+        assert(all(diff(stat.fobj_avg) <= 1e-7));
+    end
 
     octave_version = version;
     packages = pkg('list');
@@ -170,7 +190,8 @@ function run_octave_validation(root, work)
     save('-mat7-binary', fullfile(work, 'octave_results.mat'), 'raw', 'sig', ...
         'win', 'l1', 'hog_raw', 'hog_sig', 'generated_raw', 'generated_sig', ...
         'codes', 'pools', 'bov', 'kernel', 'accuracies', 'dictionary_objectives', ...
-        'dictionary_norms', 'random_init_max_norm', 'octave_version', 'package_versions');
+        'dictionary_norms', 'random_init_names', 'random_init_norms', ...
+        'random_init_residuals', 'random_init_objectives', 'octave_version', 'package_versions');
 end
 
 function restore_session(oldpath, oldpwd)
