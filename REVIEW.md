@@ -49,3 +49,17 @@ check, not a MATLAB parser or a proof of semantic equivalence. MATLAB execution,
 MATLAB MEX compilation and published-result reproduction have not been performed.
 Subsequent native distance-kernel checks and portable numerical validation are
 recorded separately in `docs/VALIDATION.md`.
+
+## Executable validation update — 2026-09-25
+
+See [original-code Octave validation](docs/OCTAVE_VALIDATION.md). Original SSM,
+HOG, Yael, FeatureSign, dataset pooling and six synthetic classifier paths now
+execute under Octave, with Python numerical comparisons and separate C++
+sanitizer checks. ASL zero-SSM scaling and the BoF helper's incompatible Yael
+call are fixed. The ScSPM optimizer has a documented Octave-only option branch.
+These are functional changes after the earlier style-only review.
+
+A zero-mean random-initialization fixture still causes ScSPM singular matrices
+and a dictionary norm constraint violation under Octave. Passing end-to-end
+tests use the existing initB interface with training-derived atoms. Neither
+those passes nor the source hashes certify the remaining alternatives above.

@@ -278,8 +278,11 @@ See [MEX recovery](docs/MEX_RECOVERY.md) for restored sources, separate build ta
 
 ## Validation without MATLAB
 
-A reproducible Python numerical suite plus native C++/LIBSVM checks covers the
-raw/sigmoid SSM → Log-HOG → VQ or sparse coding → temporal pyramid → SVM paths
-on synthetic held-out trajectories. See [validation instructions and limits](docs/VALIDATION.md)
-and [the recorded result](docs/PIPELINE_VALIDATION.json). This does not certify
-MATLAB/MEX runtime compatibility or reproduce published dataset scores.
+Validation now combines Python numerical oracles, C++ AddressSanitizer/UndefinedBehaviorSanitizer,
+and actual MATLAB-source execution through Octave with seven rebuilt MEX modules.
+Six synthetic raw/sigmoid SSM → Log-HOG → BoF/VQ/ScSPM → SVM paths pass with
+training-derived sparse initialization; a separate random-initialization failure
+is recorded. See [Octave validation and reproducibility](docs/OCTAVE_VALIDATION.md),
+[recorded results](docs/OCTAVE_VALIDATION.json), and the
+[Python reference layer](docs/VALIDATION.md). This does not certify MATLAB ABI
+compatibility or reproduce published dataset scores.

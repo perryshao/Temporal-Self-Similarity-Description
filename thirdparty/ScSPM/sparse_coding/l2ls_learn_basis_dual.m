@@ -31,7 +31,12 @@ c = l2norm^2;
 trXXt = sum(sum(X.^2));
 
 lb=zeros(size(dual_lambda));
-options = optimset('GradObj','on', 'Hessian','on'); 
+if exist('OCTAVE_VERSION', 'builtin')
+    % Octave optim requires the explicit option name for the objective Hessian.
+    options = optimset('GradObj', 'on', 'HessianFcn', 'objective');
+else
+    options = optimset('GradObj','on', 'Hessian','on');
+end
 % options = optimset('GradObj','on', 'Hessian','on', 'TolFun', 1e-16); %% perry modified 'Algorithm','trust-region'
 
 [x, fval, exitflag, output] = fmincon(@(x) fobj_basis_dual(x, SSt, XSt, X, c, trXXt), dual_lambda, [], [], [], [], lb, [], [], options);

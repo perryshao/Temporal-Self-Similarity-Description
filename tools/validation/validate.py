@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import platform
 import subprocess
@@ -19,6 +20,11 @@ from reference import (ssm, log_hog, vocabulary, vq_pyramid, pyramid_kernel,
 
 ROOT = Path(__file__).resolve().parents[2]
 METRICS = {}
+SANITIZER_ENV = {
+    **os.environ,
+    'ASAN_OPTIONS': 'detect_leaks=0:halt_on_error=1',
+    'UBSAN_OPTIONS': 'halt_on_error=1:print_stacktrace=1',
+}
 
 
 class NumericalChecks(unittest.TestCase):
@@ -161,9 +167,9 @@ def libsvm(train, test, train_y, test_y, kernel, directory, suffix):
                 serial = f'0:{i+1} ' if kernel == 4 else ''
                 output.write(f'{label} {serial}{values}\n')
     subprocess.run([str(directory/'svm-train'), '-q', '-t', str(kernel), '-c', '10',
-                    str(paths[0]), str(paths[2])], check=True, capture_output=True)
+                    str(paths[0]), str(paths[2])], check=True, capture_output=True, env=SANITIZER_ENV)
     subprocess.run([str(directory/'svm-predict'), str(paths[1]), str(paths[2]), str(paths[3])],
-                   check=True, capture_output=True)
+                   check=True, capture_output=True, env=SANITIZER_ENV)
     predictions = np.loadtxt(paths[3])
     return float(np.mean(predictions == test_y))
 
@@ -182,7 +188,7 @@ def native_distance_checks(directory):
             a, b = rng.normal(size=(m, d)), rng.normal(size=(n, d))
             values = np.r_[a.ravel(order='F'), b.ravel(order='F')]
             payload = f'{m} {n} {d}\n' + ' '.join(format(x, '.17g') for x in values)
-            output = subprocess.run([str(binary)], input=payload, text=True, capture_output=True, check=True)
+            output = subprocess.run([str(binary)], input=payload, text=True, capture_output=True, check=True, env=SANITIZER_ENV)
             actual = np.fromstring(output.stdout, sep=' ').reshape((m, n), order='F')
             assert_allclose(actual, cdist(a, b, metric), atol=1e-12)
     METRICS['native_distance'] = {'fixtures': 6, 'sanitizers': ['address', 'undefined'],
@@ -196,7 +202,7 @@ def pipeline():
         native_distance_checks(directory)
         source = ROOT/'thirdparty/libsvm-3.17'
         for binary in ('svm-train', 'svm-predict'):
-            subprocess.run(['clang++', '-O2', '-x', 'c++', str(source/(binary+'.c')),
+            subprocess.run(['clang++', '-O1', '-g', '-fsanitize=address,undefined', '-x', 'c++', str(source/(binary+'.c')),
                             str(source/'svm.cpp'), '-o', str(directory/binary)],
                            check=True, capture_output=True)
         for sigmoid in (False, True):
@@ -225,7 +231,7 @@ def pipeline():
             METRICS['sigmoid' if sigmoid else 'raw'] = {
                 'train_sequences': len(train), 'held_out_sequences': len(test),
                 'descriptor_shape': list(train[0].shape), 'vq_shape': [len(train), 56],
-                'sparse_shape': list(a.shape), 'vq_ktpm_accuracy': vq_accuracy,
+                'sparse_shape': list(a.shape), 'libsvm_sanitizers': ['address', 'undefined'], 'vq_ktpm_accuracy': vq_accuracy,
                 'sparse_linear_accuracy': sc_accuracy, 'dictionary_objective': objectives}
 
 
@@ -233,6 +239,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report', type=Path, help='Write a JSON evidence report')
     args = parser.parse_args()
+    if not __debug__:
+        raise SystemExit('Validation requires assertions: do not use python -O')
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(NumericalChecks)
     result = unittest.TextTestRunner(verbosity=2).run(suite)
     if not result.wasSuccessful():
@@ -249,7 +257,8 @@ def main():
     evidence = {'scope': 'Python numerical reference and native LIBSVM; not MATLAB parity',
                 'python': platform.python_version(), 'numpy': np.__version__, 'scipy': scipy.__version__,
                 'unit_tests': result.testsRun, 'pipelines': METRICS,
-                'source_sha256': {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in sources}}
+                'source_hash_convention': 'Text CRLF normalized to LF',
+                'source_sha256': {p: hashlib.sha256((ROOT/p).read_bytes().replace(b'\r\n', b'\n')).hexdigest() for p in sources}}
     if args.report:
         args.report.write_text(json.dumps(evidence, indent=2) + '\n')
     print(json.dumps(evidence, indent=2))

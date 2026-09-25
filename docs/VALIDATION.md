@@ -1,4 +1,8 @@
-# Portable pipeline validation
+# Python reference validation layer
+
+The subsequent [original-code Octave validation](OCTAVE_VALIDATION.md) executes
+the MATLAB sources, Yael and FeatureSign and supersedes the Python-only coverage
+limits below. This page documents the reference layer, which remains runnable.
 
 Run from the repository root (Python 3.9–3.12 and Clang C++ are required):
 
@@ -9,7 +13,8 @@ python3 -m venv .venv
 ```
 
 A nonzero exit means a numerical assertion, solver convergence, compilation, or
-pipeline check failed. Binaries and intermediate classifier files live in a
+pipeline check failed. Native distance and LIBSVM binaries use fail-fast ASan/UBSan.
+Binaries and intermediate classifier files live in a
 TemporaryDirectory and are removed. The report is optional. Do not run Python
 with `-O`, which disables pipeline assertions. No datasets or MATLAB are needed.
 

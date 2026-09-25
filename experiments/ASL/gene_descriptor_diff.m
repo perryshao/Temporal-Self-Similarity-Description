@@ -31,7 +31,11 @@ for i = 1:samples
     TSSM = Temporal_SSM(marker_des, 5, 1, 0); % des,descrip_flag,slide_win,kernel:0,none; 1,sigmoid
     % Image_TSSM = TSSM(2+1:end-2,2+1:end-2);
     Image_TSSM = TSSM;
-    Image_TSSM = floor((Image_TSSM/max(max(Image_TSSM)))*(2^16-1));
+    % Constant trajectories have an all-zero SSM and zero descriptors.
+    maxDistance = max(Image_TSSM(:));
+    if maxDistance > 0
+        Image_TSSM = floor((Image_TSSM/maxDistance)*(2^16-1));
+    end
     % kernel weighting
     %     Image_TSSM = exp(-Image_TSSM/(1*65536));% rbf
     %%%%%%%%%%%%%%%%% HOG of SSM %%%%%%%%%%%%%%%%%

@@ -20,16 +20,7 @@ else if(niter<2)
         error('pls. chk the inputs\n');        
     end
 end
-% C=yael_kmeans(single(words),K,'niter',niter);
-
-options.K                            = K;
-options.max_ite                      = niter;
-options.init_random_mode             = 0;
-options.normalize_sophisticated_mode = 0;
-options.BLOCK_N1                     = 1024;
-options.BLOCK_N2                     = 1024;
-options.seed                         = 1234543;
-options.num_threads                  = 2;
-
-
-[C, ~, ~ , ~ , ~] = yael_kmeans(words , options);
+% Use the bundled Yael v438 name/value API. The previous options-struct
+% call belonged to a different wrapper and requested too many outputs.
+C = yael_kmeans(single(words), K, 'niter', niter, 'seed', 1234543, ...
+    'init', 0, 'verbose', 0);

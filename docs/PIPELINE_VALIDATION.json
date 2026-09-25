@@ -28,6 +28,10 @@
         18,
         56
       ],
+      "libsvm_sanitizers": [
+        "address",
+        "undefined"
+      ],
       "vq_ktpm_accuracy": 1.0,
       "sparse_linear_accuracy": 1.0,
       "dictionary_objective": [
@@ -53,6 +57,10 @@
         18,
         56
       ],
+      "libsvm_sanitizers": [
+        "address",
+        "undefined"
+      ],
       "vq_ktpm_accuracy": 1.0,
       "sparse_linear_accuracy": 1.0,
       "dictionary_objective": [
@@ -64,6 +72,7 @@
       ]
     }
   },
+  "source_hash_convention": "Text CRLF normalized to LF",
   "source_sha256": {
     "ssm/Temporal_SSM.m": "bffeff069edbdca848b2ca824b75e905d83160d1d51283aab2e8116ce9b4b3ef",
     "descriptor/Log_hogcalculator.m": "83071a3147769b79965687d8b76d5287eb42fa4339cb0b5b9405ca93297b2f55",
@@ -71,14 +80,16 @@
     "experiments/ASL/PyramidMatching.m": "3ebd5478291824019d3850a84128e5c622cceb5a072b43dc9d199361a35922db",
     "experiments/ASL/sc_pooling_ts.m": "09568a9bfb8eed1c1293891d83594e1e663c4fd174ce933a653cad99c8fa6e1f",
     "thirdparty/libsvm-3.17/svm.cpp": "86133bfc92e1e76f48c17a510f19f7f7a1a5dfdaba78e5ca4962b7186398f610",
-    "thirdparty/ScSPM/sparse_coding/L1QP_FeatureSign_yang.m": "23f2da9ab5f9184c6847cb4e710ee797e1ac2a0ce1671109e69caf7baa93a5b5",
-    "iid/matching/src/distance_matrix/distance_matrix_norm1.cpp": "705f04d8ff1903771c5342a99ec858a6a61d39530cad4a2874750ad2a567e393",
-    "iid/matching/src/distance_matrix/distance_matrix_norm2.cpp": "8aa981f9609da1dbffcbaceba026eeec7b368fba4bae3c7b200b6fc53da6565a",
+    "thirdparty/ScSPM/sparse_coding/L1QP_FeatureSign_yang.m": "2510a9839df2cd2d6a745e5f3618cf3b15841c013b4284dc8dd290a062cc6712",
+    "iid/matching/src/distance_matrix/distance_matrix_norm1.cpp": "c987f3925e8dca9ba7fc6dc5049326870051c5505fdaa1e69a1a5d046f399eee",
+    "iid/matching/src/distance_matrix/distance_matrix_norm2.cpp": "6a28a4e327ccf51bf3bfe05c7c3bd98fb42bccb34ebc7053cdd5cabba2b34c6e",
     "tools/validation/distance_driver.cpp": "c97f429478f9c7aef46e35da3ed530b532d53c9de5cfc8f98849d68e7345de17",
     "tools/validation/matrix.h": "8f82468318edd683b06ab568e282f3a6328252f9995c786e9ec7d8d7bb80f076",
     "tools/validation/mex.h": "37a71cd208cb49a9620d85bf51d9ec2dec962c9edfe8b2a875602647d6cc4d18",
+    "tools/validation/octave_validation.py": "226e35ea0b1ab827b32c3446c408e8eb641714cb99fda7d9cec4fbc618ba342b",
     "tools/validation/reference.py": "9e7bc28903ed75302a9d5ca272af1b6f7dd252a5638e5e1c8c068f113a50886e",
     "tools/validation/requirements.txt": "b1a0c4b6e571a19ffd3f71d95fbb5e48203c8d9f3b9cdde86f7c3b6f9643aa95",
-    "tools/validation/validate.py": "60f2573375bcd5153214e0a57d19f45185b70578eeea02d671b4b283139ae6ae"
+    "tools/validation/run_octave_validation.m": "f931e9a29a6c3d83323f3f029c2d351cd1dec92d973ecb2186c759144ddc53fd",
+    "tools/validation/validate.py": "b02feebc1d79ea1a8114e8ae66416c2e990beddf45f5d2f1c68adf21b66281dc"
   }
 }
