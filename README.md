@@ -115,7 +115,7 @@ presumably what the per-query timing in thesis Table 5.2 measured.
 ## Directory layout
 
 ```
-TSSM/
+Temporal-Self-Similarity-Description/
 ├── ssm/           Temporal_SSM — the SSM itself
 ├── descriptor/    Log_hogcalculator (+ SameBlock), LocalSsmcalculator (+ SameBlock),
 │                  global_hogcalculator, hogcalculator — SSM image descriptors
@@ -141,7 +141,7 @@ own. Treat IID as the upstream for those files.
 ## Running
 
 ```matlab
-cd TSSM
+cd Temporal-Self-Similarity-Description
 setup_path                 % adds ssm/, descriptor/, iid/, figures/ and the third-party code
 cd experiments/ASL
 recognition_dtw_tsd_bat    % expects the ASL .tsd files under tsd_data_bat/

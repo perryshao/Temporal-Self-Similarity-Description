@@ -1,6 +1,6 @@
 # Local project and repository workflow
 
-- Project directory: `/Users/perryshao/Documents/Projects/TSSM`
+- Project directory: `/Users/perryshao/Documents/Projects/Temporal-Self-Similarity-Description`
 - GitHub checkout: `/Users/perryshao/Documents/GitHub/repositories/Temporal-Self-Similarity-Description`
 
 Keep both directories as independent copies. After editing project source, build
