@@ -11,7 +11,7 @@ pipeline.
 This directory is a consolidated, **code-only** reconstruction of a project that was
 previously spread across a networked MATLAB workspace and several local folders.
 Intermediate results (`.mat`), figures and raw datasets are deliberately **not**
-included — see [Provenance](#provenance) and [Datasets](#datasets).
+included — see [Datasets](#datasets).
 
 ---
 
@@ -253,37 +253,3 @@ Not changed, but worth knowing:
 cd loghog/src
 mex -I<opencv>/include LogHog.cpp log_hogcalculator.cpp -L<opencv>/lib -lopencv_core -lopencv_imgproc
 ```
-
----
-
-## Provenance
-
-Every file's origin and original md5 is in [`tools/provenance.tsv`](tools/provenance.tsv).
-Sources were three overlapping copies of the old workspace — the SMB share
-`MatlabProjects/work` (also mounted as `work`), a second share `9592df65…/work`, and
-local `~/Documents/Projects/Work` — plus the IID repository. No file existed in two
-locations with different contents; where helpers of the same name differed between
-dataset folders, each folder kept its own.
-
-The C++ source of `LogHog.mex` was recovered from `Projects/Work/Log_Hog/Log_Hog.zip`
-(Sept 2015); the unzipped copy next to it had lost the source files.
-
-Excluded as not code: ScSPM's Caltech-101 images and SIFT features (3.2 GB), and
-`ScSPM/Results/reg_sc_b1024_20150402T092740.mat`, which appears to be a 1024-atom
-dictionary learned in April 2015.
-
-## Recovered source and retired workspaces
-
-See [MEX recovery](docs/MEX_RECOVERY.md) for restored sources, separate build targets, and validation limits. Old workspace sources/data are preserved by SHA-256 under `~/Documents/Projects/LegacyResearchAssets`; consult its README and manifest before using historical paths above.
-
-## Validation without MATLAB
-
-Validation now combines Python numerical oracles, C++ AddressSanitizer/UndefinedBehaviorSanitizer,
-and actual MATLAB-source execution through Octave with seven rebuilt MEX modules.
-Six synthetic raw/sigmoid SSM → Log-HOG → BoF/VQ/ScSPM → SVM paths pass with
-training-derived sparse initialization. The former random-initialization defect
-is repaired and covered by seven training regressions plus independent constrained
-basis-solver tests; see [the correction](docs/SPARSE_DICTIONARY_FIX.md). See [Octave validation and reproducibility](docs/OCTAVE_VALIDATION.md),
-[recorded results](docs/OCTAVE_VALIDATION.json), and the
-[Python reference layer](docs/VALIDATION.md). This does not certify MATLAB ABI
-compatibility or reproduce published dataset scores.
