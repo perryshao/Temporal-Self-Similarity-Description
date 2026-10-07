@@ -63,3 +63,12 @@ __pycache__/
 *.pyc
 .venv/
 build/
+
+# Local AI workflow, review, recovery and validation notes
+/AGENTS.md
+/REVIEW.md
+/docs/MEX_RECOVERY.md
+/docs/OCTAVE_VALIDATION.md
+/docs/SPARSE_DICTIONARY_FIX.md
+/docs/VALIDATION.md
+/docs/README_LOCAL_NOTES.md
